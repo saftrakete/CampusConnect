@@ -1,5 +1,5 @@
 # CampusConnect
 
-Dies ist das Reposetory für das Softwareprojekt.
+Dies ist das Repository für das Softwareprojekt.
 
 
