@@ -1,3 +1,5 @@
 # CampusConnect
-this is a commit my anton
+
+Dies ist das Reposetory für das Softwareprojekt.
+
 
