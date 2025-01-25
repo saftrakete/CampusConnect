@@ -10,6 +10,7 @@
 *.userosscache
 *.sln.docstates
 *.cache 
+CampusConnect.Server/obj/
 
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
@@ -400,3 +401,9 @@ FodyWeavers.xsd
 
 # JetBrains Rider
 *.sln.iml
+
+# Front-End --------------
+
+**/.angular/cache
+**/coverage/*
+campusconnect.client/package-lock.json
