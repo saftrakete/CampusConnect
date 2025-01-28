@@ -1,0 +1,21 @@
+:host {
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    margin-top: 3rem;
+    gap: 0.5rem;
+}
+
+.actionContainer {
+    display: flex;
+    flex-flow: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 17%;
+}
+
+.loginLink {
+    font-size: 8px;
+}
