@@ -1,6 +1,9 @@
-﻿namespace CampusConnect.Server.Models
+﻿using Microsoft.EntityFrameworkCore;
+
+namespace CampusConnect.Server.Models
 {
-    public partial class User
+    [PrimaryKey("UserId")]
+    public partial class UserModel
     {
         public int UserId { get; set; }
         public string Nickname { get; set; }

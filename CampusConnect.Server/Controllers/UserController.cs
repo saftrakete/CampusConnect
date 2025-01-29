@@ -20,7 +20,7 @@ namespace CampusConnect.Server.Controllers
         }
 
         [HttpGet("{userId}")]
-        public async Task<ActionResult<User>> GetUserById(int userId)
+        public async Task<ActionResult<UserModel>> GetUserById(int userId)
         {
             var user = await _context.Users.FirstOrDefaultAsync(u => u.UserId == userId);
             return user is not null ? Ok(user) : NotFound();
@@ -29,17 +29,17 @@ namespace CampusConnect.Server.Controllers
         //TODO: Login Request
 
         [HttpPost]
-        public async Task<ActionResult<IEnumerable<User>>> PostNewUser(User user)
+        public async Task<ActionResult<IEnumerable<UserModel>>> PostNewUser(UserModel user)
         {
             if (user is null)
             {
                 return BadRequest();
             }
 
-            _context.Add(user);
+            await _context.Users.AddAsync(user);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetUserById", new { id = user.UserId }, user);
+            return CreatedAtAction("GetUserById", new { userId = user.UserId }, user);
         }
 
         [HttpDelete("{userId}")]
