@@ -76,7 +76,7 @@ namespace CampusConnect.Server.Controllers
 
             _context.Remove(user);
             await _context.SaveChangesAsync();
-            return Ok();
+            return NoContent();
         }
     }
 }
