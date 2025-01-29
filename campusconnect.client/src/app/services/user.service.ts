@@ -20,6 +20,10 @@ export class UserService {
         return this.httpClient.post<UserEntity>(baseApiRoute + 'user/login', loginDto);
     }
 
+    public checkIfLoginNameExists(loginName: string): Observable<boolean> {
+        return this.httpClient.get<boolean>(baseApiRoute + "user/exists/" + loginName);
+    }
+
     public createUserEntity(
         nickname: string,
         loginName: string,

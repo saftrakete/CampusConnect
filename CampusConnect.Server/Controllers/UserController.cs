@@ -26,6 +26,13 @@ namespace CampusConnect.Server.Controllers
             return user is not null ? Ok(user) : NotFound();
         }
 
+        [HttpGet("exists/{loginName}")]
+        public async Task<ActionResult<bool>> LoginNameAlreadyExists(string loginName)
+        {
+            var user = await _context.Users.FirstOrDefaultAsync(u => u.LoginName == loginName);
+            return user is not null;
+        }
+
         [HttpPost("login")]
         public async Task<ActionResult<UserModel>> UserLoginRequest(LoginDto loginDto)
         {

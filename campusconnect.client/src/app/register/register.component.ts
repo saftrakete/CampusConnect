@@ -39,19 +39,29 @@ export class RegisterComponent implements OnInit {
       return;
     }
 
-    let userEntity = this.userService.createUserEntity(
-      this.registerForm.get('nickname')?.value,
-      this.registerForm.get('loginName')?.value,
-      this.registerForm.get('password')?.value
-    );
-    
-    this.userService.postNewUser(userEntity).subscribe(
+    this.userService.checkIfLoginNameExists(this.registerForm.get('loginName')?.value).subscribe(
       response => {
-        console.log(response);
-      },
-      error => {
+        if (response) {
+          console.log('loginName already exists in Database');
+          return;
+        }
 
+        let userEntity = this.userService.createUserEntity(
+          this.registerForm.get('nickname')?.value,
+          this.registerForm.get('loginName')?.value,
+          this.registerForm.get('password')?.value
+        );
+        
+        this.userService.postNewUser(userEntity).subscribe(
+          response => {
+            console.log(response);
+          },
+          error => {
+    
+          }
+        );
       }
-    );
+    )
+
   }
 }
