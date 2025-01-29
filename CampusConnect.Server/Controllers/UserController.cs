@@ -26,7 +26,22 @@ namespace CampusConnect.Server.Controllers
             return user is not null ? Ok(user) : NotFound();
         }
 
-        //TODO: Login Request
+        [HttpPost("login")]
+        public async Task<ActionResult<UserModel>> UserLoginRequest(LoginDto loginDto)
+        {
+            var user = await _context.Users.FirstOrDefaultAsync(u => u.LoginName == loginDto.LoginName);
+
+            if (user is null)
+            {
+                return NotFound();
+            }
+
+            //TODO:
+            //Passwörter irgendwie enthashen o.ä.
+            //User authorisieren
+
+            return user.Password == loginDto.Password ? Ok(user) : BadRequest();
+        }
 
         [HttpPost]
         public async Task<ActionResult<IEnumerable<UserModel>>> PostNewUser(UserModel user)

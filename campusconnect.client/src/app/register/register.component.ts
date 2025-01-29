@@ -14,7 +14,7 @@ export class RegisterComponent implements OnInit {
 
   public registerForm!: FormGroup;
 
-  private emptyString: string = '';
+  private readonly emptyString: string = '';
 
   public ngOnInit(): void {
       this.registerForm = this.formBuilder.group({
