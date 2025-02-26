@@ -9,14 +9,14 @@ node js installieren
 
 in die .sln Datei in Visual Studio Code öffnen
 im terminal:
-	npm install -g @angular/cli
+	> npm install -g @angular/cli <
 ein test Befehl, ob korrekt installiert:
-	ng g c
+	> ng g c <
 
 Visual Studio
 in packet manager Konsole
-	add-migration init 
-	update-database
+	> add-migration init <
+	> update-database <
 
 
 Hinweis zum Erstellen der Datenbank:
