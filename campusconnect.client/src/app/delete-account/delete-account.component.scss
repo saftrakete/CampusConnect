@@ -1,0 +1,29 @@
+.dialog-window {
+  height: 100px;
+  width: 300px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  color: white;
+}
+
+.dialog-buttons {
+  text-align: right;
+  margin-bottom: 10px;
+}
+
+.cancel-button {
+  &:hover {
+    background-color: rgba(0,0,0,0.5);
+  }
+}
+
+.confirm-button {
+  background-color: rgba($color: #c11616, $alpha: 1.0);
+  margin-right: 10px;
+  margin-left: 5px;
+  &:hover {
+    background-color: #ea5555;
+  }
+}
