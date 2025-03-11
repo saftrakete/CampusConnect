@@ -18,9 +18,20 @@
     background-color: var(--primary-contrast);
     color: (var(--primary));
     transition: background-color 0.2s ease-out;
+    margin-left: auto;
+    margin-right: 10px;
+    cursor: pointer;
 
     &:hover {
       background-color: var(--primary-hover-contrast);
+    }
+  }
+
+  .settings {
+    cursor: pointer;
+    transition: transform 0.5s ease;
+    &:hover {
+      transform: rotate(90deg);
     }
   }
 }
