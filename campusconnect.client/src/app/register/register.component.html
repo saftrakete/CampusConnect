@@ -1,0 +1,61 @@
+<mat-label class="registerLabel">
+    Registrieren
+</mat-label>
+
+<form [formGroup]="registerForm">
+    <mat-form-field>
+        <mat-label>Email</mat-label>
+        <input 
+            matInput
+            type="email" 
+            formControlName="loginName" 
+            placeholder="exmatrikulator@ovgu.de"
+            required>
+    </mat-form-field>
+
+    <mat-form-field>
+        <mat-label>Benutzername</mat-label>
+        <input
+            matInput
+            type="text"
+            formControlName="nickname"
+            placeholder="Exmatrikulator"
+            required>
+    </mat-form-field>
+
+    <mat-form-field>
+        <mat-label>Passwort</mat-label>
+        <input
+            matInput
+            type="password"
+            formControlName="password"
+            placeholder="Passwort..."
+            required>
+    </mat-form-field>
+
+    <mat-form-field>
+        <mat-label>Passwort bestätigen</mat-label>
+        <input
+            matInput
+            type="password"
+            formControlName="confirmPassword"
+            placeholder="Passwort bestätigen..."
+            required>
+    </mat-form-field>
+</form>
+
+<div class="actionContainer">
+    <a 
+        class="loginLink" 
+        routerLink="../login">
+            Stattdessen Anmelden
+    </a>
+
+    <button 
+        mat-raised-button 
+        color="primary"
+        disabled="{{!registerForm.valid.valueOf()}}"
+        (click)="registerClick()">
+            Registrieren
+    </button>
+</div>

@@ -15,7 +15,7 @@ namespace CampusConnect.Server.Data
 
         }
 
-        public virtual DbSet<User> Users { get; set; }
+        public virtual DbSet<UserModel> Users { get; set; }
         public virtual DbSet<Degree> Degrees { get; set; }
         public virtual DbSet<Faculty> Faculties { get; set; }
         public virtual DbSet<LearnGroup> LearnGroups { get; set; }

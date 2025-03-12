@@ -1,0 +1,48 @@
+@use '@angular/material' as mat;
+
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    font-family: 'Sans Serif Collection';
+    font-size: 16px;
+}
+
+
+a{
+    text-decoration:none;
+}
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+
+$theme-primary: mat.define-palette(mat.$cyan-palette, 500, 200, 900, 700);
+$theme-accent: mat.define-palette(mat.$orange-palette, A200, A100, A400);
+$theme-warn: mat.define-palette(mat.$red-palette, 600);
+
+$project-theme: mat.define-dark-theme((
+    color: (
+        primary: $theme-primary,
+        accent: $theme-accent,
+        warn: $theme-warn,
+        ),
+        typography: mat.define-typography-config(), // Standard-Typografie
+        density: 0, // Dichte-Einstellung
+        ));
+        
+@include mat.all-component-themes($project-theme);
+@include mat.core();
+
+:root {
+    --primary: #{mat.get-color-from-palette($theme-primary, 500)};
+    --primary-hover: #{mat.get-color-from-palette($theme-primary, 200)}; //Hover
+    --primary-contrast: #{mat.get-color-from-palette($theme-primary, 900)}; //Kontrast
+    --primary-hover-contrast: #{mat.get-color-from-palette($theme-primary, 700)}; // Kontrast Hover
+    --accent-200: #{mat.get-color-from-palette($theme-accent, 200)};
+    --accent-100: #{mat.get-color-from-palette($theme-accent, 100)};
+    --warn: #(mat.get-color-from-palette($theme-warn, 600));
+    --darkmode-background: /*#4a4a4a*/ #2E2E2E;
+}

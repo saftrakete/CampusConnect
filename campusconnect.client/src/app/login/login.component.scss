@@ -1,0 +1,70 @@
+@use '@angular/material' as mat;
+
+:host {
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    gap: 0.5rem;
+    background-color: var(--darkmode-background);
+}
+
+.loginLabel {
+    display: flex;
+    color: var(--primary);
+    font-size: 28px;
+    text-align: left;
+    width: 28rem;
+    margin-left: 0.5rem;
+}
+
+form {
+    display: flex;
+    flex-flow: column;
+    width: 28rem;
+    max-height: 12rem;
+    padding-top: 1.25rem;
+    padding-right: 1rem;
+    padding-left: 1rem;
+    margin-bottom: 0.5rem;
+    border: 0.15rem (var(--primary)) solid;
+    border-radius: 0.5rem;
+    box-shadow: 3px 3px 2px darkgray;
+    background-color: gray;
+}
+
+.actionContainer {
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+
+    .registerLink {
+        font-size: 16px;
+    }
+
+    a {
+        color: var(--primary);
+        transition: color 0.2s ease-out;
+
+        &:hover {
+            color: var(--primary-hover);
+        }
+    }
+
+    button {
+        background-color: var(--primary);
+        color: var(--darkmode-background);
+        transition: background-color 0.2s ease-out;
+
+        &:disabled {
+            background-color: gray;
+        }
+
+        &:hover {
+            background-color: var(--primary-hover);
+        }
+    }
+}

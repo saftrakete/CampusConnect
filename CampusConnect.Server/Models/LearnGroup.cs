@@ -6,8 +6,8 @@ namespace CampusConnect.Server.Models
     {
         public int LearnGroupId { get; set; }
         public string Name { get; set; }
-        public virtual User Admin { get; set; }
-        public virtual ICollection<User> Members { get; set; }
+        public virtual UserModel Admin { get; set; }
+        public virtual ICollection<UserModel> Members { get; set; }
         public virtual ICollection<Page> Pages { get; set; }
         public virtual ICollection<Module> ContainedModules { get; set; }
     }
