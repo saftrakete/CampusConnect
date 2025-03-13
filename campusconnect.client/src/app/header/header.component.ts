@@ -11,7 +11,8 @@ export class HeaderComponent {
   readonly dialog = inject(MatDialog);    // Instanz um Dialogfenster zu öffnen
 
   /* Öffnet ein Fenster um den Löschvorgang zu bestätigen oder abzubrechen */
-  deleteAccount() {
+  deleteAccount() 
+  {
     const dialogRef = this.dialog.open(DeleteAccountComponent);
   }
 }
