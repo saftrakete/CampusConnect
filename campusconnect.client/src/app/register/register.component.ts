@@ -15,13 +15,14 @@ export class RegisterComponent implements OnInit {
   public registerForm!: FormGroup;
 
   private readonly emptyString: string = '';
+  private readonly pattern: RegExp = /^(?=.*\d)(?=.*[\W_]).{4,}$/;
 
   public ngOnInit(): void {
       this.registerForm = this.formBuilder.group({
         loginName: [this.emptyString, Validators.email],
         nickname: [this.emptyString, Validators.required],
-        password: [this.emptyString, Validators.required],
-        confirmPassword: [this.emptyString, [Validators.required, this.matchPasswordValidator('password')]]
+        password: [this.emptyString, [Validators.required, Validators.minLength(4), Validators.pattern(this.pattern)]],
+        confirmPassword: [this.emptyString, [Validators.required, this.matchPasswordValidator('password'), Validators.minLength(4), Validators.pattern(this.pattern)]]
       }
     );
   }

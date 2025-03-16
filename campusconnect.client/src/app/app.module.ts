@@ -8,6 +8,7 @@ import { MatInputModule } from '@angular/material/input';
 import {MatIconModule} from '@angular/material/icon';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatDialogModule} from '@angular/material/dialog';
+import {MatTooltipModule} from '@angular/material/tooltip';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -37,7 +38,8 @@ import { DeleteAccountComponent } from './delete-account/delete-account.componen
     MatInputModule,
     MatIconModule,
     MatMenuModule,
-    MatDialogModule
+    MatDialogModule,
+    MatTooltipModule
   ],
   providers: [
     provideAnimationsAsync()
