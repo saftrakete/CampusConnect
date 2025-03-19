@@ -7,16 +7,5 @@ import { Router } from '@angular/router';
   styleUrl: './user-settings.component.scss'
 })
 export class UserSettingsComponent {
-  router: Router;
-
-  constructor(r: Router) 
-  {
-    this.router = r;
-  }
-
-  public openAccountSettings() 
-  {
-    this.router.navigate(['accountsettings']);
-  }
 
 }
