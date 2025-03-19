@@ -21,6 +21,8 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
 import { DeleteAccountComponent } from './delete-account/delete-account.component';
 import { UserSettingsComponent } from './user-settings/user-settings.component';
 import { AccountSettingsComponent } from './account-settings/account-settings.component';
+import { AccountSettingsSidebarComponent } from './account-settings-sidebar/account-settings-sidebar.component';
+import { EmailSettingsComponent } from './email-settings/email-settings.component';
 
 
 @NgModule({
@@ -32,7 +34,9 @@ import { AccountSettingsComponent } from './account-settings/account-settings.co
     RegisterComponent,
     DeleteAccountComponent,
     UserSettingsComponent,
-    AccountSettingsComponent
+    AccountSettingsComponent,
+    AccountSettingsSidebarComponent,
+    EmailSettingsComponent
   ],
   imports: [
     BrowserModule, HttpClientModule,
