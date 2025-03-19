@@ -1,0 +1,15 @@
+:host {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  gap: 0.5rem;
+  background-color: var(--darkmode-background);
+}
+
+.mainSettingsContainer {
+  height: 100%;
+  background-color: var(--darkmode-background);
+  width: 50%;
+}

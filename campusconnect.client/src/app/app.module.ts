@@ -9,6 +9,7 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatTooltipModule} from '@angular/material/tooltip';
+import {MatDividerModule} from '@angular/material/divider';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -19,6 +20,7 @@ import { RegisterComponent } from './register/register.component';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { DeleteAccountComponent } from './delete-account/delete-account.component';
 import { UserSettingsComponent } from './user-settings/user-settings.component';
+import { AccountSettingsComponent } from './account-settings/account-settings.component';
 
 
 @NgModule({
@@ -29,7 +31,8 @@ import { UserSettingsComponent } from './user-settings/user-settings.component';
     LoginComponent,
     RegisterComponent,
     DeleteAccountComponent,
-    UserSettingsComponent
+    UserSettingsComponent,
+    AccountSettingsComponent
   ],
   imports: [
     BrowserModule, HttpClientModule,
@@ -41,7 +44,8 @@ import { UserSettingsComponent } from './user-settings/user-settings.component';
     MatIconModule,
     MatMenuModule,
     MatDialogModule,
-    MatTooltipModule
+    MatTooltipModule,
+    MatDividerModule
   ],
   providers: [
     provideAnimationsAsync()
