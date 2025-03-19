@@ -1,5 +1,17 @@
-<div class="mainSettingsContainer">
-  <button>Hallo</button>
-  <mat-divider></mat-divider>
-  <button>Test</button>
+<div class="marginTop"></div>
+<div class="contentContainer">
+  <div class="sidebarNavigator">
+    <div class="sidebarItemContainer" *ngFor="let label of buttonLabels">   <!-- Durchläuft buttonLabels Array aus der TypeScript-Datei -->
+      <button mat-raised-button class="sidebarButtons">
+        {{ label }}                                                         <!-- <label> ist hierbei immer das jeweilige Label aus der aktuellen Iteration -->
+      </button>
+    </div>
+  </div>
+  <div class="mainSettingsContainer">
+    <button>Hallo</button>
+    <mat-divider></mat-divider>
+    <button>Test</button>
+  </div>
 </div>
+
+
