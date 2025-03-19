@@ -27,16 +27,6 @@
     }
   }
 
-  .settings {
-    cursor: pointer;
-    transition: transform 0.5s ease;
-    margin-right: 0.1rem;
-    margin-left: 0.1rem;
-    color: rgba($color: #000000, $alpha: 0.8);
-    &:hover {
-      transform: rotate(90deg);
-    }
-  }
 }
 
 

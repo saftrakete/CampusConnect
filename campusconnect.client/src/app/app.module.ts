@@ -18,6 +18,7 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { DeleteAccountComponent } from './delete-account/delete-account.component';
+import { UserSettingsComponent } from './user-settings/user-settings.component';
 
 
 @NgModule({
@@ -27,7 +28,8 @@ import { DeleteAccountComponent } from './delete-account/delete-account.componen
     HomeComponent,
     LoginComponent,
     RegisterComponent,
-    DeleteAccountComponent
+    DeleteAccountComponent,
+    UserSettingsComponent
   ],
   imports: [
     BrowserModule, HttpClientModule,
