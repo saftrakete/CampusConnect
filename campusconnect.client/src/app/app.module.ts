@@ -23,6 +23,7 @@ import { UserSettingsComponent } from './user-settings/user-settings.component';
 import { AccountSettingsComponent } from './account-settings/account-settings.component';
 import { SettingsSidebarComponent } from './settings-sidebar/settings-sidebar.component';
 import { EmailSettingsComponent } from './email-settings/email-settings.component';
+import { EditUsernameFormComponent } from './edit-username-form/edit-username-form.component';
 
 
 @NgModule({
@@ -36,7 +37,8 @@ import { EmailSettingsComponent } from './email-settings/email-settings.componen
     UserSettingsComponent,
     AccountSettingsComponent,
     SettingsSidebarComponent,
-    EmailSettingsComponent
+    EmailSettingsComponent,
+    EditUsernameFormComponent
   ],
   imports: [
     BrowserModule, HttpClientModule,
