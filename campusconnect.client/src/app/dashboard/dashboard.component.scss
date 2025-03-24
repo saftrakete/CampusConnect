@@ -1,0 +1,33 @@
+// #background-image{
+//     width: 100vw;
+//     height: 100vh;
+//     background-image: url(../../assets/images/background.jpg);
+//     background-size: cover;
+// }
+
+:host {
+    display: flex;
+    background-color: var(--darkmode-background);
+    height: 100%;
+    flex-flow: column;
+    align-items: center;
+}
+
+.imageContainer {
+    display: flex;
+    overflow: hidden;
+    max-height: 20rem;
+    align-items: center;
+    justify-content: center;
+
+    img {
+        // width: fit-content;
+        // height: fit-content;
+        // overflow: hidden;
+        width: 100vw;
+        height: 100vh;
+    }
+}
+p {
+    color: white !important;
+}
