@@ -45,4 +45,5 @@ $project-theme: mat.define-dark-theme((
     --accent-100: #{mat.get-color-from-palette($theme-accent, 100)};
     --warn: #(mat.get-color-from-palette($theme-warn, 600));
     --darkmode-background: /*#4a4a4a*/ #2E2E2E;
+    --container-contrast-color: rgb(60, 60, 60);
 }

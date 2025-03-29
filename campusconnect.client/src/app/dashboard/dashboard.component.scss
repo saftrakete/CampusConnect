@@ -13,6 +13,27 @@
 .courseContainer {
   height: 60%;
   width: 100%;
-  background-color: gray;
+  background-color: var(--container-contrast-color);
   border: 1px solid white;
+}
+
+.example-card {
+  max-width: 400px;
+}
+
+.example-header-image {
+  background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+  background-size: cover;
+}
+
+.addButton {
+  background-color: blue;
+}
+
+.fontColor {
+  color: white;
+}
+
+mat-card-actions {
+  padding-left: 18rem;
 }
