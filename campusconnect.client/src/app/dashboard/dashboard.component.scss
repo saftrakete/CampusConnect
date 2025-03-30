@@ -15,25 +15,8 @@
   width: 100%;
   background-color: var(--container-contrast-color);
   border: 1px solid white;
-}
-
-.example-card {
-  max-width: 400px;
-}
-
-.example-header-image {
-  background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
-  background-size: cover;
-}
-
-.addButton {
-  background-color: blue;
-}
-
-.fontColor {
-  color: white;
-}
-
-mat-card-actions {
-  padding-left: 18rem;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 1.5rem;
+  padding: 1rem 4rem 1rem 4rem;
 }
