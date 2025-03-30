@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ModuleCardComponent } from '../module-card/module-card.component';
+import { ModuleService } from '../services/module.service'; 
 
 @Component({
   selector: 'app-dashboard',
@@ -7,5 +7,5 @@ import { ModuleCardComponent } from '../module-card/module-card.component';
   styleUrl: './dashboard.component.scss'
 })
 export class DashboardComponent {
-
+  constructor(public modService: ModuleService) {}
 }

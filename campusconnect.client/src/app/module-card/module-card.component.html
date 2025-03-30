@@ -1,7 +1,19 @@
 <div class="moduleCard">
 
   <div class="header">
-    <h1>{{ module.name }}</h1>
+    <h3>{{ module.name }}</h3>
   </div>
   
+  <div class="imageContainer">
+    <img src="../../assets/images/math_course.jpg">
+  </div>
+
+  <div class="footer">
+      
+    <button mat-raised-button class="details">Details</button>
+
+    <button mat-raised-button class="add" *ngIf="!wasAdded" (click)="addModule(module)">Hinzufügen</button>
+
+  </div>
+    
 </div>
