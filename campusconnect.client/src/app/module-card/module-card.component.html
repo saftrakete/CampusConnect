@@ -12,7 +12,7 @@
       
     <button mat-raised-button class="details">Details</button>
 
-    <button mat-raised-button class="add" *ngIf="!wasAdded" (click)="addModule(module)">Hinzufügen</button>
+    <button mat-raised-button class="add" *ngIf="modService.isCurrentlyAdded(module)" (click)="addModule(module)">Hinzufügen</button>
 
   </div>
     

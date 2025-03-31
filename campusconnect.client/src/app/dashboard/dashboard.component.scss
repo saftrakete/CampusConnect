@@ -19,8 +19,9 @@
   grid-template-columns: repeat(5, 1fr);
   grid-template-rows: repeat(2, auto);
   gap: 1.5rem;
-  padding: 1rem 4rem 1rem 4rem;
-  overflow: hidden;
+  padding: 1rem 2rem 1rem 2rem;
+  overflow-x: auto;
+  overflow-y: hidden;
 }
 
 .userCourses {
@@ -53,6 +54,7 @@
     gap: 1rem;
     overflow-x: auto;
     overflow-y: hidden;
+    padding: 0.5rem;
 
     .module {
 

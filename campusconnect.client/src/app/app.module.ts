@@ -15,6 +15,7 @@ import { RegisterComponent } from './register/register.component';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ModuleCardComponent } from './module-card/module-card.component';
+import { AddedModuleComponent } from './added-module/added-module.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { ModuleCardComponent } from './module-card/module-card.component';
     LoginComponent,
     RegisterComponent,
     DashboardComponent,
-    ModuleCardComponent
+    ModuleCardComponent,
+    AddedModuleComponent
   ],
   imports: [
     BrowserModule, HttpClientModule,

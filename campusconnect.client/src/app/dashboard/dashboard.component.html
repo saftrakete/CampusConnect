@@ -18,8 +18,9 @@
   </div>
 
   <div class="moduleList" >
+    
     <div class="module"*ngFor="let module of modService.moduleList">
-      <app-module-card class="mod" [module]="{ name: module.name }"></app-module-card>
+      <app-added-module class="mod" [module]="{ name: module.name }"></app-added-module>
     </div>
     
   </div>
