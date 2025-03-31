@@ -8,6 +8,24 @@
   padding-left: 2rem;
   padding-right: 2rem;
   padding-top: 2rem;
+
+  /* Webkit (Chrome, Safari, Edge) */
+  ::-webkit-scrollbar {
+    height: 8px; /* Höhe für die horizontale Scrollbar */
+  }
+
+  ::-webkit-scrollbar-track {
+    background: var(--container-contrast-color); /* Hintergrund der Scrollleiste */
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: gray; /* Farbe des Scrollbalkens */
+    border-radius: 4px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgb(182, 180, 180);
+  }
 }
 
 .courseContainer {
@@ -55,10 +73,5 @@
     overflow-x: auto;
     overflow-y: hidden;
     padding: 0.5rem;
-
-    .module {
-
-    }
   }
-
 }
