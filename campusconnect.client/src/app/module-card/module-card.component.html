@@ -9,11 +9,27 @@
   </div>
 
   <div class="footer">
+
+    <mat-icon 
+      [matMenuTriggerFor]="menu" 
+      class="dropdownIcon" 
+      [class.rotate]="isMenuOpen" 
+      (menuOpened)="toggleMenu()" 
+      (menuClosed)="toggleMenu()">
+      arrow_drop_down
+    </mat-icon>
+
+    <mat-menu #menu="matMenu" class="dropdownMenu">
+
+      <ng-template matMenuContent>
+
+        <button mat-menu-item class="details">Details</button>
+        <button mat-menu-item class="add" *ngIf="modService.isCurrentlyAdded(module)" (click)="addModule(module)">Hinzufügen</button> 
+
+      </ng-template>
+
+    </mat-menu>
       
-    <button mat-raised-button class="details">Details</button>
-
-    <button mat-raised-button class="add" *ngIf="modService.isCurrentlyAdded(module)" (click)="addModule(module)">Hinzufügen</button>
-
   </div>
     
 </div>

@@ -10,10 +10,16 @@ import { ModuleService } from '../services/module.service';
 export class ModuleCardComponent {
 
   @Input() module: Module = new Module;
+  isMenuOpen: Boolean = false;
 
   constructor(public modService: ModuleService) {}
 
   public addModule(mod: Module) {
     this.modService.moduleList.push(mod);
   }
+
+public toggleMenu() {
+  this.isMenuOpen = !this.isMenuOpen;
+}
+
 }

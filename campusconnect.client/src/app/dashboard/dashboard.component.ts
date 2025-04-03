@@ -7,5 +7,13 @@ import { ModuleService } from '../services/module.service';
   styleUrl: './dashboard.component.scss'
 })
 export class DashboardComponent {
+
+  filterQuery: string = '';
+
   constructor(public modService: ModuleService) {}
+
+  public filter() {
+    console.log(this.filterQuery);
+  }
+
 }
