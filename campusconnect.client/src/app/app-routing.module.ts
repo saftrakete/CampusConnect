@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
+import { OnboardingComponent } from './onboarding/onboarding.component';
 
 export const baseApiRoute = 'https://localhost:7109/';
 
@@ -14,6 +15,10 @@ const routes: Routes = [
     {
         path: 'register',
         component: RegisterComponent
+    },
+    {
+        path: 'onboarding',
+        component: OnboardingComponent
     },
     {
         path: '',
