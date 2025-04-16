@@ -1,7 +1,18 @@
 :host {
     display: flex;
     background-color: var(--darkmode-background);
-    height: 200%;
+    height: 150%;
     flex-flow: column;
     align-items: center;
+    justify-content: center;
+}
+
+p {
+    color: white;
+}
+
+.formField {
+    height: 80%;
+    width: 50%;
+    background-color: green;
 }
