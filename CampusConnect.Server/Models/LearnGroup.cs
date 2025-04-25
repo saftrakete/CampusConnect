@@ -9,6 +9,5 @@ namespace CampusConnect.Server.Models
         public virtual UserModel Admin { get; set; }
         public virtual ICollection<UserModel> Members { get; set; }
         public virtual ICollection<Page> Pages { get; set; }
-        public virtual ICollection<Module> ContainedModules { get; set; }
     }
 }
