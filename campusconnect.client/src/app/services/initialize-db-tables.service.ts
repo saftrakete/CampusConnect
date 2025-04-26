@@ -38,9 +38,7 @@ export class InitializeDbTablesService {
   }
 
   public clearModuleTable() {
-    console.log('fillModuleTable wurde betreten\n\n');
-
-
+    this.httpClient.delete<void>(baseApiRoute + "database/cleanTable").subscribe();
   }
 
 }

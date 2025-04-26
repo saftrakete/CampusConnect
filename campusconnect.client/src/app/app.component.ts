@@ -11,6 +11,7 @@ export class AppComponent implements OnInit {
   constructor(private http: HttpClient, private initDB: InitializeDbTablesService) {}
 
   ngOnInit(): void {
+    this.initDB.clearModuleTable();
     this.initDB.fillModuleTable();
   }
 
