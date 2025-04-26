@@ -5,6 +5,8 @@ using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 
 namespace CampusConnect.Server.Controllers
 {
@@ -13,10 +15,34 @@ namespace CampusConnect.Server.Controllers
     public class UserController : ControllerBase
     {
         private readonly CampusConnectContext _context;
+        private readonly ILogger<ControllerBase> _logger;
 
-        public UserController(CampusConnectContext context)
+        public UserController(CampusConnectContext context, ILogger<ControllerBase> logger)
         {
             _context = context;
+            _logger = logger;
+        }
+
+        [HttpPost("module")]
+        public async Task<ActionResult<Module>> postModules(Module mod) {
+            _logger.LogInformation("Ja moin digga\n");
+            if (mod is null) {
+                return BadRequest();
+            }
+
+            _logger.LogInformation("Ja moin digga\n");
+
+            await _context.Modules.AddAsync(mod);
+            await _context.SaveChangesAsync();
+
+            _logger.LogInformation("Ja moin digga\n");
+            return CreatedAtAction("GetModuleById", new { moduleId = mod.ModuleId }, mod);
+        }
+
+        [HttpGet("{moduleId}")]
+        public async Task<ActionResult<Module>> GetModuleById(int moduleId) {
+            var module = await _context.Modules.FirstOrDefaultAsync(mod => mod.ModuleId == moduleId);
+            return module is not null ? Ok(module) : NotFound();
         }
 
         [HttpGet("{userId}")]
@@ -44,7 +70,7 @@ namespace CampusConnect.Server.Controllers
             }
 
             //TODO:
-            //Passwörter irgendwie enthashen o.ä.
+            //Passwï¿½rter irgendwie enthashen o.ï¿½.
             //User authorisieren
 
             return user.Password == loginDto.Password ? Ok(user) : BadRequest();

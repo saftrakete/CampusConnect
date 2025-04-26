@@ -21,14 +21,21 @@ builder.Services.AddCors(options =>
         name: "allowOrigin",
         policy =>
         {
-            policy.WithOrigins("https://127.0.0.1:4200");
-            policy.AllowCredentials();
-            policy.AllowAnyHeader();
-            policy.AllowAnyMethod();
+            policy.WithOrigins(
+                "https://127.0.0.1:4200",
+                "https://localhost:4200",
+                "http://127.0.0.1:4200",
+                "http://localhost:4200"
+            )
+            .AllowCredentials()
+            .AllowAnyHeader()
+            .AllowAnyMethod();
         });
 });
 
 var app = builder.Build();
+
+app.UseCors("allowOrigin");
 
 app.UseDefaultFiles();
 app.MapStaticAssets();
@@ -39,8 +46,6 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-
-app.UseCors("allowOrigin");
 
 app.UseAuthorization();
 
