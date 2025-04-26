@@ -26,17 +26,21 @@ export class InitializeDbTablesService {
   constructor(private httpClient: HttpClient) { }
 
   public async fillModuleTable() {
-    console.log('fillModuleTable wurde betreten\n\n');
-
+    var cnt = 0;
     for (const mod of this.modules) {
       try {
-        await this.httpClient.post<Module>(baseApiRoute + "user/module", mod).toPromise();
+        await this.httpClient.post<Module>(baseApiRoute + "database/module", mod).toPromise();
         console.log(`Modul hinzugefügt: ${mod.name}`);
       } catch (error) {
         console.error(`Fehler beim Hinzufügen des Moduls ${mod.name}:`, error);
       }
     }
-    
-    console.log('fillModuleTable abgeschlossen\n\n');
   }
+
+  public clearModuleTable() {
+    console.log('fillModuleTable wurde betreten\n\n');
+
+
+  }
+
 }
