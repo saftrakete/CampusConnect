@@ -43,7 +43,7 @@ namespace CampusConnect.Server.Controllers
         }
 
         [HttpDelete("cleanTable")]
-        public Task<IActionResult> ResetModuleDatabase() {
+        public async Task<ActionResult> ResetModuleDatabase() {
 
             // Löscht alle Daten aus der Datenbank und setzt ID-Indexe zurück
             _context.Database.ExecuteSqlRaw("TRUNCATE TABLE [Modules]");
