@@ -1,4 +1,6 @@
+using CampusConnect.Server.Controllers;
 using CampusConnect.Server.Data;
+using CampusConnect.Server.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -14,6 +16,9 @@ builder.Services.AddOpenApi();
 builder.Logging.ClearProviders();
 builder.Logging.AddConsole();
 builder.Logging.SetMinimumLevel(LogLevel.Information);
+
+builder.Services.AddTransient<InitDB>();
+
 
 builder.Services.AddDbContext<CampusConnectContext>(options =>
 {
@@ -40,7 +45,8 @@ builder.Services.AddCors(options =>
 
 var app = builder.Build();
 
-app.UseCors("allowOrigin");
+
+    app.UseCors("allowOrigin");
 
 app.UseDefaultFiles();
 app.MapStaticAssets();
@@ -61,6 +67,10 @@ app.MapFallbackToFile("/index.html");
 var scope = app.Services.CreateScope();
 
 var context = scope.ServiceProvider.GetRequiredService<CampusConnectContext>();
+var initializer = scope.ServiceProvider.GetRequiredService<InitDB>();
+
 context.Database.Migrate();
+
+initializer.fillInModules();
 
 app.Run();

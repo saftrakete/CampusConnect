@@ -7,13 +7,9 @@ import { InitializeDbTablesService } from './services/initialize-db-tables.servi
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
-export class AppComponent implements OnInit {
+export class AppComponent {
   constructor(private http: HttpClient, private initDB: InitializeDbTablesService) {}
 
-  ngOnInit(): void {
-    this.initDB.clearModuleTable();
-    this.initDB.fillModuleTable();
-  }
 
   title = 'campusconnect.client';
 }
