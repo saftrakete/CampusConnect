@@ -10,8 +10,7 @@ using System.Linq;
 
 namespace CampusConnect.Server.Services
 {
-    public class InitDB
-    {
+    public class InitDB {
         private readonly Module[] modules =
             [
                 new Module { Name = "Mathe1"},
@@ -37,25 +36,23 @@ namespace CampusConnect.Server.Services
             this._logger = logger;
         }
 
-
-        public async void fillInModules()
+        public async void FillInModules()
         {
-            if (checkIfEmpty()) 
+            if (CheckIfEmpty()) 
             {
                 foreach (var mod in modules)
                 {
                     await _context.Modules.AddAsync(mod);
-                    await _context.SaveChangesAsync();
                 }
+                await _context.SaveChangesAsync();
             }
             
             
         }
 
-        public bool checkIfEmpty()
+        public bool CheckIfEmpty()
         {
             int mod = _context.Modules.Count();
-            _logger.LogInformation("MOIN");
             return mod == 0;
         } 
 
