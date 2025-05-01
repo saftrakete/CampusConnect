@@ -34,7 +34,7 @@ namespace CampusConnect.Server.Controllers
         // Füllt Modul-Tabelle mit einigen Testmodulen auf
         public void InitModuleTable()
         {
-            this._init.fillInModules();
+            this._init.FillInModules();
         }
 
     }
