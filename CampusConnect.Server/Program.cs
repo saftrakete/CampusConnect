@@ -67,7 +67,7 @@ app.MapFallbackToFile("/index.html");
 var scope = app.Services.CreateScope();
 
 var context = scope.ServiceProvider.GetRequiredService<CampusConnectContext>();
-var initializer = scope.ServiceProvider.GetRequiredService<DatabaseController>();
+var initializer = scope.ServiceProvider.GetRequiredService<ModuleController>();
 
 context.Database.Migrate();
 

@@ -13,17 +13,17 @@ namespace CampusConnect.Server.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class DatabaseController : ControllerBase
+    public class ModuleController : ControllerBase
     {
         private readonly CampusConnectContext _context;
-        private readonly ILogger<DatabaseController> _logger;
+        private readonly ILogger<ModuleController> _logger;
         private readonly InitDB _init;
 
 
-        public DatabaseController
+        public ModuleController
         (
             CampusConnectContext context, 
-            ILogger<DatabaseController> logger,
+            ILogger<ModuleController> logger,
             InitDB init)
         {
             _context = context;
