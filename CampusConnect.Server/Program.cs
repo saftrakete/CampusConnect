@@ -17,7 +17,8 @@ builder.Logging.ClearProviders();
 builder.Logging.AddConsole();
 builder.Logging.SetMinimumLevel(LogLevel.Information);
 
-builder.Services.AddTransient<InitDB>();
+builder.Services.AddTransient<InitModuleTable>();
+builder.Services.AddTransient<InitFacultyTable>();
 
 
 builder.Services.AddDbContext<CampusConnectContext>(options =>
@@ -67,10 +68,11 @@ app.MapFallbackToFile("/index.html");
 var scope = app.Services.CreateScope();
 
 var context = scope.ServiceProvider.GetRequiredService<CampusConnectContext>();
-var initializer = scope.ServiceProvider.GetRequiredService<ModuleController>();
+var moduleIntitializer = scope.ServiceProvider.GetRequiredService<ModuleController>();
+var facultyInitializer = scope.ServiceProvider.GetRequiredService<FacultyController>();
 
 context.Database.Migrate();
 
-initializer.InitModuleTable();
+moduleIntitializer.InitModuleTable();
 
 app.Run();

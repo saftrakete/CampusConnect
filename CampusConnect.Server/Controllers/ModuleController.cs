@@ -17,14 +17,14 @@ namespace CampusConnect.Server.Controllers
     {
         private readonly CampusConnectContext _context;
         private readonly ILogger<ModuleController> _logger;
-        private readonly InitDB _init;
+        private readonly InitModuleTable _init;
 
 
         public ModuleController
         (
             CampusConnectContext context, 
             ILogger<ModuleController> logger,
-            InitDB init)
+            InitModuleTable init)
         {
             _context = context;
             _logger = logger;
