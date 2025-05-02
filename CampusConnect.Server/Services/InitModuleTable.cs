@@ -25,7 +25,6 @@ namespace CampusConnect.Server.Services
                 new Module { Name = "Spezifikationstechnik"},
                 new Module { Name = "Introduction to Simulation"},
                 new Module { Name = "Programmierparadigmen"}
-
             ];
         private readonly CampusConnectContext _context;
         private readonly ILogger<InitModuleTable> _logger;
