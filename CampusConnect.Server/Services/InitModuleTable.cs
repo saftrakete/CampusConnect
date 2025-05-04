@@ -10,8 +10,7 @@ using System.Linq;
 
 namespace CampusConnect.Server.Services
 {
-    public class InitDB
-    {
+    public class InitModuleTable {
         private readonly Module[] modules =
             [
                 new Module { Name = "Mathe1"},
@@ -26,37 +25,34 @@ namespace CampusConnect.Server.Services
                 new Module { Name = "Spezifikationstechnik"},
                 new Module { Name = "Introduction to Simulation"},
                 new Module { Name = "Programmierparadigmen"}
-
             ];
         private readonly CampusConnectContext _context;
-        private readonly ILogger<InitDB> _logger;
+        private readonly ILogger<InitModuleTable> _logger;
 
-        public InitDB(CampusConnectContext context, ILogger<InitDB> logger) 
+        public InitModuleTable(CampusConnectContext context, ILogger<InitModuleTable> logger) 
         {
             this._context = context;
             this._logger = logger;
         }
 
-
-        public async void fillInModules()
+        public async void FillInModules()
         {
-            if (checkIfEmpty()) 
+            if (CheckIfEmpty()) 
             {
                 foreach (var mod in modules)
                 {
                     await _context.Modules.AddAsync(mod);
-                    await _context.SaveChangesAsync();
                 }
+                await _context.SaveChangesAsync();
             }
             
             
         }
 
-        public bool checkIfEmpty()
+        public bool CheckIfEmpty()
         {
-            int mod = _context.Modules.Count();
-            _logger.LogInformation("MOIN");
-            return mod == 0;
+            int moduleCount = _context.Modules.Count();
+            return moduleCount == 0;
         } 
 
     }

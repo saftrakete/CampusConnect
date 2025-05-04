@@ -13,18 +13,18 @@ namespace CampusConnect.Server.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class DatabaseController : ControllerBase
+    public class ModuleController : ControllerBase
     {
         private readonly CampusConnectContext _context;
-        private readonly ILogger<DatabaseController> _logger;
-        private readonly InitDB _init;
+        private readonly ILogger<ModuleController> _logger;
+        private readonly InitModuleTable _init;
 
 
-        public DatabaseController
+        public ModuleController
         (
             CampusConnectContext context, 
-            ILogger<DatabaseController> logger,
-            InitDB init)
+            ILogger<ModuleController> logger,
+            InitModuleTable init)
         {
             _context = context;
             _logger = logger;
@@ -32,9 +32,9 @@ namespace CampusConnect.Server.Controllers
         }
 
         // Füllt Modul-Tabelle mit einigen Testmodulen auf
-        public void initModuleTable()
+        public void InitModuleTable()
         {
-            this._init.fillInModules();
+            this._init.FillInModules();
         }
 
     }
