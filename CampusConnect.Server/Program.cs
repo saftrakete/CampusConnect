@@ -19,7 +19,8 @@ builder.Logging.SetMinimumLevel(LogLevel.Information);
 
 builder.Services.AddTransient<InitModuleTable>();
 builder.Services.AddTransient<InitFacultyTable>();
-
+builder.Services.AddTransient<ModuleController>();
+builder.Services.AddTransient<FacultyController>();
 
 builder.Services.AddDbContext<CampusConnectContext>(options =>
 {
@@ -73,6 +74,7 @@ var facultyInitializer = scope.ServiceProvider.GetRequiredService<FacultyControl
 
 context.Database.Migrate();
 
+facultyInitializer.InitFacultyTable();
 moduleIntitializer.InitModuleTable();
 
 app.Run();
