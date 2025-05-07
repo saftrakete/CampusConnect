@@ -17,10 +17,15 @@ builder.Logging.ClearProviders();
 builder.Logging.AddConsole();
 builder.Logging.SetMinimumLevel(LogLevel.Information);
 
+// Services
 builder.Services.AddTransient<InitModuleTable>();
 builder.Services.AddTransient<InitFacultyTable>();
+builder.Services.AddTransient<InitDegreeTable>();
+
+// Controllers
 builder.Services.AddTransient<ModuleController>();
 builder.Services.AddTransient<FacultyController>();
+builder.Services.AddTransient<DegreeController>();
 
 builder.Services.AddDbContext<CampusConnectContext>(options =>
 {
@@ -71,10 +76,12 @@ var scope = app.Services.CreateScope();
 var context = scope.ServiceProvider.GetRequiredService<CampusConnectContext>();
 var moduleIntitializer = scope.ServiceProvider.GetRequiredService<ModuleController>();
 var facultyInitializer = scope.ServiceProvider.GetRequiredService<FacultyController>();
+var degreeInitializer = scope.ServiceProvider.GetRequiredService<DegreeController>();
 
 context.Database.Migrate();
 
 facultyInitializer.InitFacultyTable();
+degreeInitializer.InitDegreeTable();
 moduleIntitializer.InitModuleTable();
 
 app.Run();

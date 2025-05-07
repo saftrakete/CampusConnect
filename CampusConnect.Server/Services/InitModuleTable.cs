@@ -11,21 +11,7 @@ using System.Linq;
 namespace CampusConnect.Server.Services
 {
     public class InitModuleTable {
-        private readonly Module[] modules =
-            [
-                new Module { Name = "Mathe1"},
-                new Module { Name = "Mathe2"},
-                new Module { Name = "Mathe3"},
-                new Module { Name = "Einführung Informatik"},
-                new Module { Name = "Technische Informatik 1"},
-                new Module { Name = "Technische Informatik 2"},
-                new Module { Name = "Datenbanken 1"},
-                new Module { Name = "Theoretische Informatik 1"},
-                new Module { Name = "Theoretische Informatik 2"},
-                new Module { Name = "Spezifikationstechnik"},
-                new Module { Name = "Introduction to Simulation"},
-                new Module { Name = "Programmierparadigmen"}
-            ];
+        private Module[] modules = [];
         private readonly CampusConnectContext _context;
         private readonly ILogger<InitModuleTable> _logger;
 
@@ -35,8 +21,29 @@ namespace CampusConnect.Server.Services
             this._logger = logger;
         }
 
+        public void createModuleEntities()
+        {
+            this.modules = [
+                    new Module { Name = "Mathe1", Faculty = _context.Faculties.First()},
+                    new Module { Name = "Mathe2", Faculty = _context.Faculties.First()},
+                    new Module { Name = "Mathe3", Faculty = _context.Faculties.First()},
+                    new Module { Name = "Einführung Informatik", Faculty = _context.Faculties.First()},
+                    new Module { Name = "Technische Informatik 1", Faculty = _context.Faculties.First()},
+                    new Module { Name = "Technische Informatik 2", Faculty = _context.Faculties.First()},
+                    new Module { Name = "Datenbanken 1", Faculty = _context.Faculties.First()},
+                    new Module { Name = "Theoretische Informatik 1", Faculty = _context.Faculties.First()},
+                    new Module { Name = "Theoretische Informatik 2", Faculty = _context.Faculties.First()},
+                    new Module { Name = "Spezifikationstechnik", Faculty = _context.Faculties.First()},
+                    new Module { Name = "Introduction to Simulation", Faculty = _context.Faculties.First()},
+                    new Module { Name = "Programmierparadigmen", Faculty = _context.Faculties.First()}
+                ];
+            var mod = this.modules[0];
+        }
+
         public async void FillInModules()
         {
+            createModuleEntities();
+
             if (CheckIfEmpty()) 
             {
                 foreach (var mod in modules)
