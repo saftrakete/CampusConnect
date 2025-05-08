@@ -13,7 +13,7 @@ export class UserService {
     constructor(private httpClient: HttpClient) { }
 
     public postNewUser(user: UserEntity): Observable<UserEntity> {
-        return this.httpClient.post<UserEntity>(baseApiRoute + "user", user);
+        return this.httpClient.post<UserEntity>(baseApiRoute + "user/register", user);
     }
 
     public sendLoginRequest(loginDto: LoginDto): Observable<UserEntity> {
@@ -43,4 +43,5 @@ export class UserService {
     ): LoginDto {
         return new LoginDto(loginName, password);
     }
+
 }
