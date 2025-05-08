@@ -55,19 +55,6 @@ namespace CampusConnect.Server.Controllers
             return BadRequest("Invalid credentials.");
         }
 
-        [HttpPost]
-        public async Task<ActionResult<IEnumerable<UserModel>>> PostNewUser(UserModel user)
-        {
-            if (user is null)
-            {
-                return BadRequest();
-            }
-
-            await _context.Users.AddAsync(user);
-            await _context.SaveChangesAsync();
-
-            return CreatedAtAction("GetUserById", new { userId = user.UserId }, user);
-        }
 
         [HttpDelete("{userId}")]
         public async Task<IActionResult> DeleteUser(int userId)
