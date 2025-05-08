@@ -98,7 +98,7 @@ namespace CampusConnect.Server.Controllers
                 Nickname = model.Nickname
             };
 
-            var passwordHasher = new PasswordHasher<UserModel>();
+            var passwordHasher = new PasswordHasher<UserModel>(); //nutzt PBKDF2
             user.PasswordHash = passwordHasher.HashPassword(user, model.Password);
 
             _context.Users.Add(user);
