@@ -5,6 +5,10 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { AccountSettingsComponent } from './account-settings/account-settings.component';
 import { EmailSettingsComponent } from './email-settings/email-settings.component';
+import { AdminPanelComponent } from './admin-panel/admin-panel.component';
+import { AdminGuard } from './routeguards/AdminGuard';
+import { AuthGuardTestComponent } from './auth-guard-test/auth-guard-test.component';
+import { AuthGuard } from './routeguards/AuthGuard';
 
 export const baseApiRoute = 'https://localhost:7109/';
 
@@ -29,6 +33,11 @@ const routes: Routes = [
     {
         path: 'emailsettings',
         component: EmailSettingsComponent
+    },
+    {
+        path: "authguardtest",
+        component: AuthGuardTestComponent,
+        canActivate: [AuthGuard]
     }
 ];
 

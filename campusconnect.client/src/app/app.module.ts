@@ -25,6 +25,7 @@ import { SettingsSidebarComponent } from './settings-sidebar/settings-sidebar.co
 import { EmailSettingsComponent } from './email-settings/email-settings.component';
 import { EditUsernameFormComponent } from './edit-username-form/edit-username-form.component';
 import { JwtInterceptor } from './interceptors/JwtInterceptor';
+import { AuthGuardTestComponent } from './auth-guard-test/auth-guard-test.component';
 
 
 @NgModule({
@@ -39,7 +40,8 @@ import { JwtInterceptor } from './interceptors/JwtInterceptor';
     AccountSettingsComponent,
     SettingsSidebarComponent,
     EmailSettingsComponent,
-    EditUsernameFormComponent
+    EditUsernameFormComponent,
+    AuthGuardTestComponent
   ],
   imports: [
     BrowserModule, HttpClientModule,
