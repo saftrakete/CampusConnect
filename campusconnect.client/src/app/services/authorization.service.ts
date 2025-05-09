@@ -1,15 +1,21 @@
 import { Injectable } from '@angular/core';
 import { jwtDecode } from 'jwt-decode';
 import { UserRoleEntity } from '../entities/userRoleEntity';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthorizationService {
-  constructor() { }
+  constructor(private router: Router) { }
 
   public setToken(token: string): void {
     localStorage.setItem("jwt", token); //Anfällig für XSS-Angriffe
+  }
+
+  public logOut(): void {
+    localStorage.removeItem("jwt");
+    this.router.navigate(['/login']);
   }
 
   public isLoggedIn(): boolean {
