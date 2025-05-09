@@ -1,9 +1,7 @@
-﻿using CampusConnect.Server.Data;
-using CampusConnect.Server.Interfaces;
+﻿using CampusConnect.Server.Interfaces;
 using CampusConnect.Server.Models;
 using CampusConnect.Server.Models.Dtos;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Mvc.Formatters;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using System;
