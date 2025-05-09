@@ -1,5 +1,8 @@
-﻿using CampusConnect.Server.Interfaces;
+﻿using CampusConnect.Server.Data;
+using CampusConnect.Server.Interfaces;
 using CampusConnect.Server.Models;
+using CampusConnect.Server.Models.Dtos;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc.Formatters;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
@@ -24,12 +27,15 @@ namespace CampusConnect.Server.Services
         /// </summary>
         /// <param name="user"></param>
         /// <returns></returns>
-        public string AuthorizeAndGetToken(UserModel user)
+        public bool Authorize(UserModel user, LoginDto loginDto)
         {
-            return GenerateJwtToken(user);
+            var passwordHasher = new PasswordHasher<UserModel>();
+            var verificationResult = passwordHasher.VerifyHashedPassword(user, user.PasswordHash, loginDto.Password);
+
+            return verificationResult == PasswordVerificationResult.Success;
         }
 
-        private string GenerateJwtToken(UserModel user)
+        public string GenerateJwtToken(UserModel user)
         {
             var claims = new[]
             {
@@ -44,7 +50,7 @@ namespace CampusConnect.Server.Services
                 issuer: _config["Jwt:Issuer"],
                 audience: _config["Jwt:Audience"],
                 claims: claims,
-                expires: DateTime.Now.AddHours(1),
+                expires: DateTime.Now.AddHours(1), //1h Gültigkeit fürs Erste
                 signingCredentials: creds);
 
             return new JwtSecurityTokenHandler().WriteToken(token);

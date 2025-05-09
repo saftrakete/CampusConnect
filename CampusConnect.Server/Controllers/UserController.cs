@@ -5,8 +5,6 @@ using CampusConnect.Server.Models.Dtos;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.VisualBasic;
-using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -52,15 +50,9 @@ namespace CampusConnect.Server.Controllers
                 return NotFound("User not found.");
             }
 
-            //TODO: in AuthService verschieben
-            var passwordHasher = new PasswordHasher<UserModel>();
-            var verificationResult = passwordHasher.VerifyHashedPassword(user, user.PasswordHash, loginDto.Password);
-            //var userRole = _context.UserRoles.Find()
-
-            if (verificationResult == PasswordVerificationResult.Success)
+            if (_authService.Authorize(user, loginDto))
             {
-                //return Ok(user);
-                var jwtToken = _authService.AuthorizeAndGetToken(user);
+                var jwtToken = _authService.GenerateJwtToken(user);
 
                 return Ok(new LoginResponseDto
                 {
@@ -68,7 +60,6 @@ namespace CampusConnect.Server.Controllers
                     Username = user.LoginName,
                     Role = user.Role
                 });
-
             }
 
             return BadRequest("Invalid credentials.");
@@ -102,7 +93,7 @@ namespace CampusConnect.Server.Controllers
             {
                 LoginName = model.LoginName,
                 Nickname = model.Nickname,
-                Role = _context.UserRoles.Find(1)
+                Role = _context.UserRoles.Find(1) //TODO: Fürs erste Hardcoded auf Admin-Rolle
             };
 
             var passwordHasher = new PasswordHasher<UserModel>(); //nutzt PBKDF2
