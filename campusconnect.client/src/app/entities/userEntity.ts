@@ -1,3 +1,5 @@
+import { UserRoleEntity } from "./userRoleEntity";
+
 export class UserEntity {
     constructor(
         nickname: string,
@@ -14,4 +16,5 @@ export class UserEntity {
     public nickname: string;
     public loginName: string;
     public password: string;
+    public role?: UserRoleEntity;
 }
