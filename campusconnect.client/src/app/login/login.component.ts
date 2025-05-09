@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../services/user.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { jwtDecode } from 'jwt-decode';
 
 @Component({
   selector: 'app-login',
@@ -33,6 +34,17 @@ export class LoginComponent implements OnInit {
     this.userService.sendLoginRequest(loginDto).subscribe(
       response => {
         console.log(response);
+        
+        const token = response.token;
+
+        if (token) {
+          const decoded: any = jwtDecode(token);
+          console.log(decoded);
+        }
+
+        console.log(response.role)
+
+        localStorage.setItem("jwt", token); //Sicherheitslücke für XSS-Angriffe
         //Login
       },
       error => {
