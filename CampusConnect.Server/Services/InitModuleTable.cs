@@ -7,6 +7,7 @@ using System;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace CampusConnect.Server.Services
 {
@@ -21,7 +22,7 @@ namespace CampusConnect.Server.Services
             this._logger = logger;
         }
 
-        public void createModuleEntities()
+        public void CreateModuleEntities()
         {
             this.modules = [
                     new Module { Name = "Mathe1", Faculty = _context.Faculties.First()},
@@ -40,9 +41,15 @@ namespace CampusConnect.Server.Services
             var mod = this.modules[0];
         }
 
-        public async void FillInModules()
+        // Kann wahrscheinlich raus sobald wir ein Admin-Dashboard zum Bearbeiten von DB-Tabellen haben
+        public void DeleteTableContent()
         {
-            createModuleEntities();
+            _context.Database.ExecuteSqlRaw("TRUNCATE TABLE Modules");
+        }
+
+        public async Task FillInModules()
+        {
+            CreateModuleEntities();
 
             if (CheckIfEmpty()) 
             {
@@ -52,8 +59,6 @@ namespace CampusConnect.Server.Services
                 }
                 await _context.SaveChangesAsync();
             }
-            
-            
         }
 
         public bool CheckIfEmpty()

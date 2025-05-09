@@ -1,4 +1,5 @@
 ﻿using System.Security.Cryptography;
+using System.Threading.Tasks;
 using CampusConnect.Server.Services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -14,9 +15,9 @@ namespace CampusConnect.Server.Controllers
             this._init = init;
         }
 
-        public void InitFacultyTable()
+        public Task InitFacultyTable()
         {
-            this._init.FillInFaculties();
+            return this._init.FillInFaculties();
         }
     }
 }

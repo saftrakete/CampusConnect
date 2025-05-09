@@ -80,8 +80,8 @@ var degreeInitializer = scope.ServiceProvider.GetRequiredService<DegreeControlle
 
 context.Database.Migrate();
 
-facultyInitializer.InitFacultyTable();
-degreeInitializer.InitDegreeTable();
-moduleIntitializer.InitModuleTable();
+await facultyInitializer.InitFacultyTable();
+await moduleIntitializer.InitModuleTable();
+await degreeInitializer.InitDegreeTable();
 
 app.Run();

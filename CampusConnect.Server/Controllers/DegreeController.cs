@@ -1,6 +1,7 @@
 ﻿using CampusConnect.Server.Services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.Threading.Tasks;
 
 namespace CampusConnect.Server.Controllers
 {
@@ -15,9 +16,9 @@ namespace CampusConnect.Server.Controllers
             this._init = init;
         }
 
-        public void InitDegreeTable()
+        public Task InitDegreeTable()
         {
-            this._init.FillInDegrees();
+            return this._init.FillInDegrees();
         }
     }
 }

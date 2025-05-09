@@ -1,4 +1,5 @@
 ﻿using System.Linq;
+using System.Threading.Tasks;
 using CampusConnect.Server.Data;
 using CampusConnect.Server.Models;
 
@@ -15,7 +16,7 @@ namespace CampusConnect.Server.Services
             this._context = context;
         }
 
-        public async void FillInFaculties()
+        public async Task FillInFaculties()
         {
             if (CheckIfEmpty())
             {
