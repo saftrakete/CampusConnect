@@ -13,8 +13,6 @@ export class OnboardingComponent {
   semesters: Number[] = [1,2,3,4,5,6,7,8,9,10];
   studyPrograms: string[] = [
     'Informatik', 
-    'Ingenieurinformatik', 
-    'Computervisualistik', 
-    'Wirtschaftsinformatik'
+    'Ingenieurinformatik'
   ];
 }
