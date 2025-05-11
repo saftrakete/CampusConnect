@@ -15,18 +15,15 @@ namespace CampusConnect.Server.Controllers
     [Route("[controller]")]
     public class ModuleController : ControllerBase
     {
-        private readonly CampusConnectContext _context;
         private readonly ILogger<ModuleController> _logger;
         private readonly InitModuleTable _init;
 
 
         public ModuleController
-        (
-            CampusConnectContext context, 
+        ( 
             ILogger<ModuleController> logger,
             InitModuleTable init)
         {
-            _context = context;
             _logger = logger;
             _init = init;
         }
