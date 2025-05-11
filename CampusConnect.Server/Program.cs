@@ -22,11 +22,6 @@ builder.Services.AddTransient<InitModuleTable>();
 builder.Services.AddTransient<InitFacultyTable>();
 builder.Services.AddTransient<InitDegreeTable>();
 
-// Controllers
-builder.Services.AddTransient<ModuleController>();
-builder.Services.AddTransient<FacultyController>();
-builder.Services.AddTransient<DegreeController>();
-
 builder.Services.AddDbContext<CampusConnectContext>(options =>
 {
     options.UseSqlServer(builder.Configuration.GetConnectionString("CampusConnectDb"));
@@ -74,14 +69,14 @@ app.MapFallbackToFile("/index.html");
 var scope = app.Services.CreateScope();
 
 var context = scope.ServiceProvider.GetRequiredService<CampusConnectContext>();
-var moduleIntitializer = scope.ServiceProvider.GetRequiredService<ModuleController>();
-var facultyInitializer = scope.ServiceProvider.GetRequiredService<FacultyController>();
-var degreeInitializer = scope.ServiceProvider.GetRequiredService<DegreeController>();
+var moduleIntitializer = scope.ServiceProvider.GetRequiredService<InitModuleTable>();
+var facultyInitializer = scope.ServiceProvider.GetRequiredService<InitFacultyTable>();
+var degreeInitializer = scope.ServiceProvider.GetRequiredService<InitDegreeTable>();
 
 context.Database.Migrate();
 
-await facultyInitializer.InitFacultyTable();
-await moduleIntitializer.InitModuleTable();
-await degreeInitializer.InitDegreeTable();
+await facultyInitializer.FillInFaculties();
+await moduleIntitializer.FillInModules();
+await degreeInitializer.FillInDegrees();
 
 app.Run();

@@ -9,15 +9,9 @@ namespace CampusConnect.Server.Controllers
     [ApiController]
     [Route("[controller]")]
     public class FacultyController : ControllerBase {
-        private readonly InitFacultyTable _init;
-        public FacultyController(InitFacultyTable init) 
+        public FacultyController()
         {
-            this._init = init;
-        }
 
-        public Task InitFacultyTable()
-        {
-            return this._init.FillInFaculties();
         }
     }
 }

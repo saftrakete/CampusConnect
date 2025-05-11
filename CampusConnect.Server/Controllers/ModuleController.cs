@@ -16,23 +16,10 @@ namespace CampusConnect.Server.Controllers
     public class ModuleController : ControllerBase
     {
         private readonly ILogger<ModuleController> _logger;
-        private readonly InitModuleTable _init;
 
-
-        public ModuleController
-        ( 
-            ILogger<ModuleController> logger,
-            InitModuleTable init)
+        public ModuleController (ILogger<ModuleController> logger)
         {
             _logger = logger;
-            _init = init;
         }
-
-        // Füllt Modul-Tabelle mit einigen Testmodulen auf
-        public Task InitModuleTable()
-        {
-            return this._init.FillInModules();
-        }
-
     }
 }

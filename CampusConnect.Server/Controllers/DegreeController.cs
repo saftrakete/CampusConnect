@@ -9,16 +9,9 @@ namespace CampusConnect.Server.Controllers
     [ApiController]
     public class DegreeController : ControllerBase
     {
-        private readonly InitDegreeTable _init;
-
         public DegreeController(InitDegreeTable init)
         {
-            this._init = init;
-        }
-
-        public Task InitDegreeTable()
-        {
-            return this._init.FillInDegrees();
+            
         }
     }
 }
