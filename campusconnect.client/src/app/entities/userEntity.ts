@@ -13,5 +13,5 @@ export class UserEntity {
     public userId?: number;
     public nickname: string;
     public loginName: string;
-    private password: string;
+    public password: string;
 }
