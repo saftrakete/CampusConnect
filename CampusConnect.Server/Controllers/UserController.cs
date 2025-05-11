@@ -6,6 +6,8 @@ using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 
 namespace CampusConnect.Server.Controllers
 {
@@ -14,10 +16,12 @@ namespace CampusConnect.Server.Controllers
     public class UserController : ControllerBase
     {
         private readonly CampusConnectContext _context;
+        private readonly ILogger<ControllerBase> _logger;
 
-        public UserController(CampusConnectContext context)
+        public UserController(CampusConnectContext context, ILogger<ControllerBase> logger)
         {
             _context = context;
+            _logger = logger;
         }
 
         [HttpGet("{userId}")]
