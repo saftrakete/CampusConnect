@@ -33,7 +33,10 @@ export class LoginComponent implements OnInit {
     this.userService.sendLoginRequest(loginDto).subscribe(
       response => {
         console.log(response);
-        //Login
+            //Login
+
+            const userIDStr: string = response.userId?.toString() ?? "-1";
+            localStorage.setItem('token', userIDStr);
       },
       error => {
         
