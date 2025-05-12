@@ -5,6 +5,7 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { AccountSettingsComponent } from './account-settings/account-settings.component';
 import { EmailSettingsComponent } from './email-settings/email-settings.component';
+import { ChatComponent } from './chat/chat.component';
 
 export const baseApiRoute = 'https://localhost:7109/';
 
@@ -16,6 +17,10 @@ const routes: Routes = [
     {
         path: 'register',
         component: RegisterComponent
+    },
+    {
+        path: 'chat',
+        component: ChatComponent
     },
     {
         path: '',
