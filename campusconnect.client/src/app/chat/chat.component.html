@@ -1,1 +1,24 @@
 <p>chat works!</p>
+<mat-label class="chatLabel">
+    Chatten
+</mat-label>
+
+<form [formGroup]="chatForm">
+    <mat-form-field>
+        <mat-label>Nachricht</mat-label>
+        <input matInput
+               type="text"
+               formControlName="chatMessage"
+               placeholder=""
+               required>
+    </mat-form-field>
+</form>
+
+<div class="actionContainer">
+    <button mat-raised-button
+            color="primary"
+            disabled="{{!chatForm.valid.valueOf()}}"
+            (click)="chatClick()">
+        Senden
+    </button>
+</div>
