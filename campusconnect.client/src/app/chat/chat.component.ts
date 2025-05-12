@@ -41,5 +41,7 @@ export class ChatComponent implements OnInit {
  
         }
       );
+
+      this.chatForm.reset();
   }
 }
