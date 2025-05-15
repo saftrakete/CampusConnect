@@ -31,6 +31,11 @@ namespace CampusConnect.Server.Controllers
                 return NotFound("Degree not found.");
             }
 
+            foreach (var mod in degree.MandatoryModules)
+            {
+                Console.WriteLine(mod.Name);
+            }
+
             // Nur die nötigen Daten für das Frontend bereitstellen
             var result = degree.MandatoryModules.Select(mod => new ModuleDto
             {   
