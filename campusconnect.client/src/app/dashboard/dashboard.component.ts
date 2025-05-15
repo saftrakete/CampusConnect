@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ModuleService } from '../services/module.service'; 
+import { OnboardingService } from '../services/onboarding.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -10,7 +10,7 @@ export class DashboardComponent {
 
   filterQuery: string = '';
 
-  constructor(public modService: ModuleService) {}
+  constructor(public os: OnboardingService) {}
 
   public filter() {
     console.log(this.filterQuery);

@@ -11,7 +11,8 @@
 </div>
 
 <div class="courseContainer">
-  <!-- Das sind alles noch Platzhaltermodule -->
+  <!-- Module einlesen hier-->
+   <app-module-card  *ngFor="let mod of os.filteredModules" [module]="{name: mod.name, semester: mod.semester}"></app-module-card>
 </div>
 
 <div class="userCourses">
@@ -22,8 +23,8 @@
 
   <div class="moduleList" >
     
-    <div class="module"*ngFor="let module of modService.moduleList">
-      <app-added-module class="mod" [module]="{ name: module.name }"></app-added-module>
+    <div class="module">
+      <app-added-module class="mod"></app-added-module>
     </div>
     
   </div>
