@@ -1,4 +1,5 @@
 ﻿using CampusConnect.Server.Enums;
+using System.Collections.Generic;
 
 namespace CampusConnect.Server.Models
 {
@@ -10,5 +11,7 @@ namespace CampusConnect.Server.Models
 
         public Faculty Faculty { get; set; }
         public DifficultyEnum Difficulty { get; set; }
+        public virtual ICollection<Degree> CorrespondingDegrees { get; set; }
+
     }
 }

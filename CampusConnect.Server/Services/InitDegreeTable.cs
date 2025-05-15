@@ -46,6 +46,8 @@ namespace CampusConnect.Server.Services
         {
             CreateDegreeEntities();
 
+            //DeleteTableContent();
+
             if (CheckIfEmpty())
             {
                 foreach (var deg in degrees)

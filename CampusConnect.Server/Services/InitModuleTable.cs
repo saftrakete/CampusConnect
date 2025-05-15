@@ -44,12 +44,15 @@ namespace CampusConnect.Server.Services
         // Kann wahrscheinlich raus sobald wir ein Admin-Dashboard zum Bearbeiten von DB-Tabellen haben
         public void DeleteTableContent()
         {
-            _context.Database.ExecuteSqlRaw("TRUNCATE TABLE Modules");
+            _context.Database.ExecuteSqlRaw("DELETE FROM Modules");
+            _context.Database.ExecuteSqlRaw("DBCC CHECKIDENT ('Modules', RESEED, 0)");
         }
 
         public async Task FillInModules()
         {
             CreateModuleEntities();
+
+            //DeleteTableContent();
 
             if (CheckIfEmpty()) 
             {

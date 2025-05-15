@@ -1,5 +1,5 @@
 export class Module {
   name: string = '';
-  semester?: number = 1;
+  semester: number = 1;
   moduleId?: number;
 }
