@@ -5,6 +5,8 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { AccountSettingsComponent } from './account-settings/account-settings.component';
 import { EmailSettingsComponent } from './email-settings/email-settings.component';
+import { OnboardingComponent } from './onboarding/onboarding.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 export const baseApiRoute = 'https://localhost:7109/';
 
@@ -20,6 +22,10 @@ const routes: Routes = [
     {
         path: 'onboarding',
         component: OnboardingComponent
+    },
+    {
+        path: 'dashboard',
+        component: DashboardComponent
     },
     {
         path: '',

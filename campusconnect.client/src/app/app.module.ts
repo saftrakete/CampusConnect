@@ -5,11 +5,13 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
-import {MatIconModule} from '@angular/material/icon';
-import {MatMenuModule} from '@angular/material/menu';
-import {MatDialogModule} from '@angular/material/dialog';
-import {MatTooltipModule} from '@angular/material/tooltip';
-import {MatDividerModule} from '@angular/material/divider';
+import { MatIconModule } from '@angular/material/icon';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatSelectModule } from '@angular/material/select';
+import { FormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -24,6 +26,10 @@ import { AccountSettingsComponent } from './account-settings/account-settings.co
 import { SettingsSidebarComponent } from './settings-sidebar/settings-sidebar.component';
 import { EmailSettingsComponent } from './email-settings/email-settings.component';
 import { EditUsernameFormComponent } from './edit-username-form/edit-username-form.component';
+import { OnboardingComponent } from './onboarding/onboarding.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { ModuleCardComponent } from './module-card/module-card.component';
+import { AddedModuleComponent } from './added-module/added-module.component';
 
 
 @NgModule({
@@ -38,7 +44,11 @@ import { EditUsernameFormComponent } from './edit-username-form/edit-username-fo
     AccountSettingsComponent,
     SettingsSidebarComponent,
     EmailSettingsComponent,
-    EditUsernameFormComponent
+    EditUsernameFormComponent,
+    OnboardingComponent,
+    DashboardComponent,
+    ModuleCardComponent,
+    AddedModuleComponent
   ],
   imports: [
     BrowserModule, HttpClientModule,
@@ -51,7 +61,9 @@ import { EditUsernameFormComponent } from './edit-username-form/edit-username-fo
     MatMenuModule,
     MatDialogModule,
     MatTooltipModule,
-    MatDividerModule
+    MatDividerModule,
+    MatSelectModule,
+    FormsModule
   ],
   providers: [
     provideAnimationsAsync()
