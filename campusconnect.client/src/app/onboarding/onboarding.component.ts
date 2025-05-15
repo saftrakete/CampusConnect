@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { OnboardingServiceService } from '../services/onboarding-service.service';
+import { OnboardingService } from '../services/onboarding.service';
 
 @Component({
   selector: 'app-onboarding',
@@ -8,10 +8,10 @@ import { OnboardingServiceService } from '../services/onboarding-service.service
 })
 export class OnboardingComponent {
 
-  constructor(public os: OnboardingServiceService) {}  // Sorry für den Service-Namen
+  constructor(public os: OnboardingService) {} 
 
-  semesters: Number[] = [1,2,3,4,5,6,7,8,9,10];
-  studyPrograms: string[] = [
+  protected semesters: Number[] = [1,2,3,4,5,6,7,8,9,10];
+  protected studyPrograms: string[] = [
     'Informatik', 
     'Ingenieurinformatik'
   ];
