@@ -17,13 +17,7 @@ export class OnboardingService {
   public printInfo() {
     console.log(this.selectedSemester + "  " + this.selectedStudy);
     this.httpClient.get<Module[]>(baseApiRoute + "degree/onboarding/" + this.selectedStudy).subscribe(
-      (modules: Module[]) => {
-        this.filteredModules = modules
-        console.log(this.filteredModules.length)
-        this.filteredModules.forEach(e => {
-          console.log(e + " ==> " + e.moduleId + " | " + e.name);
-        });
-      }
+      (modules: Module[]) => this.filteredModules = modules
     );
   }
 }
