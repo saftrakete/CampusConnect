@@ -35,7 +35,8 @@ namespace CampusConnect.Server.Controllers
             var result = degree.MandatoryModules.Select(mod => new ModuleDto
             {   
                 ModuleId = mod.ModuleId,
-                Name = mod.Name
+                Name = mod.Name,
+                Semester = mod.Semester
             }).ToList();
 
             return result;
