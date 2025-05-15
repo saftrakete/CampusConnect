@@ -1,0 +1,50 @@
+<div class="marginTop"></div>
+
+<div class="rootContainer">
+  
+  <app-settings-sidebar></app-settings-sidebar>
+
+  <div class="mainSettingsContainer">
+
+    <div class="innerContainer">
+
+      <h1 class="fontColor">Kontoeinstellungen</h1>
+
+      <p>Hier kannst du deine Nutzerdaten einsehen und verwalten.</p>
+
+      <h2 class="fontColor">Kontoinformationen</h2>
+
+      <div class="showAndChangeUsernameContainer">
+
+        <div class="usernameContainer">
+          <h5 class="fontColor opacity">Nutzername:</h5>
+          <h4 class="fontColor opacity">{{ username }}</h4>
+        </div>
+
+        <button 
+          mat-raised-button 
+          class="editButton"
+          (click)="openEditDialog()">
+          <mat-icon>edit</mat-icon>
+        </button>
+
+      </div>
+
+      <h2 class="fontColor">Konto löschen</h2>
+
+      <p>Mit dem Löschen deines Kontos werden alle persönlichen Daten entfernt.</p>
+
+      <button 
+        mat-raised-button 
+        class="accDeleteButton"
+        (click)="openDeletionDialog()">
+        Konto löschen
+      </button>
+
+    </div>
+
+  </div>
+
+</div>
+
+

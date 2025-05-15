@@ -1,0 +1,15 @@
+<mat-icon 
+  [matMenuTriggerFor]="menu"
+  class="settings">          
+  settings
+</mat-icon>  
+<mat-menu #menu="matMenu">
+  <button mat-menu-item routerLink="../accountsettings">
+      <mat-icon>person</mat-icon>
+      <span>Kontoeinstellungen</span>
+  </button>
+  <button mat-menu-item>
+    <mat-icon>logout</mat-icon>
+    <span>Abmelden</span>
+</button>
+</mat-menu>

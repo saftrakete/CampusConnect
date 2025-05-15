@@ -1,0 +1,73 @@
+﻿using CampusConnect.Server.Controllers;
+using CampusConnect.Server.Data;
+using CampusConnect.Server.Models;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
+using System;
+using System.ComponentModel;
+using System.Diagnostics;
+using System.Linq;
+using System.Threading.Tasks;
+
+namespace CampusConnect.Server.Services
+{
+    public class InitModuleTable {
+        private Module[] modules = [];
+        private readonly CampusConnectContext _context;
+        private readonly ILogger<InitModuleTable> _logger;
+
+        public InitModuleTable(CampusConnectContext context, ILogger<InitModuleTable> logger) 
+        {
+            this._context = context;
+            this._logger = logger;
+        }
+
+        public void CreateModuleEntities()
+        {
+            this.modules = [
+                    new Module { Name = "Mathe1", Faculty = _context.Faculties.First()},
+                    new Module { Name = "Mathe2", Faculty = _context.Faculties.First()},
+                    new Module { Name = "Mathe3", Faculty = _context.Faculties.First()},
+                    new Module { Name = "Einführung Informatik", Faculty = _context.Faculties.First()},
+                    new Module { Name = "Technische Informatik 1", Faculty = _context.Faculties.First()},
+                    new Module { Name = "Technische Informatik 2", Faculty = _context.Faculties.First()},
+                    new Module { Name = "Datenbanken 1", Faculty = _context.Faculties.First()},
+                    new Module { Name = "Theoretische Informatik 1", Faculty = _context.Faculties.First()},
+                    new Module { Name = "Theoretische Informatik 2", Faculty = _context.Faculties.First()},
+                    new Module { Name = "Spezifikationstechnik", Faculty = _context.Faculties.First()},
+                    new Module { Name = "Introduction to Simulation", Faculty = _context.Faculties.First()},
+                    new Module { Name = "Programmierparadigmen", Faculty = _context.Faculties.First()}
+                ];
+            var mod = this.modules[0];
+        }
+
+        // Kann wahrscheinlich raus sobald wir ein Admin-Dashboard zum Bearbeiten von DB-Tabellen haben
+        public void DeleteTableContent()
+        {
+            _context.Database.ExecuteSqlRaw("TRUNCATE TABLE Modules");
+        }
+
+        public async Task FillInModules()
+        {
+            CreateModuleEntities();
+
+            if (CheckIfEmpty()) 
+            {
+                foreach (var mod in modules)
+                {
+                    await _context.Modules.AddAsync(mod);
+                }
+                await _context.SaveChangesAsync();
+            }
+        }
+
+        public bool CheckIfEmpty()
+        {
+            int moduleCount = _context.Modules.Count();
+            return moduleCount == 0;
+        } 
+
+    }
+
+
+}

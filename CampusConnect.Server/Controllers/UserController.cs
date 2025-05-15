@@ -1,10 +1,13 @@
 using CampusConnect.Server.Data;
 using CampusConnect.Server.Models;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 
 namespace CampusConnect.Server.Controllers
 {
@@ -13,10 +16,12 @@ namespace CampusConnect.Server.Controllers
     public class UserController : ControllerBase
     {
         private readonly CampusConnectContext _context;
+        private readonly ILogger<ControllerBase> _logger;
 
-        public UserController(CampusConnectContext context)
+        public UserController(CampusConnectContext context, ILogger<ControllerBase> logger)
         {
             _context = context;
+            _logger = logger;
         }
 
         [HttpGet("{userId}")]
@@ -40,29 +45,20 @@ namespace CampusConnect.Server.Controllers
 
             if (user is null)
             {
-                return NotFound();
+                return NotFound("User not found.");
             }
 
-            //TODO:
-            //Passwörter irgendwie enthashen o.ä.
-            //User authorisieren
+            var passwordHasher = new PasswordHasher<UserModel>();
+            var verificationResult = passwordHasher.VerifyHashedPassword(user, user.PasswordHash, loginDto.Password);
 
-            return user.Password == loginDto.Password ? Ok(user) : BadRequest();
-        }
-
-        [HttpPost]
-        public async Task<ActionResult<IEnumerable<UserModel>>> PostNewUser(UserModel user)
-        {
-            if (user is null)
+            if (verificationResult == PasswordVerificationResult.Success)
             {
-                return BadRequest();
+                return Ok(user);
             }
 
-            await _context.Users.AddAsync(user);
-            await _context.SaveChangesAsync();
-
-            return CreatedAtAction("GetUserById", new { userId = user.UserId }, user);
+            return BadRequest("Invalid credentials.");
         }
+
 
         [HttpDelete("{userId}")]
         public async Task<IActionResult> DeleteUser(int userId)
@@ -78,5 +74,29 @@ namespace CampusConnect.Server.Controllers
             await _context.SaveChangesAsync();
             return NoContent();
         }
+
+        [HttpPost("register")]
+        public async Task<IActionResult> Register([FromBody] RegisterModel model)
+        {
+            if (_context.Users.Any(u => u.LoginName == model.LoginName))
+            {
+                return BadRequest("LoginName already exists.");
+            }
+
+            var user = new UserModel
+            {
+                LoginName = model.LoginName,
+                Nickname = model.Nickname
+            };
+
+            var passwordHasher = new PasswordHasher<UserModel>(); //nutzt PBKDF2
+            user.PasswordHash = passwordHasher.HashPassword(user, model.Password);
+
+            _context.Users.Add(user);
+            await _context.SaveChangesAsync();
+
+            return Ok("User registered successfully.");
+        }
     }
 }
+

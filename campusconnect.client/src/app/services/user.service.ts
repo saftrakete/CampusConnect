@@ -13,7 +13,7 @@ export class UserService {
     constructor(private httpClient: HttpClient) { }
 
     public postNewUser(user: UserEntity): Observable<UserEntity> {
-        return this.httpClient.post<UserEntity>(baseApiRoute + "user", user);
+        return this.httpClient.post<UserEntity>(baseApiRoute + "user/register", user);
     }
 
     public sendLoginRequest(loginDto: LoginDto): Observable<UserEntity> {
@@ -22,6 +22,10 @@ export class UserService {
 
     public checkIfLoginNameExists(loginName: string): Observable<boolean> {
         return this.httpClient.get<boolean>(baseApiRoute + "user/exists/" + loginName);
+    }
+
+    public deleteUser(userID: number): Observable<void> {
+        return this.httpClient.delete<void>(baseApiRoute + "user/" + userID);
     }
 
     public createUserEntity(
@@ -39,4 +43,5 @@ export class UserService {
     ): LoginDto {
         return new LoginDto(loginName, password);
     }
+
 }
