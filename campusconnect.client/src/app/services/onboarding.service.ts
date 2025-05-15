@@ -14,7 +14,7 @@ export class OnboardingService {
 
   constructor(private httpClient: HttpClient) { }
 
-  public printInfo() {
+  public StartOnboardingFiltering() {
     console.log(this.selectedSemester + "  " + this.selectedStudy);
     this.httpClient.get<Module[]>(baseApiRoute + "degree/onboarding/" + this.selectedStudy).subscribe(
       (modules: Module[]) => this.filteredModules = modules
