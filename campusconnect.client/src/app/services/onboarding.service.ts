@@ -10,25 +10,32 @@ export class OnboardingService {
   selectedSemester: number = 1;
   selectedStudy: string | null = null;
 
-  filteredModules: Module[] = [];
+  filteredModules: Module[] = []
+  addedModules: Module[] = [];
 
   constructor(private httpClient: HttpClient) { }
 
   public async StartOnboardingFiltering() {
-    if (this.selectedSemester != null && this.selectedStudy != null) {
-      await this.httpClient.get<Module[]>(baseApiRoute + "degree/onboarding/" + this.selectedStudy).subscribe(
+    if (this.selectedStudy != null) {
+      await this.httpClient.get<Module[]>(baseApiRoute + "degree/onboarding/" + this.selectedStudy).subscribe(    // Filtert Module nach Studiengang
         (modules: Module[]) => {
           this.filteredModules = modules;
-          console.log("After loading in: " + this.filteredModules.length);
-
-          this.filteredModules = this.filteredModules.filter(mod => mod.semester <= this.selectedSemester);
-          console.log("After filter: " + this.filteredModules.length);
-        }
+          this.filteredModules = this.filteredModules.filter(mod => mod.semester <= this.selectedSemester);       // Filtert diese Module nochmals nach Semester (Man könnte auch '==' statt '<=' nehmen, wenn man nur Module aus dem einen Semester haben will)
+        }                                                                                                                         
       );
     }
   }
 
-  public test() {
-    console.log("Test: " + this.filteredModules.length);
+  public AddModule(mod: Module) {
+    this.addedModules.push(mod);
+  }
+
+  public DeleteModule(mod: Module) {
+    const index = this.addedModules.findIndex(m => m.moduleId === mod.moduleId);
+    this.addedModules.splice(index, 1);
+  }
+
+  public IsModuleAdded(mod: Module) {
+    return this.addedModules.includes(mod);
   }
 }
