@@ -12,7 +12,7 @@
 
 <div class="courseContainer">
   <!-- Module einlesen hier-->
-   <app-module-card  *ngFor="let mod of os.filteredModules" [module]="{name: mod.name, semester: mod.semester}"></app-module-card>
+   <app-module-card  *ngFor="let mod of os.filteredModules" [module]="{name: mod.name, semester: mod.semester, moduleId: mod.moduleId}"></app-module-card>
 </div>
 
 <div class="userCourses">
@@ -23,8 +23,8 @@
 
   <div class="moduleList" >
     
-    <div class="module">
-      <app-added-module class="mod"></app-added-module>
+    <div class="module" *ngFor="let mod of os.addedModules">
+      <app-added-module class="mod" [module]="{name: mod.name, semester: mod.semester, moduleId: mod.moduleId}"></app-added-module>
     </div>
     
   </div>
