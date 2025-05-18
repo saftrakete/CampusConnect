@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { Module } from '../entities/module';
-import { ModuleService } from '../services/module.service';
+import { OnboardingService } from '../services/onboarding.service';
 
 @Component({
   selector: 'app-added-module',
@@ -10,13 +10,5 @@ import { ModuleService } from '../services/module.service';
 export class AddedModuleComponent {
   @Input() module: Module = new Module;
 
-  constructor(public modService: ModuleService) {}
-
-public deleteModule(toBeDeletedModule: Module) {
-  const index = this.modService.moduleList.findIndex(module => module.name === toBeDeletedModule.name);
-  if (index !== -1) {
-    this.modService.moduleList.splice(index, 1);
-  }
-}
-
+  constructor(public os: OnboardingService) {}
 }

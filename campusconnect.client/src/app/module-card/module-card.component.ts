@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { Module } from '../entities/module';
-import { ModuleService } from '../services/module.service';
+import { OnboardingService } from '../services/onboarding.service';
 
 @Component({
   selector: 'app-module-card',
@@ -12,14 +12,9 @@ export class ModuleCardComponent {
   @Input() module: Module = new Module;
   isMenuOpen: Boolean = false;
 
-  constructor(public modService: ModuleService) {}
+  constructor(public os: OnboardingService) {}
 
-  public addModule(mod: Module) {
-    this.modService.moduleList.push(mod);
+  public toggleMenu() {
+    this.isMenuOpen = !this.isMenuOpen;
   }
-
-public toggleMenu() {
-  this.isMenuOpen = !this.isMenuOpen;
-}
-
 }

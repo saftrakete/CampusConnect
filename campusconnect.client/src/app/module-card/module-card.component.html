@@ -24,7 +24,7 @@
       <ng-template matMenuContent>
 
         <button mat-menu-item class="details">Details</button>
-        <button mat-menu-item class="add" *ngIf="modService.isCurrentlyAdded(module)" (click)="addModule(module)">Hinzufügen</button> 
+        <button *ngIf="!(os.IsModuleAdded(module))" mat-menu-item class="add" (click)="os.AddModule(module)">Hinzufügen</button> 
 
       </ng-template>
 
