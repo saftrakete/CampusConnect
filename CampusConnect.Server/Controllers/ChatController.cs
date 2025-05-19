@@ -24,7 +24,7 @@ namespace CampusConnect.Server.Controllers
             _logger = logger;
         }
 
-        [HttpGet("{messageId}")]
+        [HttpGet("get")]
         public async Task<ActionResult<MessageModel>> GetMessageById(int messageId)
         {
             var message = await _context.Messages.FirstOrDefaultAsync(m => m.MessageId == messageId);
