@@ -17,8 +17,12 @@ export class ChatService {
 
     public createMessageEntity(
         content: string,
-        messageId?: number
+        userId: number
     ): MessageEntity {
-        return new MessageEntity(content, messageId);
+        return new MessageEntity(content, userId);
+    }
+
+    public getMessageById(messageId: number): Observable<MessageEntity> {
+        return this.httpClient.get<MessageEntity>("${baseApiRoute}chat/get/${messageId}");
     }
 }
