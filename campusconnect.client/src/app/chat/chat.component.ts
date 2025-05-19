@@ -44,4 +44,27 @@ export class ChatComponent implements OnInit {
 
       this.chatForm.reset();
   }
+
+    public fetchMessage(): void {
+     var index = 0;
+     var messages: MessageEntity[] = [];
+     var condition = true;
+     while (condition) {
+         this.chatService.getMessageById(index).subscribe(
+             response => {
+                 console.log(response);
+                 messages.push(response);
+             },
+             error => {
+                 condition = false;
+             }
+         )
+         index++;
+    }
+}
+
+    public clickFetchMessages(): void {
+        this.fetchMessage();
+    }
+
 }
