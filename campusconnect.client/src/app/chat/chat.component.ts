@@ -30,8 +30,12 @@ export class ChatComponent implements OnInit {
           return;
       }
 
+      // TODO: use getUSerID function here
+      const userId = 69;
+
       let chatEntity = this.chatService.createMessageEntity(
           this.chatForm.get('chatMessage')?.value,
+          userId
       );
       
       this.chatService.postNewMessage(chatEntity).subscribe(
