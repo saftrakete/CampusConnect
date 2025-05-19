@@ -42,7 +42,9 @@ namespace CampusConnect.Server.Controllers
             var message = new MessageModel
             {
                 Content = model.Content,
+                UserId = model.UserId,
                 MessageId = model.MessageId
+                
             };
 
             _context.Messages.Add(message);
