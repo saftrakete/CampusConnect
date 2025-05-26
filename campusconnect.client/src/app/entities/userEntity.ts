@@ -6,7 +6,7 @@ export class UserEntity {
         loginName: string,
         password: string,
         userId?: number,
-        role?: string) {
+        role?: UserRoleEntity) {
         this.loginName = loginName;
         this.nickname = nickname;
         this.password = password;
@@ -18,6 +18,5 @@ export class UserEntity {
     public nickname: string;
     public loginName: string;
     public password: string;
-    //public role?: UserRoleEntity;
-    public role?: string;
+    public role?: UserRoleEntity;
 }

@@ -8,8 +8,6 @@ export class AdminGuard implements CanActivate {
 
     canActivate(): boolean {
         const role = this.authService.getUserRole();
-        console.log(role);
-        console.log("tst");
 
         if (!role) {
             console.log("role is null");

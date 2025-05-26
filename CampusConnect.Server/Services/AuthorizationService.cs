@@ -38,7 +38,7 @@ namespace CampusConnect.Server.Services
             var claims = new[]
             {
                 new Claim(ClaimTypes.Name, user.LoginName),
-                new Claim(ClaimTypes.Role, user.Role)
+                new Claim(ClaimTypes.Role, user.Role.RoleName)
             };
 
             var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_config["Jwt:Key"]));
