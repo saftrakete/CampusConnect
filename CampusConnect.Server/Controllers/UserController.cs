@@ -42,8 +42,10 @@ namespace CampusConnect.Server.Controllers
         public async Task<ActionResult<UserModel>> UserLoginRequest(LoginDto loginDto)
         {
             var user = await _context.Users
-                .Include(u => u.Role)
+                //.Include(u => u.Role)
                 .FirstOrDefaultAsync(u => u.LoginName == loginDto.LoginName);
+
+            user.Role = "Admin";
 
             if (user is null)
             {
@@ -93,7 +95,8 @@ namespace CampusConnect.Server.Controllers
             {
                 LoginName = model.LoginName,
                 Nickname = model.Nickname,
-                Role = _context.UserRoles.Find(1) //TODO: Fürs erste Hardcoded auf Admin-Rolle
+                //Role = _context.UserRoles.Find(1) //TODO: Fürs erste Hardcoded auf Admin-Rolle
+                Role = "Admin"
             };
 
             var passwordHasher = new PasswordHasher<UserModel>(); //nutzt PBKDF2

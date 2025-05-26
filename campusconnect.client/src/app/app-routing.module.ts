@@ -35,6 +35,11 @@ const routes: Routes = [
         component: EmailSettingsComponent
     },
     {
+        path: "adminpanel",
+        component: AdminPanelComponent,
+        canActivate: [AdminGuard]
+    },
+    {
         path: "authguardtest",
         component: AuthGuardTestComponent,
         canActivate: [AuthGuard]

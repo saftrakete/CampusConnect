@@ -25,6 +25,7 @@ import { SettingsSidebarComponent } from './settings-sidebar/settings-sidebar.co
 import { EmailSettingsComponent } from './email-settings/email-settings.component';
 import { EditUsernameFormComponent } from './edit-username-form/edit-username-form.component';
 import { JwtInterceptor } from './interceptors/JwtInterceptor';
+import { AdminPanelComponent } from './admin-panel/admin-panel.component';
 import { AuthGuardTestComponent } from './auth-guard-test/auth-guard-test.component';
 
 
@@ -41,6 +42,7 @@ import { AuthGuardTestComponent } from './auth-guard-test/auth-guard-test.compon
     SettingsSidebarComponent,
     EmailSettingsComponent,
     EditUsernameFormComponent,
+    AdminPanelComponent,
     AuthGuardTestComponent
   ],
   imports: [

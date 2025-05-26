@@ -3,11 +3,17 @@ import { jwtDecode } from 'jwt-decode';
 import { UserRoleEntity } from '../entities/userRoleEntity';
 import { Router } from '@angular/router';
 
+export interface DecodedToken {
+  exp: number;
+  [key: string]: any;
+}
+
 @Injectable({
   providedIn: 'root'
 })
 export class AuthorizationService {
-  constructor(private router: Router) { }
+  constructor(private router: Router) { 
+  }
 
   public setToken(token: string): void {
     localStorage.setItem("jwt", token); //Anfällig für XSS-Angriffe
@@ -19,41 +25,24 @@ export class AuthorizationService {
   }
 
   public isLoggedIn(): boolean {
-    const token = this.getToken();
-
-    if (!token) {
-      return false;
-    }
-
-    try {
-      const decoded: any = jwtDecode(token);
-      const exp = decoded.exp;
-      const now = Math.floor(Date.now() / 1000);
-
-      return exp > now;
-    } catch {
-      return false;
-    }
+    const token = this.getDecodedToken();
+    return !token;
   }
 
-  public getUserRole(): UserRoleEntity | null {
-    const token = this.getToken();
-    console.log(token);
-
-    if (!token) {
-      return null;
-    }
-
-    try {
-      const decoded: any = jwtDecode(token);
-      console.log(decoded);
-      return decoded.role; //TODO: Fix AdminGuard
-    } catch {
-      return null;
-    }
+  public getUserRole(): string | null {
+    let token = this.getDecodedToken();
+    return token?.['http://schemas.microsoft.com/ws/2008/06/identity/claims/role'] || null;
   }
 
-  private getToken(): string | null {
-    return localStorage.getItem("jwt");
+  private getDecodedToken(): DecodedToken | null {
+    let token = localStorage.getItem("jwt");
+    if (!token) return null;
+
+    try {
+      return jwtDecode<DecodedToken>(token);
+    } catch(error) {
+      console.error(error);
+      return null;
+    }
   }
 }
