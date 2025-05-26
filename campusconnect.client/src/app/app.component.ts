@@ -1,12 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
-
-interface WeatherForecast {
-  date: string;
-  temperatureC: number;
-  temperatureF: number;
-  summary: string;
-}
+import { AfterViewInit, Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -15,6 +8,7 @@ interface WeatherForecast {
 })
 export class AppComponent {
   constructor(private http: HttpClient) {}
+
 
   title = 'campusconnect.client';
 }

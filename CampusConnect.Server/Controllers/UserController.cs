@@ -7,6 +7,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 
 namespace CampusConnect.Server.Controllers
 {
@@ -16,12 +18,15 @@ namespace CampusConnect.Server.Controllers
     {
         private readonly CampusConnectContext _context;
         private readonly IAuthorizationService _authService;
+        private readonly ILogger<ControllerBase> _logger;
 
         public UserController(CampusConnectContext context,
-            IAuthorizationService authService)
+            IAuthorizationService authService,
+            ILogger<ControllerBase> logger)
         {
             _context = context;
             _authService = authService;
+            _logger = logger;
         }
 
         [HttpGet("{userId}")]
@@ -93,7 +98,7 @@ namespace CampusConnect.Server.Controllers
             {
                 LoginName = model.LoginName,
                 Nickname = model.Nickname,
-                Role = _context.UserRoles.Find(1) //TODO: Fürs erste Hardcoded auf Admin-Rolle
+                Role = _context.UserRoles.Find(1) //TODO: Fï¿½rs erste Hardcoded auf Admin-Rolle
             };
 
             var passwordHasher = new PasswordHasher<UserModel>(); //nutzt PBKDF2
