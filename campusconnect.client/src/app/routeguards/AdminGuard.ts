@@ -8,7 +8,7 @@ export class AdminGuard implements CanActivate {
 
     canActivate(): boolean {
         if (!this.authService.isLoggedIn()) {
-            this.router.navigate(['forbidden']);
+            this.router.navigate(['/forbidden']);
             return false;
         }
 

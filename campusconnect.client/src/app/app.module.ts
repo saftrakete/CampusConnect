@@ -27,7 +27,6 @@ import { EditUsernameFormComponent } from './edit-username-form/edit-username-fo
 import { JwtInterceptor } from './interceptors/JwtInterceptor';
 import { AdminPanelComponent } from './admin-panel/admin-panel.component';
 import { AuthGuardTestComponent } from './auth-guard-test/auth-guard-test.component';
-import { UnauthorizedComponent } from './unauthorized/unauthorized.component';
 import { ForbiddenComponent } from './forbidden/forbidden.component';
 
 
@@ -46,7 +45,6 @@ import { ForbiddenComponent } from './forbidden/forbidden.component';
     EditUsernameFormComponent,
     AdminPanelComponent,
     AuthGuardTestComponent,
-    UnauthorizedComponent,
     ForbiddenComponent
   ],
   imports: [
