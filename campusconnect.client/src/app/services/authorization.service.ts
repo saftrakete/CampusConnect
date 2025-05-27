@@ -26,7 +26,12 @@ export class AuthorizationService {
 
   public isLoggedIn(): boolean {
     const token = this.getDecodedToken();
-    return !token;
+    
+    if (!token) {
+      return false;
+    }
+
+    return true;
   }
 
   public getUserRole(): string | null {
