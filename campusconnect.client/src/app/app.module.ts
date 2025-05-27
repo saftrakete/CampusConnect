@@ -1,4 +1,4 @@
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -24,6 +24,9 @@ import { AccountSettingsComponent } from './account-settings/account-settings.co
 import { SettingsSidebarComponent } from './settings-sidebar/settings-sidebar.component';
 import { EmailSettingsComponent } from './email-settings/email-settings.component';
 import { EditUsernameFormComponent } from './edit-username-form/edit-username-form.component';
+import { JwtInterceptor } from './interceptors/JwtInterceptor';
+import { AdminPanelComponent } from './admin-panel/admin-panel.component';
+import { AuthGuardTestComponent } from './auth-guard-test/auth-guard-test.component';
 
 
 @NgModule({
@@ -38,7 +41,9 @@ import { EditUsernameFormComponent } from './edit-username-form/edit-username-fo
     AccountSettingsComponent,
     SettingsSidebarComponent,
     EmailSettingsComponent,
-    EditUsernameFormComponent
+    EditUsernameFormComponent,
+    AdminPanelComponent,
+    AuthGuardTestComponent
   ],
   imports: [
     BrowserModule, HttpClientModule,
@@ -54,7 +59,8 @@ import { EditUsernameFormComponent } from './edit-username-form/edit-username-fo
     MatDividerModule
   ],
   providers: [
-    provideAnimationsAsync()
+    provideAnimationsAsync(),
+    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true }
   ],
   bootstrap: [AppComponent]
 })

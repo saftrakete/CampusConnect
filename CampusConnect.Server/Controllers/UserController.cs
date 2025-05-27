@@ -1,9 +1,10 @@
 using CampusConnect.Server.Data;
+using CampusConnect.Server.Interfaces;
 using CampusConnect.Server.Models;
+using CampusConnect.Server.Models.Dtos;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
@@ -16,11 +17,15 @@ namespace CampusConnect.Server.Controllers
     public class UserController : ControllerBase
     {
         private readonly CampusConnectContext _context;
+        private readonly IAuthorizationService _authService;
         private readonly ILogger<ControllerBase> _logger;
 
-        public UserController(CampusConnectContext context, ILogger<ControllerBase> logger)
+        public UserController(CampusConnectContext context,
+            IAuthorizationService authService,
+            ILogger<ControllerBase> logger)
         {
             _context = context;
+            _authService = authService;
             _logger = logger;
         }
 
@@ -41,19 +46,25 @@ namespace CampusConnect.Server.Controllers
         [HttpPost("login")]
         public async Task<ActionResult<UserModel>> UserLoginRequest(LoginDto loginDto)
         {
-            var user = await _context.Users.FirstOrDefaultAsync(u => u.LoginName == loginDto.LoginName);
+            var user = await _context.Users
+                .Include(u => u.Role)
+                .FirstOrDefaultAsync(u => u.LoginName == loginDto.LoginName);
 
             if (user is null)
             {
                 return NotFound("User not found.");
             }
 
-            var passwordHasher = new PasswordHasher<UserModel>();
-            var verificationResult = passwordHasher.VerifyHashedPassword(user, user.PasswordHash, loginDto.Password);
-
-            if (verificationResult == PasswordVerificationResult.Success)
+            if (_authService.Authorize(user, loginDto))
             {
-                return Ok(user);
+                var jwtToken = _authService.GenerateJwtToken(user);
+
+                return Ok(new LoginResponseDto
+                {
+                    Token = jwtToken,
+                    Username = user.LoginName,
+                    Role = user.Role
+                });
             }
 
             return BadRequest("Invalid credentials.");
@@ -86,7 +97,8 @@ namespace CampusConnect.Server.Controllers
             var user = new UserModel
             {
                 LoginName = model.LoginName,
-                Nickname = model.Nickname
+                Nickname = model.Nickname,
+                Role = _context.UserRoles.Find(1) //TODO: F�rs erste Hardcoded auf Admin-Rolle
             };
 
             var passwordHasher = new PasswordHasher<UserModel>(); //nutzt PBKDF2
