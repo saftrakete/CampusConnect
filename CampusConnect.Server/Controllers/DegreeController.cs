@@ -25,7 +25,10 @@ namespace CampusConnect.Server.Controllers
         [HttpGet("all")]
         public async Task<ActionResult<IEnumerable<Degree>>> GetDegrees()
         {
-            var result = await _context.Degrees.ToListAsync();
+            var result = await _context.Degrees
+                .Include(degree => degree.Faculty)
+                .Include(degree => degree.MandatoryModules)
+                .ToListAsync();
 
             return result is not null ? result : NotFound();
         }
@@ -35,6 +38,8 @@ namespace CampusConnect.Server.Controllers
         {
             var degree = await _context.Degrees
                 .Where(degree => degree.DegreeId == degreeId)
+                .Include(degree => degree.Faculty)
+                .Include(degree => degree.MandatoryModules)
                 .FirstOrDefaultAsync();
 
             return degree is not null ? degree : NotFound();
