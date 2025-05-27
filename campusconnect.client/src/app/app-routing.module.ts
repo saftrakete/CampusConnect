@@ -10,6 +10,7 @@ import { AdminGuard } from './routeguards/AdminGuard';
 import { AuthGuardTestComponent } from './auth-guard-test/auth-guard-test.component';
 import { AuthGuard } from './routeguards/AuthGuard';
 import { ForbiddenComponent } from './forbidden/forbidden.component';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 export const baseApiRoute = 'https://localhost:7109/';
 
@@ -48,6 +49,10 @@ const routes: Routes = [
     {
         path: "forbidden",
         component: ForbiddenComponent
+    },
+    {
+        path: "**",
+        component: NotFoundComponent
     }
 ];
 
