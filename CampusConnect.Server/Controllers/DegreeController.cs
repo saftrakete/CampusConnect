@@ -30,7 +30,7 @@ namespace CampusConnect.Server.Controllers
                 .Include(degree => degree.MandatoryModules)
                 .ToListAsync();
 
-            return result is not null ? result : NotFound();
+            return result is not null ? Ok(result) : NotFound();
         }
 
         [HttpGet("{degreeId}")]
@@ -45,7 +45,7 @@ namespace CampusConnect.Server.Controllers
             return degree is not null ? degree : NotFound();
         }
 
-        [HttpPost("postDegree")]
+        [HttpPost("addDegree")]
         public async Task<ActionResult<Degree>> PostNewDegree(Degree degree)
         {
             if (degree is null)
