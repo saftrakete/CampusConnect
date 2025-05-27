@@ -8,7 +8,7 @@ export class AdminGuard implements CanActivate {
 
     canActivate(): boolean {
         if (!this.authService.isLoggedIn()) {
-            this.router.navigate(['/unauthorized']);
+            this.router.navigate(['forbidden']);
             return false;
         }
 
@@ -22,7 +22,7 @@ export class AdminGuard implements CanActivate {
         if (role === "Admin") {
             return true;
         } else {
-            this.router.navigate(['/unauthorized']); //TODO: Seite erstellen
+            this.router.navigate(['/forbidden']);
             return false;
         }
     }
