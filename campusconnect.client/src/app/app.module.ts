@@ -28,6 +28,7 @@ import { JwtInterceptor } from './interceptors/JwtInterceptor';
 import { AdminPanelComponent } from './admin-panel/admin-panel.component';
 import { AuthGuardTestComponent } from './auth-guard-test/auth-guard-test.component';
 import { ForbiddenComponent } from './forbidden/forbidden.component';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 
 @NgModule({
@@ -45,7 +46,8 @@ import { ForbiddenComponent } from './forbidden/forbidden.component';
     EditUsernameFormComponent,
     AdminPanelComponent,
     AuthGuardTestComponent,
-    ForbiddenComponent
+    ForbiddenComponent,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule, HttpClientModule,
