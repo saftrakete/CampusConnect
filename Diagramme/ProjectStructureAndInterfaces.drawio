@@ -1,84 +1,151 @@
-<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36 OPR/119.0.0.0" version="24.9.3">
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36 OPR/119.0.0.0" version="27.1.5">
   <diagram name="Seite-1" id="PKEbjvstEnVtREmcZfOJ">
-    <mxGraphModel dx="2388" dy="709" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="2894" dy="2122" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
-        <mxCell id="MedgQwC-AZoW-t7zYg1U-3" value="User" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;" vertex="1" parent="1">
-          <mxGeometry x="175" y="10" width="30" height="60" as="geometry" />
+        <mxCell id="MedgQwC-AZoW-t7zYg1U-3" value="&lt;b&gt;User&lt;/b&gt;" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;" parent="1" vertex="1">
+          <mxGeometry x="399" y="-200" width="30" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="MedgQwC-AZoW-t7zYg1U-4" value="Uses" style="endArrow=open;endSize=12;dashed=1;html=1;rounded=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;exitX=1;exitY=1;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1" source="MedgQwC-AZoW-t7zYg1U-3" target="MedgQwC-AZoW-t7zYg1U-6">
+        <mxCell id="MedgQwC-AZoW-t7zYg1U-4" value="Uses" style="endArrow=open;endSize=12;dashed=1;html=1;rounded=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;exitX=0.54;exitY=0.897;exitDx=0;exitDy=0;exitPerimeter=0;" parent="1" source="MedgQwC-AZoW-t7zYg1U-3" target="MedgQwC-AZoW-t7zYg1U-6" edge="1">
           <mxGeometry width="160" relative="1" as="geometry">
-            <mxPoint x="-35" y="185" as="sourcePoint" />
-            <mxPoint x="50" y="185" as="targetPoint" />
+            <mxPoint x="-35" y="85" as="sourcePoint" />
+            <mxPoint x="50" y="85" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="MedgQwC-AZoW-t7zYg1U-6" value="&lt;p style=&quot;margin:0px;margin-top:6px;text-align:center;&quot;&gt;&lt;b&gt;Login Component&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:8px;&quot;&gt;+ loginClick():&amp;nbsp;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:8px;&quot;&gt;Sends loginDto to backend via Service&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:8px;&quot;&gt;&lt;br&gt;+ ngOnInit():&amp;nbsp;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:8px;&quot;&gt;initially builds a reactive form&amp;nbsp;&lt;span style=&quot;background-color: initial;&quot;&gt;for email and password input&lt;/span&gt;&lt;/p&gt;" style="align=left;overflow=fill;html=1;dropTarget=0;whiteSpace=wrap;" vertex="1" parent="1">
-          <mxGeometry x="284" y="140" width="260" height="130" as="geometry" />
+        <mxCell id="MedgQwC-AZoW-t7zYg1U-6" value="&lt;p style=&quot;margin:0px;margin-top:6px;text-align:center;&quot;&gt;&lt;b&gt;Login Component&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:8px;&quot;&gt;+ loginClick():&amp;nbsp;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:8px;&quot;&gt;Sends loginDto to backend via Service&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:8px;&quot;&gt;&lt;br&gt;+ ngOnInit():&amp;nbsp;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:8px;&quot;&gt;initially builds a reactive form&amp;nbsp;&lt;span style=&quot;background-color: initial;&quot;&gt;for email and password input&lt;/span&gt;&lt;/p&gt;" style="align=left;overflow=fill;html=1;dropTarget=0;whiteSpace=wrap;" parent="1" vertex="1">
+          <mxGeometry x="284" y="40" width="260" height="130" as="geometry" />
         </mxCell>
-        <mxCell id="MedgQwC-AZoW-t7zYg1U-7" value="" style="shape=component;jettyWidth=8;jettyHeight=4;" vertex="1" parent="MedgQwC-AZoW-t7zYg1U-6">
+        <mxCell id="MedgQwC-AZoW-t7zYg1U-7" value="" style="shape=component;jettyWidth=8;jettyHeight=4;" parent="MedgQwC-AZoW-t7zYg1U-6" vertex="1">
           <mxGeometry x="1" width="20" height="20" relative="1" as="geometry">
             <mxPoint x="-24" y="4" as="offset" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="MedgQwC-AZoW-t7zYg1U-10" value="&lt;p style=&quot;margin:0px;margin-top:6px;text-align:center;&quot;&gt;&lt;b&gt;Register Component&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:8px;&quot;&gt;+ registerClick():&amp;nbsp;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:8px;&quot;&gt;Sends registerDto to backend via Service&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:8px;&quot;&gt;&lt;br&gt;+ ngOnInit():&amp;nbsp;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:8px;&quot;&gt;initially builds a reactive form&lt;span style=&quot;background-color: initial;&quot;&gt;&amp;nbsp;for several needed information&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:8px;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;&amp;nbsp;&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:8px;&quot;&gt;- matchPasswordValidator():&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:8px;&quot;&gt;checks if password and confirmPassword match each other&lt;/p&gt;" style="align=left;overflow=fill;html=1;dropTarget=0;whiteSpace=wrap;" vertex="1" parent="1">
-          <mxGeometry x="-120" y="140" width="260" height="190" as="geometry" />
+        <mxCell id="MedgQwC-AZoW-t7zYg1U-10" value="&lt;p style=&quot;margin:0px;margin-top:6px;text-align:center;&quot;&gt;&lt;b&gt;Register Component&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:8px;&quot;&gt;+ registerClick():&amp;nbsp;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:8px;&quot;&gt;Sends registerDto to backend via Service&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:8px;&quot;&gt;&lt;br&gt;+ ngOnInit():&amp;nbsp;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:8px;&quot;&gt;initially builds a reactive form&lt;span style=&quot;background-color: initial;&quot;&gt;&amp;nbsp;for several needed information&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:8px;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;&amp;nbsp;&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:8px;&quot;&gt;- matchPasswordValidator():&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:8px;&quot;&gt;checks if password and confirmPassword match each other&lt;/p&gt;" style="align=left;overflow=fill;html=1;dropTarget=0;whiteSpace=wrap;" parent="1" vertex="1">
+          <mxGeometry x="-120" y="40" width="260" height="190" as="geometry" />
         </mxCell>
-        <mxCell id="MedgQwC-AZoW-t7zYg1U-11" value="" style="shape=component;jettyWidth=8;jettyHeight=4;" vertex="1" parent="MedgQwC-AZoW-t7zYg1U-10">
+        <mxCell id="MedgQwC-AZoW-t7zYg1U-11" value="" style="shape=component;jettyWidth=8;jettyHeight=4;" parent="MedgQwC-AZoW-t7zYg1U-10" vertex="1">
           <mxGeometry x="1" width="20" height="20" relative="1" as="geometry">
             <mxPoint x="-24" y="4" as="offset" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="MedgQwC-AZoW-t7zYg1U-12" value="Uses" style="endArrow=open;endSize=12;dashed=1;html=1;rounded=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;exitX=0;exitY=1;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1" source="MedgQwC-AZoW-t7zYg1U-3" target="MedgQwC-AZoW-t7zYg1U-10">
+        <mxCell id="MedgQwC-AZoW-t7zYg1U-12" value="Uses" style="endArrow=open;endSize=12;dashed=1;html=1;rounded=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;exitX=0.54;exitY=0.843;exitDx=0;exitDy=0;exitPerimeter=0;" parent="1" source="MedgQwC-AZoW-t7zYg1U-3" target="MedgQwC-AZoW-t7zYg1U-10" edge="1">
           <mxGeometry width="160" relative="1" as="geometry">
-            <mxPoint x="140" y="140" as="sourcePoint" />
-            <mxPoint x="219" y="255" as="targetPoint" />
+            <mxPoint x="140" y="40" as="sourcePoint" />
+            <mxPoint x="219" y="155" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="MedgQwC-AZoW-t7zYg1U-14" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;i style=&quot;background-color: initial;&quot;&gt;&amp;lt;&amp;lt;Service&amp;gt;&amp;gt;&lt;/i&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;UserService&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ postNewUser():&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;sends a UserEntity to UserController&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;br&gt;+ sendLoginRequest():&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;sends loginDto to UserController&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ checkIfLoginNameExists():&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;sends loginName to UserController to check if already exists&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ deleteUser():&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;sends userID to UserController&amp;nbsp;&lt;span style=&quot;background-color: initial;&quot;&gt;in order to delete user&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;&lt;br&gt;&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;+ createrUserEntity():&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;gets neccessary user data and encapsulates them inside an instance of a UserEntity and returns it&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;&lt;br&gt;&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;+ createLoginDto():&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;login data is encapsulated inside an LoginDto instance&lt;/span&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;" vertex="1" parent="1">
-          <mxGeometry x="60" y="560" width="330" height="330" as="geometry" />
+        <mxCell id="MedgQwC-AZoW-t7zYg1U-14" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;i style=&quot;background-color: initial;&quot;&gt;&amp;lt;&amp;lt;Service&amp;gt;&amp;gt;&lt;/i&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;UserService&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ postNewUser():&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;sends a UserEntity to UserController&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;br&gt;+ sendLoginRequest():&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;sends loginDto to UserController&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ checkIfLoginNameExists():&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;sends loginName to UserController to check if already exists&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ deleteUser():&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;sends userID to UserController&amp;nbsp;&lt;span style=&quot;background-color: initial;&quot;&gt;in order to delete user&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;&lt;br&gt;&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;+ createrUserEntity():&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;gets neccessary user data and encapsulates them inside an instance of a UserEntity and returns it&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;&lt;br&gt;&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;+ createLoginDto():&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;login data is encapsulated inside an LoginDto instance&lt;/span&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;" parent="1" vertex="1">
+          <mxGeometry x="60" y="460" width="330" height="330" as="geometry" />
         </mxCell>
-        <mxCell id="MedgQwC-AZoW-t7zYg1U-20" value="" style="ellipse;whiteSpace=wrap;html=1;align=center;aspect=fixed;fillColor=none;strokeColor=none;resizable=0;perimeter=centerPerimeter;rotatable=0;allowArrows=0;points=[];outlineConnect=1;" vertex="1" parent="1">
-          <mxGeometry x="220" y="320" width="10" height="10" as="geometry" />
+        <mxCell id="MedgQwC-AZoW-t7zYg1U-20" value="" style="ellipse;whiteSpace=wrap;html=1;align=center;aspect=fixed;fillColor=none;strokeColor=none;resizable=0;perimeter=centerPerimeter;rotatable=0;allowArrows=0;points=[];outlineConnect=1;" parent="1" vertex="1">
+          <mxGeometry x="220" y="220" width="10" height="10" as="geometry" />
         </mxCell>
-        <mxCell id="MedgQwC-AZoW-t7zYg1U-22" value="" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=halfCircle;endFill=0;endSize=6;strokeWidth=1;sketch=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.911;entryY=0.778;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" target="MedgQwC-AZoW-t7zYg1U-24" parent="1" source="MedgQwC-AZoW-t7zYg1U-10">
+        <mxCell id="MedgQwC-AZoW-t7zYg1U-22" value="" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=halfCircle;endFill=0;endSize=6;strokeWidth=1;sketch=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.911;entryY=0.778;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" source="MedgQwC-AZoW-t7zYg1U-10" target="MedgQwC-AZoW-t7zYg1U-24" edge="1">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint y="420" as="sourcePoint" />
-            <mxPoint x="10" y="510" as="targetPoint" />
+            <mxPoint y="320" as="sourcePoint" />
+            <mxPoint x="10" y="410" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="MedgQwC-AZoW-t7zYg1U-23" value="" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=oval;endFill=0;sketch=0;sourcePerimeterSpacing=0;targetPerimeterSpacing=0;endSize=10;exitX=0.5;exitY=0;exitDx=0;exitDy=0;" edge="1" target="MedgQwC-AZoW-t7zYg1U-24" parent="1" source="MedgQwC-AZoW-t7zYg1U-14">
+        <mxCell id="6aH_EEc_IB8oXvXc5yen-15" value="&lt;b&gt;Register nutzt&amp;nbsp;&lt;/b&gt;&lt;b style=&quot;color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255)); background-color: light-dark(#ffffff, var(--ge-dark-color, #121212));&quot;&gt;UserService&lt;/b&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="MedgQwC-AZoW-t7zYg1U-22">
+          <mxGeometry x="0.2324" y="4" relative="1" as="geometry">
+            <mxPoint x="-14" y="97" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="MedgQwC-AZoW-t7zYg1U-23" value="" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=oval;endFill=0;sketch=0;sourcePerimeterSpacing=0;targetPerimeterSpacing=0;endSize=10;exitX=0.5;exitY=0;exitDx=0;exitDy=0;" parent="1" source="MedgQwC-AZoW-t7zYg1U-14" target="MedgQwC-AZoW-t7zYg1U-24" edge="1">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint x="220" y="520" as="sourcePoint" />
+            <mxPoint x="220" y="420" as="sourcePoint" />
             <Array as="points">
-              <mxPoint x="225" y="515" />
+              <mxPoint x="225" y="415" />
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="MedgQwC-AZoW-t7zYg1U-24" value="" style="ellipse;whiteSpace=wrap;html=1;align=center;aspect=fixed;fillColor=none;strokeColor=none;resizable=0;perimeter=centerPerimeter;rotatable=0;allowArrows=0;points=[];outlineConnect=1;" vertex="1" parent="1">
-          <mxGeometry x="5" y="510" width="10" height="10" as="geometry" />
+        <mxCell id="MedgQwC-AZoW-t7zYg1U-24" value="" style="ellipse;whiteSpace=wrap;html=1;align=center;aspect=fixed;fillColor=none;strokeColor=none;resizable=0;perimeter=centerPerimeter;rotatable=0;allowArrows=0;points=[];outlineConnect=1;" parent="1" vertex="1">
+          <mxGeometry x="5" y="410" width="10" height="10" as="geometry" />
         </mxCell>
-        <mxCell id="MedgQwC-AZoW-t7zYg1U-25" value="" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=halfCircle;endFill=0;endSize=6;strokeWidth=1;sketch=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" edge="1" target="MedgQwC-AZoW-t7zYg1U-27" parent="1" source="MedgQwC-AZoW-t7zYg1U-6">
+        <mxCell id="MedgQwC-AZoW-t7zYg1U-25" value="" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=halfCircle;endFill=0;endSize=6;strokeWidth=1;sketch=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" parent="1" source="MedgQwC-AZoW-t7zYg1U-6" target="MedgQwC-AZoW-t7zYg1U-27" edge="1">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint x="440" y="515" as="sourcePoint" />
+            <mxPoint x="440" y="415" as="sourcePoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="MedgQwC-AZoW-t7zYg1U-26" value="" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=oval;endFill=0;sketch=0;sourcePerimeterSpacing=0;targetPerimeterSpacing=0;endSize=10;exitX=0.5;exitY=0;exitDx=0;exitDy=0;" edge="1" target="MedgQwC-AZoW-t7zYg1U-27" parent="1" source="MedgQwC-AZoW-t7zYg1U-14">
+        <mxCell id="MedgQwC-AZoW-t7zYg1U-26" value="" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=oval;endFill=0;sketch=0;sourcePerimeterSpacing=0;targetPerimeterSpacing=0;endSize=10;exitX=0.5;exitY=0;exitDx=0;exitDy=0;" parent="1" source="MedgQwC-AZoW-t7zYg1U-14" target="MedgQwC-AZoW-t7zYg1U-27" edge="1">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint x="370" y="470" as="sourcePoint" />
+            <mxPoint x="370" y="370" as="sourcePoint" />
             <Array as="points">
-              <mxPoint x="225" y="515" />
+              <mxPoint x="225" y="415" />
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="MedgQwC-AZoW-t7zYg1U-27" value="" style="ellipse;whiteSpace=wrap;html=1;align=center;aspect=fixed;fillColor=none;strokeColor=none;resizable=0;perimeter=centerPerimeter;rotatable=0;allowArrows=0;points=[];outlineConnect=1;" vertex="1" parent="1">
-          <mxGeometry x="409" y="510" width="10" height="10" as="geometry" />
+        <mxCell id="MedgQwC-AZoW-t7zYg1U-27" value="" style="ellipse;whiteSpace=wrap;html=1;align=center;aspect=fixed;fillColor=none;strokeColor=none;resizable=0;perimeter=centerPerimeter;rotatable=0;allowArrows=0;points=[];outlineConnect=1;" parent="1" vertex="1">
+          <mxGeometry x="409" y="410" width="10" height="10" as="geometry" />
         </mxCell>
-        <mxCell id="MedgQwC-AZoW-t7zYg1U-28" value="Client" style="shape=umlFrame;whiteSpace=wrap;html=1;pointerEvents=0;" vertex="1" parent="1">
-          <mxGeometry x="-220" width="880" height="910" as="geometry" />
+        <mxCell id="MedgQwC-AZoW-t7zYg1U-28" value="Client" style="shape=umlFrame;whiteSpace=wrap;html=1;pointerEvents=0;" parent="1" vertex="1">
+          <mxGeometry x="-220" y="-220" width="1480" height="1080" as="geometry" />
         </mxCell>
-        <mxCell id="MedgQwC-AZoW-t7zYg1U-31" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;i&gt;&amp;lt;&amp;lt;Controller&amp;gt;&amp;gt;&lt;/i&gt;&lt;br&gt;&lt;b&gt;UserController&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;- _context: DatabaseContext&lt;br&gt;- _authService: AuthorizationService&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ GetUserById():&amp;nbsp;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;returns the User Model for the given UserId&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;br&gt;+ LoginNameAlreadyExists():&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;returns bool if name exists or not&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ UserLoginRequest():&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;logs in User and creates a Token using&amp;nbsp;&lt;span style=&quot;background-color: initial;&quot;&gt;AuthorizationService&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ DeleteUser():&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;deletes the User by given UserId&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ Register():&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;Creates user for database with hashed password&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;" vertex="1" parent="1">
-          <mxGeometry x="60" y="960" width="330" height="470" as="geometry" />
+        <mxCell id="MedgQwC-AZoW-t7zYg1U-31" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;i&gt;&amp;lt;&amp;lt;Controller&amp;gt;&amp;gt;&lt;/i&gt;&lt;br&gt;&lt;b&gt;UserController&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;- _context: DatabaseContext&lt;br&gt;- _authService: AuthorizationService&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ GetUserById():&amp;nbsp;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;returns the User Model for the given UserId&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;br&gt;+ LoginNameAlreadyExists():&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;returns bool if name exists or not&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ UserLoginRequest():&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;logs in User and creates a Token using&amp;nbsp;&lt;span style=&quot;background-color: initial;&quot;&gt;AuthorizationService&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ DeleteUser():&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;deletes the User by given UserId&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ Register():&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;Creates user for database with hashed password&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;" parent="1" vertex="1">
+          <mxGeometry x="60" y="1100" width="330" height="300" as="geometry" />
+        </mxCell>
+        <mxCell id="6aH_EEc_IB8oXvXc5yen-4" value="" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=halfCircle;endFill=0;endSize=6;strokeWidth=1;sketch=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="1" source="6aH_EEc_IB8oXvXc5yen-8">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="220" y="985" as="sourcePoint" />
+            <mxPoint x="225" y="920" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="6aH_EEc_IB8oXvXc5yen-5" value="" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=oval;endFill=0;sketch=0;sourcePerimeterSpacing=0;targetPerimeterSpacing=0;endSize=10;exitX=0.5;exitY=0;exitDx=0;exitDy=0;" edge="1" parent="1" source="6aH_EEc_IB8oXvXc5yen-11">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="180" y="985" as="sourcePoint" />
+            <mxPoint x="225" y="920" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="6aH_EEc_IB8oXvXc5yen-17" value="&lt;b&gt;UserService greift&amp;nbsp;&lt;/b&gt;&lt;div&gt;&lt;b&gt;auf UserController zu&lt;/b&gt;&lt;/div&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="6aH_EEc_IB8oXvXc5yen-5">
+          <mxGeometry x="-0.36" y="2" relative="1" as="geometry">
+            <mxPoint x="77" y="-27" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="6aH_EEc_IB8oXvXc5yen-6" value="" style="ellipse;whiteSpace=wrap;html=1;align=center;aspect=fixed;fillColor=none;strokeColor=none;resizable=0;perimeter=centerPerimeter;rotatable=0;allowArrows=0;points=[];outlineConnect=1;" vertex="1" parent="1">
+          <mxGeometry x="195" y="980" width="10" height="10" as="geometry" />
+        </mxCell>
+        <mxCell id="6aH_EEc_IB8oXvXc5yen-7" value="Server" style="shape=umlFrame;whiteSpace=wrap;html=1;pointerEvents=0;" vertex="1" parent="1">
+          <mxGeometry x="-220" y="990" width="1400" height="910" as="geometry" />
+        </mxCell>
+        <mxCell id="6aH_EEc_IB8oXvXc5yen-8" value="" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="200" y="840" width="50" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="6aH_EEc_IB8oXvXc5yen-11" value="" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="200" y="960" width="50" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="6aH_EEc_IB8oXvXc5yen-13" value="" style="endArrow=classic;html=1;rounded=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1" source="MedgQwC-AZoW-t7zYg1U-31" target="6aH_EEc_IB8oXvXc5yen-11">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="90" y="1030" as="sourcePoint" />
+            <mxPoint x="140" y="980" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="6aH_EEc_IB8oXvXc5yen-14" value="" style="endArrow=classic;html=1;rounded=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="MedgQwC-AZoW-t7zYg1U-14" target="6aH_EEc_IB8oXvXc5yen-8">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="280" y="850" as="sourcePoint" />
+            <mxPoint x="330" y="800" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="6aH_EEc_IB8oXvXc5yen-16" value="&lt;b&gt;Login nutzt&amp;nbsp;&lt;/b&gt;&lt;b style=&quot;background-color: light-dark(#ffffff, var(--ge-dark-color, #121212)); color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;UserService&lt;/b&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="1">
+          <mxGeometry x="450" y="440" as="geometry" />
+        </mxCell>
+        <mxCell id="6aH_EEc_IB8oXvXc5yen-27" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;i&gt;&amp;lt;&amp;lt;Service&amp;gt;&amp;gt;&lt;/i&gt;&lt;br&gt;&lt;b&gt;AuthorizationService&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;- _config: Configuration&lt;br&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ Authorize():&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;compares loginDto password to the hashed password of the user&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;authorizes the user and returns a token if passwords are equal&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;br&gt;+ GenerateJwtToken():&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;creates a jwt token that lasts a certain time and authorizes the user&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="527" y="1135" width="300" height="230" as="geometry" />
+        </mxCell>
+        <mxCell id="6aH_EEc_IB8oXvXc5yen-31" value="" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=halfCircle;endFill=0;endSize=6;strokeWidth=1;sketch=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="1" source="MedgQwC-AZoW-t7zYg1U-31">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="460" y="1235" as="sourcePoint" />
+            <mxPoint x="460" y="1250" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="6aH_EEc_IB8oXvXc5yen-32" value="" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=oval;endFill=0;sketch=0;sourcePerimeterSpacing=0;targetPerimeterSpacing=0;endSize=10;exitX=0;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="1" source="6aH_EEc_IB8oXvXc5yen-27">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="420" y="1235" as="sourcePoint" />
+            <mxPoint x="460" y="1250" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="6aH_EEc_IB8oXvXc5yen-33" value="" style="ellipse;whiteSpace=wrap;html=1;align=center;aspect=fixed;fillColor=none;strokeColor=none;resizable=0;perimeter=centerPerimeter;rotatable=0;allowArrows=0;points=[];outlineConnect=1;" vertex="1" parent="1">
+          <mxGeometry x="435" y="1230" width="10" height="10" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
