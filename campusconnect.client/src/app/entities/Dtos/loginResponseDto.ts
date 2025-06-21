@@ -1,4 +1,4 @@
-import { UserRoleEntity } from "./userRoleEntity";
+import { UserRoleEntity } from "../userRoleEntity";
 
 export class LoginResponseDto {
     constructor(
