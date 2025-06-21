@@ -13,7 +13,7 @@ using Microsoft.Extensions.Logging;
 namespace CampusConnect.Server.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    //[Route("[controller]")]
     public class UserController : ControllerBase
     {
         private readonly CampusConnectContext _context;
@@ -29,14 +29,14 @@ namespace CampusConnect.Server.Controllers
             _logger = logger;
         }
 
-        [HttpGet("{userId}")]
+        [HttpGet("users/get/{userId}")]
         public async Task<ActionResult<UserModel>> GetUserById(int userId)
         {
             var user = await _context.Users.FirstOrDefaultAsync(u => u.UserId == userId);
             return user is not null ? Ok(user) : NotFound();
         }
 
-        [HttpGet("exists/{loginName}")]
+        [HttpGet("users/exists/{loginName}")]
         public async Task<ActionResult<bool>> LoginNameAlreadyExists(string loginName)
         {
             var user = await _context.Users.FirstOrDefaultAsync(u => u.LoginName == loginName);
@@ -71,7 +71,7 @@ namespace CampusConnect.Server.Controllers
         }
 
 
-        [HttpDelete("{userId}")]
+        [HttpDelete("users/delete/{userId}")]
         public async Task<IActionResult> DeleteUser(int userId)
         {
             var user = await _context.Users.FirstOrDefaultAsync(u => u.UserId == userId);

@@ -1,25 +1,30 @@
 ﻿using CampusConnect.Server.Data;
 using CampusConnect.Server.Models;
+using CampusConnect.Server.Models.Dtos;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
 namespace CampusConnect.Server.Controllers
 {
-    [Route("[controller]")]
+    //[Route("[controller]")]
     [ApiController]
+    //TODO: Logging
     public class DegreeController : ControllerBase
     {
         private readonly CampusConnectContext _context;
+        private readonly ILogger<ModuleController> _logger;
 
-        public DegreeController(CampusConnectContext context)
+        public DegreeController(CampusConnectContext context, ILogger<ModuleController> logger)
         {
             _context = context;
+            _logger = logger;
         }
 
-        [HttpGet("all")]
+        [HttpGet("degrees/get/all")]
         public async Task<ActionResult<IEnumerable<Degree>>> GetDegrees()
         {
             var result = await _context.Degrees
@@ -30,7 +35,7 @@ namespace CampusConnect.Server.Controllers
             return result is not null ? Ok(result) : NotFound();
         }
 
-        [HttpGet("{degreeId}")]
+        [HttpGet("degrees/get/{degreeId}")]
         public async Task<ActionResult<Degree>> GetDegreeById(int degreeId)
         {
             var degree = await _context.Degrees
@@ -42,14 +47,15 @@ namespace CampusConnect.Server.Controllers
             return degree is not null ? degree : NotFound();
         }
 
-        [HttpPost("addDegree")]
-        public async Task<ActionResult<Degree>> PostNewDegree(Degree degree)
+        [HttpPost("degrees/postDegree")]
+        public async Task<ActionResult<Degree>> PostNewDegree(DegreeDto degreeDto)
         {
-            if (degree is null)
+            if (degreeDto is null)
             {
                 return BadRequest();
             }
 
+            var degree = ConvertDegreeDto(degreeDto);
             _context.Degrees.Add(degree);
 
             try
@@ -63,7 +69,7 @@ namespace CampusConnect.Server.Controllers
             }
         }
 
-        [HttpPut("update/{degreeId}")]
+        [HttpPut("degrees/edit/{degreeId}")]
         public async Task<ActionResult<Degree>> UpdateDegree(int degreeId, Degree degree)
         {
             if (degreeId != degree.DegreeId)
@@ -92,7 +98,7 @@ namespace CampusConnect.Server.Controllers
             return Ok(degree);
         }
 
-        [HttpDelete("delete/{degreeId}")]
+        [HttpDelete("degrees/delete/{degreeId}")]
         public async Task<ActionResult> DeleteDegree(int degreeId)
         {
             var degree = await _context.Degrees.FirstOrDefaultAsync(degree => degree.DegreeId == degreeId);
@@ -111,6 +117,13 @@ namespace CampusConnect.Server.Controllers
         private bool DegreeExists(int degreeId)
         {
             return _context.Degrees.Any(degree => degree.DegreeId == degreeId);
+        }
+
+        private Degree ConvertDegreeDto(DegreeDto degreeDto)
+        {
+            var faculty = _context.Faculties.FirstOrDefault(faculty => faculty.FacultyId == degreeDto.FacultyId);
+
+            return new Degree(degreeDto.Name, faculty);
         }
     }
 }
