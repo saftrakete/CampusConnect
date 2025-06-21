@@ -3,8 +3,8 @@ import { Injectable } from '@angular/core';
 import { UserEntity } from '../entities/userEntity';
 import { baseApiRoute } from '../app-routing.module';
 import { Observable } from 'rxjs';
-import { LoginDto } from '../entities/loginDto';
-import { LoginResponseDto } from '../entities/loginResponseDto';
+import { LoginDto } from '../entities/Dtos/loginDto';
+import { LoginResponseDto } from '../entities/Dtos/loginResponseDto';
 
 @Injectable({
   providedIn: 'root'

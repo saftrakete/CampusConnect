@@ -13,6 +13,7 @@ import { ForbiddenComponent } from './forbidden/forbidden.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 
 export const baseApiRoute = 'https://localhost:7109/api/';
+//export const baseApiRoute = "/api/"
 
 const routes: Routes = [
     {

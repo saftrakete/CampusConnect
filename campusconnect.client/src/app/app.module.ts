@@ -10,6 +10,7 @@ import {MatMenuModule} from '@angular/material/menu';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatDividerModule} from '@angular/material/divider';
+import {MatTabsModule} from '@angular/material/tabs';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -29,6 +30,9 @@ import { AdminPanelComponent } from './admin-panel/admin-panel.component';
 import { AuthGuardTestComponent } from './auth-guard-test/auth-guard-test.component';
 import { ForbiddenComponent } from './forbidden/forbidden.component';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { FacultyTableComponent } from './faculty-editor/faculty-table/faculty-table.component';
+import { FacultyEditorComponent } from './faculty-editor/faculty-editor.component';
+import { AddFacultyDialogComponent } from './faculty-editor/add-faculty-dialog/add-faculty-dialog.component';
 
 
 @NgModule({
@@ -47,7 +51,10 @@ import { NotFoundComponent } from './not-found/not-found.component';
     AdminPanelComponent,
     AuthGuardTestComponent,
     ForbiddenComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    FacultyTableComponent,
+    FacultyEditorComponent,
+    AddFacultyDialogComponent
   ],
   imports: [
     BrowserModule, HttpClientModule,
@@ -60,7 +67,8 @@ import { NotFoundComponent } from './not-found/not-found.component';
     MatMenuModule,
     MatDialogModule,
     MatTooltipModule,
-    MatDividerModule
+    MatDividerModule,
+    MatTabsModule
   ],
   providers: [
     provideAnimationsAsync(),

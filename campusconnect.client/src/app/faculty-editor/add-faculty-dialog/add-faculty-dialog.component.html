@@ -1,0 +1,19 @@
+<h2 mat-dialog-title>Fakultät hinzufügen</h2>
+
+<mat-dialog-content>
+    <form [formGroup]="facultyForm">
+        <mat-form-field>
+            <mat-label>Name</mat-label>
+            <input
+                matInput
+                formControlName="facultyName"
+                placeholder="Fakultät"
+                required>
+        </mat-form-field>
+    </form>
+</mat-dialog-content>
+    <button mat-raised-button (click)="onCancelClick()">Abbrechen</button>
+    <button mat-raised-button color="primary" (click)="onDoneClick()">Hinzufügen</button>
+<mat-dialog-actions>
+
+</mat-dialog-actions>
