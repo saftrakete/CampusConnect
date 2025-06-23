@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ChatService } from '../services/chat.service';
 import { AbstractControl, FormBuilder, FormGroup, ValidatorFn, Validators } from '@angular/forms';
 import { MessageEntity } from '../entities/message-entity';
+import { MatCardModule } from '@angular/material/card';
 
 @Component({
   selector: 'app-chat',
