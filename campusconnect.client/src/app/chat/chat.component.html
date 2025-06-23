@@ -21,4 +21,23 @@
             (click)="chatClick()">
         Senden
     </button>
+    <button mat-raised-button
+            color="primary"
+            (click)="clickFetchMessages()">
+        Empfangen
+    </button>
+
+    <!-- Displayed Messages -->
+    <mat-card class="messages-container">
+        <mat-card-title>Empfangene Nachrichten</mat-card-title>
+        <mat-card-content>
+            <mat-list>
+                <mat-list-item *ngFor="let message of fetchedMessages">
+                    {{ 'user' + message.userId + ': ' + message.content + '' }}
+                </mat-list-item>
+            </mat-list>
+        </mat-card-content>
+    </mat-card>
+
 </div>
+
