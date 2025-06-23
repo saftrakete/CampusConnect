@@ -9,7 +9,9 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatTooltipModule} from '@angular/material/tooltip';
-import {MatDividerModule} from '@angular/material/divider';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatCardModule } from '@angular/material/card';
+import { MatListModule } from '@angular/material/list';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -53,7 +55,9 @@ import { ChatComponent } from './chat/chat.component';
     MatMenuModule,
     MatDialogModule,
     MatTooltipModule,
-    MatDividerModule
+    MatDividerModule,
+    MatCardModule,
+    MatListModule
   ],
   providers: [
     provideAnimationsAsync()
