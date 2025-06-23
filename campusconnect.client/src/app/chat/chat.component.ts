@@ -17,6 +17,8 @@ export class ChatComponent implements OnInit {
 
   private readonly emptyString: string = '';
 
+    public fetchedMessages: MessageEntity[] = [];
+
   public ngOnInit(): void {
       this.chatForm = this.formBuilder.group({
          chatMessage: [this.emptyString, Validators.required]
@@ -50,26 +52,34 @@ export class ChatComponent implements OnInit {
       this.chatForm.reset();
   }
 
-    public fetchMessage(): void {
-     var index = 0;
-     var messages: MessageEntity[] = [];
-     var condition = true;
-     while (condition) {
-         this.chatService.getMessageById(index).subscribe(
-             response => {
-                 console.log(response);
-                 messages.push(response);
-             },
-             error => {
-                 condition = false;
-             }
-         )
-         index++;
+    public fetchMessages(): void {
+        let index = 1;
+        this.fetchedMessages = []; // reset list before new fetch
+
+        const fetchNext = () => {
+            this.chatService.getMessageById(index).subscribe({
+                next: (response) => {
+                    this.fetchedMessages.push(response);
+                    index++;
+                    fetchNext();
+                },
+                error: (error) => {
+                    if (error.status === 404) {
+                        console.log('No more messages found.');
+                    } else {
+                        console.error('Error fetching message:', error);
+                    }
+                }
+            });
+        };
+
+        fetchNext();
     }
-}
+
+
 
     public clickFetchMessages(): void {
-        this.fetchMessage();
+        this.fetchMessages();
     }
 
 }
