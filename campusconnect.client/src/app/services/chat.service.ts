@@ -23,6 +23,7 @@ export class ChatService {
     }
 
     public getMessageById(messageId: number): Observable<MessageEntity> {
-        return this.httpClient.get<MessageEntity>("${baseApiRoute}chat/get/${messageId}");
+        return this.httpClient.get<MessageEntity>(`${baseApiRoute}chat/get?messageId=${messageId}`);
     }
+
 }
