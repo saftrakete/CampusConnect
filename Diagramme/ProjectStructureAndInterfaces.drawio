@@ -1,11 +1,19 @@
-<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36 OPR/119.0.0.0" version="27.1.5">
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36 OPR/119.0.0.0" version="27.1.6">
   <diagram name="Seite-1" id="PKEbjvstEnVtREmcZfOJ">
-    <mxGraphModel dx="2598" dy="1986" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="3687" dy="2803" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
+        <mxCell id="MMCRosqPIG5ZqvOcN54v-1" value="&lt;p style=&quot;margin:0px;margin-top:6px;text-align:center;&quot;&gt;&lt;b&gt;&lt;font style=&quot;font-size: 30px;&quot;&gt;App Component&lt;/font&gt;&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:8px;&quot;&gt;&lt;br&gt;&lt;/p&gt;" style="align=left;overflow=fill;html=1;dropTarget=0;whiteSpace=wrap;" parent="1" vertex="1">
+          <mxGeometry x="-150" y="-600" width="1780" height="1410" as="geometry" />
+        </mxCell>
+        <mxCell id="MMCRosqPIG5ZqvOcN54v-2" value="" style="shape=component;jettyWidth=8;jettyHeight=4;" parent="MMCRosqPIG5ZqvOcN54v-1" vertex="1">
+          <mxGeometry x="1" width="20" height="20" relative="1" as="geometry">
+            <mxPoint x="-24" y="4" as="offset" />
+          </mxGeometry>
+        </mxCell>
         <mxCell id="MedgQwC-AZoW-t7zYg1U-3" value="&lt;b&gt;User&lt;/b&gt;" style="shape=umlActor;verticalLabelPosition=top;verticalAlign=top;html=1;" parent="1" vertex="1">
-          <mxGeometry x="399" y="-160" width="30" height="60" as="geometry" />
+          <mxGeometry x="399" y="-130" width="30" height="60" as="geometry" />
         </mxCell>
         <mxCell id="MedgQwC-AZoW-t7zYg1U-4" value="&lt;b&gt;Uses&lt;/b&gt;" style="endArrow=open;endSize=12;dashed=1;html=1;rounded=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;exitX=0.54;exitY=0.897;exitDx=0;exitDy=0;exitPerimeter=0;" parent="1" source="MedgQwC-AZoW-t7zYg1U-3" target="MedgQwC-AZoW-t7zYg1U-6" edge="1">
           <mxGeometry width="160" relative="1" as="geometry">
@@ -80,7 +88,7 @@
           <mxGeometry x="409" y="410" width="10" height="10" as="geometry" />
         </mxCell>
         <mxCell id="MedgQwC-AZoW-t7zYg1U-28" value="Client" style="shape=umlFrame;whiteSpace=wrap;html=1;pointerEvents=0;" parent="1" vertex="1">
-          <mxGeometry x="-220" y="-220" width="1850" height="1080" as="geometry" />
+          <mxGeometry x="-220" y="-700" width="1920" height="1560" as="geometry" />
         </mxCell>
         <mxCell id="MedgQwC-AZoW-t7zYg1U-31" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;i&gt;&amp;lt;&amp;lt;Controller&amp;gt;&amp;gt;&lt;/i&gt;&lt;br&gt;&lt;b&gt;UserController&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;- _context: DatabaseContext&lt;br&gt;- _authService: AuthorizationService&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ GetUserById():&amp;nbsp;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;returns the User Model for the given UserId&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;br&gt;+ LoginNameAlreadyExists():&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;returns bool if name exists or not&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ UserLoginRequest():&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;logs in User and creates a Token using&amp;nbsp;&lt;span style=&quot;background-color: initial;&quot;&gt;AuthorizationService&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ DeleteUser():&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;deletes the User by given UserId&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ Register():&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;Creates user for database with hashed password&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;" parent="1" vertex="1">
           <mxGeometry x="60" y="1100" width="330" height="300" as="geometry" />
@@ -106,7 +114,7 @@
           <mxGeometry x="195" y="980" width="10" height="10" as="geometry" />
         </mxCell>
         <mxCell id="6aH_EEc_IB8oXvXc5yen-7" value="Server" style="shape=umlFrame;whiteSpace=wrap;html=1;pointerEvents=0;" parent="1" vertex="1">
-          <mxGeometry x="-220" y="990" width="1400" height="910" as="geometry" />
+          <mxGeometry x="-220" y="990" width="1150" height="1220" as="geometry" />
         </mxCell>
         <mxCell id="6aH_EEc_IB8oXvXc5yen-8" value="" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="200" y="840" width="50" height="50" as="geometry" />
@@ -257,15 +265,15 @@
             <mxPoint x="900" y="46" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="l6SL28AVorYrFL5aLLgn-1" value="&lt;p style=&quot;margin:0px;margin-top:6px;text-align:center;&quot;&gt;&lt;b&gt;SettingsSidebar Component&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:8px;&quot;&gt;&lt;br&gt;&lt;/p&gt;" style="align=left;overflow=fill;html=1;dropTarget=0;whiteSpace=wrap;" vertex="1" parent="1">
+        <mxCell id="l6SL28AVorYrFL5aLLgn-1" value="&lt;p style=&quot;margin:0px;margin-top:6px;text-align:center;&quot;&gt;&lt;b&gt;SettingsSidebar Component&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:8px;&quot;&gt;&lt;br&gt;&lt;/p&gt;" style="align=left;overflow=fill;html=1;dropTarget=0;whiteSpace=wrap;" parent="1" vertex="1">
           <mxGeometry x="1310" y="347.5" width="260" height="75" as="geometry" />
         </mxCell>
-        <mxCell id="l6SL28AVorYrFL5aLLgn-2" value="" style="shape=component;jettyWidth=8;jettyHeight=4;" vertex="1" parent="l6SL28AVorYrFL5aLLgn-1">
+        <mxCell id="l6SL28AVorYrFL5aLLgn-2" value="" style="shape=component;jettyWidth=8;jettyHeight=4;" parent="l6SL28AVorYrFL5aLLgn-1" vertex="1">
           <mxGeometry x="1" width="20" height="20" relative="1" as="geometry">
             <mxPoint x="-24" y="4" as="offset" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="l6SL28AVorYrFL5aLLgn-6" value="" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=halfCircle;endFill=0;endSize=6;strokeWidth=1;sketch=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=1;entryY=1.443;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" target="l6SL28AVorYrFL5aLLgn-8" parent="1" source="6aH_EEc_IB8oXvXc5yen-48">
+        <mxCell id="l6SL28AVorYrFL5aLLgn-6" value="" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=halfCircle;endFill=0;endSize=6;strokeWidth=1;sketch=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=1;entryY=1.443;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" source="6aH_EEc_IB8oXvXc5yen-48" target="l6SL28AVorYrFL5aLLgn-8" edge="1">
           <mxGeometry relative="1" as="geometry">
             <mxPoint x="1330" y="215" as="sourcePoint" />
             <Array as="points">
@@ -274,20 +282,20 @@
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="l6SL28AVorYrFL5aLLgn-7" value="" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=oval;endFill=0;sketch=0;sourcePerimeterSpacing=0;targetPerimeterSpacing=0;endSize=10;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0.93;entryY=0.609;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" target="l6SL28AVorYrFL5aLLgn-8" parent="1" source="l6SL28AVorYrFL5aLLgn-1">
+        <mxCell id="l6SL28AVorYrFL5aLLgn-7" value="" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=oval;endFill=0;sketch=0;sourcePerimeterSpacing=0;targetPerimeterSpacing=0;endSize=10;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0.93;entryY=0.609;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" source="l6SL28AVorYrFL5aLLgn-1" target="l6SL28AVorYrFL5aLLgn-8" edge="1">
           <mxGeometry relative="1" as="geometry">
             <mxPoint x="1290" y="215" as="sourcePoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="l6SL28AVorYrFL5aLLgn-9" value="&lt;b&gt;Nutzt&lt;/b&gt;&lt;div&gt;&lt;b&gt;Sidebar&lt;/b&gt;&lt;/div&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="l6SL28AVorYrFL5aLLgn-7">
+        <mxCell id="l6SL28AVorYrFL5aLLgn-9" value="&lt;b&gt;Nutzt&lt;/b&gt;&lt;div&gt;&lt;b&gt;Sidebar&lt;/b&gt;&lt;/div&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="l6SL28AVorYrFL5aLLgn-7" vertex="1" connectable="0">
           <mxGeometry x="-0.0583" relative="1" as="geometry">
             <mxPoint x="-4" y="25" as="offset" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="l6SL28AVorYrFL5aLLgn-8" value="" style="ellipse;whiteSpace=wrap;html=1;align=center;aspect=fixed;fillColor=none;strokeColor=none;resizable=0;perimeter=centerPerimeter;rotatable=0;allowArrows=0;points=[];outlineConnect=1;" vertex="1" parent="1">
+        <mxCell id="l6SL28AVorYrFL5aLLgn-8" value="" style="ellipse;whiteSpace=wrap;html=1;align=center;aspect=fixed;fillColor=none;strokeColor=none;resizable=0;perimeter=centerPerimeter;rotatable=0;allowArrows=0;points=[];outlineConnect=1;" parent="1" vertex="1">
           <mxGeometry x="1240.5" y="380" width="10" height="10" as="geometry" />
         </mxCell>
-        <mxCell id="l6SL28AVorYrFL5aLLgn-10" value="" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=halfCircle;endFill=0;endSize=6;strokeWidth=1;sketch=0;entryX=0.654;entryY=1.307;entryDx=0;entryDy=0;entryPerimeter=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;" edge="1" target="l6SL28AVorYrFL5aLLgn-8" parent="1" source="6aH_EEc_IB8oXvXc5yen-46">
+        <mxCell id="l6SL28AVorYrFL5aLLgn-10" value="" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=halfCircle;endFill=0;endSize=6;strokeWidth=1;sketch=0;entryX=0.654;entryY=1.307;entryDx=0;entryDy=0;entryPerimeter=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;" parent="1" source="6aH_EEc_IB8oXvXc5yen-46" target="l6SL28AVorYrFL5aLLgn-8" edge="1">
           <mxGeometry relative="1" as="geometry">
             <mxPoint x="1340" y="580" as="sourcePoint" />
             <mxPoint x="1325" y="590" as="targetPoint" />
@@ -297,11 +305,98 @@
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="l6SL28AVorYrFL5aLLgn-18" value="" style="image;aspect=fixed;perimeter=ellipsePerimeter;html=1;align=center;shadow=0;dashed=0;spacingTop=3;image=img/lib/active_directory/database.svg;" vertex="1" parent="1">
-          <mxGeometry x="399" y="1510" width="81.08" height="60" as="geometry" />
+        <mxCell id="l6SL28AVorYrFL5aLLgn-18" value="&lt;b&gt;Datenbanken&lt;/b&gt;" style="image;aspect=fixed;perimeter=ellipsePerimeter;html=1;align=center;shadow=0;dashed=0;spacingTop=3;image=img/lib/active_directory/database.svg;" parent="1" vertex="1">
+          <mxGeometry x="429" y="1890" width="81.08" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="l6SL28AVorYrFL5aLLgn-19" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;i&gt;&amp;lt;&amp;lt;Service&amp;gt;&amp;gt;&lt;/i&gt;&lt;br&gt;&lt;b&gt;InitDegreeService&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;- _config: Configuration&lt;br&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ Authorize():&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;compares loginDto password to the hashed password of the user&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;authorizes the user and returns a token if passwords are equal&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;br&gt;+ GenerateJwtToken():&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;creates a jwt token that lasts a certain time and authorizes the user&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;" vertex="1" parent="1">
-          <mxGeometry x="-160" y="1630" width="300" height="230" as="geometry" />
+        <mxCell id="l6SL28AVorYrFL5aLLgn-19" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;i&gt;&amp;lt;&amp;lt;Service&amp;gt;&amp;gt;&lt;/i&gt;&lt;br&gt;&lt;b&gt;InitDegreeService&lt;/b&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;[Gets called at every application start]&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;- degrees: []&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;- _context: DatabaseContext&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;- moduleIds: []&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ CreateDegreeEntities():&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;Creates two initial degrees Informatik and Ingenieurinformatik&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;br&gt;+ DeleteTableContent():&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;Used for cleaning up the table whenever changes where made in order to do a fresh start&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ FillInDegrees():&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;When empty fills in the degrees from the list above&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ CheckIfEmpty():&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;Checks if tables was already filled&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;" parent="1" vertex="1">
+          <mxGeometry x="-170" y="1430" width="300" height="320" as="geometry" />
+        </mxCell>
+        <mxCell id="l6SL28AVorYrFL5aLLgn-20" value="" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=halfCircle;endFill=0;endSize=6;strokeWidth=1;sketch=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.826;entryY=0.66;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" source="l6SL28AVorYrFL5aLLgn-19" target="l6SL28AVorYrFL5aLLgn-22" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="400" y="1525" as="sourcePoint" />
+            <mxPoint x="460" y="1745" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="-20" y="1845" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="l6SL28AVorYrFL5aLLgn-21" value="" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=oval;endFill=0;sketch=0;sourcePerimeterSpacing=0;targetPerimeterSpacing=0;endSize=10;exitX=0.5;exitY=0;exitDx=0;exitDy=0;" parent="1" source="l6SL28AVorYrFL5aLLgn-18" target="l6SL28AVorYrFL5aLLgn-22" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="360" y="1525" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="l6SL28AVorYrFL5aLLgn-22" value="" style="ellipse;whiteSpace=wrap;html=1;align=center;aspect=fixed;fillColor=none;strokeColor=none;resizable=0;perimeter=centerPerimeter;rotatable=0;allowArrows=0;points=[];outlineConnect=1;" parent="1" vertex="1">
+          <mxGeometry x="464.54" y="1840" width="10" height="10" as="geometry" />
+        </mxCell>
+        <mxCell id="l6SL28AVorYrFL5aLLgn-23" value="" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=halfCircle;endFill=0;endSize=6;strokeWidth=1;sketch=0;fontSize=12;curved=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.666;entryY=0.1;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" source="MedgQwC-AZoW-t7zYg1U-31" target="l6SL28AVorYrFL5aLLgn-22" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="325" y="1525" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="l6SL28AVorYrFL5aLLgn-28" value="&lt;b&gt;Geift auf&lt;/b&gt;&lt;div&gt;&lt;b&gt;Datenbank zu&lt;/b&gt;&lt;/div&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="l6SL28AVorYrFL5aLLgn-23" vertex="1" connectable="0">
+          <mxGeometry x="0.878" y="-1" relative="1" as="geometry">
+            <mxPoint x="11" y="51" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="l6SL28AVorYrFL5aLLgn-24" value="" style="ellipse;whiteSpace=wrap;html=1;align=center;aspect=fixed;fillColor=none;strokeColor=none;resizable=0;perimeter=centerPerimeter;rotatable=0;allowArrows=0;points=[];outlineConnect=1;" parent="1" vertex="1">
+          <mxGeometry x="300" y="1520" width="10" height="10" as="geometry" />
+        </mxCell>
+        <mxCell id="l6SL28AVorYrFL5aLLgn-26" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;i&gt;&amp;lt;&amp;lt;Service&amp;gt;&amp;gt;&lt;/i&gt;&lt;br&gt;&lt;b&gt;InitFacultyService&lt;/b&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;[Gets called at every application start]&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;- faculties: [] =&amp;gt; &quot;&lt;i&gt;Faculty of Informatics&quot;&lt;/i&gt;&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;- _context: DatabaseContext&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;+ FillInFaculties():&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;When empty fills in the faculties from the list above&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ CheckIfEmpty():&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;Checks if tables was already filled&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;" parent="1" vertex="1">
+          <mxGeometry x="-170" y="1940" width="300" height="190" as="geometry" />
+        </mxCell>
+        <mxCell id="l6SL28AVorYrFL5aLLgn-27" value="" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=halfCircle;endFill=0;endSize=6;strokeWidth=1;sketch=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=-0.287;entryY=1.067;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" source="l6SL28AVorYrFL5aLLgn-26" target="l6SL28AVorYrFL5aLLgn-22" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="195" y="1900" as="sourcePoint" />
+            <mxPoint x="685" y="1995" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="-20" y="1845" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="l6SL28AVorYrFL5aLLgn-29" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;i&gt;&amp;lt;&amp;lt;Service&amp;gt;&amp;gt;&lt;/i&gt;&lt;br&gt;&lt;b&gt;InitModuleService&lt;/b&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;[Gets called at every application start]&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;- modules: []&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;- _context: DatabaseContext&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ CreateModuleEntities():&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;Creates several initial modules&amp;nbsp;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;br&gt;+ DeleteTableContent():&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;Used for cleaning up the table whenever changes where made in order to do a fresh start&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ FillInModules():&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;When empty fills in the modules from the list above&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ CheckIfEmpty():&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;Checks if tables was already filled&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;" parent="1" vertex="1">
+          <mxGeometry x="527" y="1430" width="300" height="320" as="geometry" />
+        </mxCell>
+        <mxCell id="MyrRWps-YWJOhA1zvILf-1" value="" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=halfCircle;endFill=0;endSize=6;strokeWidth=1;sketch=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.779;entryY=0.433;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" source="l6SL28AVorYrFL5aLLgn-29" target="l6SL28AVorYrFL5aLLgn-22" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="710" y="1846" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="MyrRWps-YWJOhA1zvILf-3" value="" style="ellipse;whiteSpace=wrap;html=1;align=center;aspect=fixed;fillColor=none;strokeColor=none;resizable=0;perimeter=centerPerimeter;rotatable=0;allowArrows=0;points=[];outlineConnect=1;" parent="1" vertex="1">
+          <mxGeometry x="685" y="1841" width="10" height="10" as="geometry" />
+        </mxCell>
+        <mxCell id="MMCRosqPIG5ZqvOcN54v-3" value="&lt;font style=&quot;font-size: 16px;&quot;&gt;«Component»&lt;br&gt;&lt;b style=&quot;&quot;&gt;Home Component&lt;/b&gt;&lt;/font&gt;" style="html=1;dropTarget=0;whiteSpace=wrap;" parent="1" vertex="1">
+          <mxGeometry x="645" y="-160" width="265" height="140" as="geometry" />
+        </mxCell>
+        <mxCell id="MMCRosqPIG5ZqvOcN54v-4" value="" style="shape=module;jettyWidth=8;jettyHeight=4;" parent="MMCRosqPIG5ZqvOcN54v-3" vertex="1">
+          <mxGeometry x="1" width="20" height="20" relative="1" as="geometry">
+            <mxPoint x="-27" y="7" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="MMCRosqPIG5ZqvOcN54v-5" value="&lt;font style=&quot;font-size: 16px;&quot;&gt;«Component»&lt;br&gt;&lt;b style=&quot;&quot;&gt;Header Component&lt;/b&gt;&lt;/font&gt;" style="html=1;dropTarget=0;whiteSpace=wrap;" parent="1" vertex="1">
+          <mxGeometry x="940" y="-160" width="265" height="140" as="geometry" />
+        </mxCell>
+        <mxCell id="MMCRosqPIG5ZqvOcN54v-6" value="" style="shape=module;jettyWidth=8;jettyHeight=4;" parent="MMCRosqPIG5ZqvOcN54v-5" vertex="1">
+          <mxGeometry x="1" width="20" height="20" relative="1" as="geometry">
+            <mxPoint x="-27" y="7" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="MMCRosqPIG5ZqvOcN54v-11" value="&lt;p style=&quot;margin:0px;margin-top:6px;text-align:center;&quot;&gt;&lt;b&gt;AdminPanel Component&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:8px;&quot;&gt;Funktion muss noch reingemerged werden&lt;/p&gt;" style="align=left;overflow=fill;html=1;dropTarget=0;whiteSpace=wrap;" parent="1" vertex="1">
+          <mxGeometry x="-120" y="-450" width="260" height="130" as="geometry" />
+        </mxCell>
+        <mxCell id="MMCRosqPIG5ZqvOcN54v-12" value="" style="shape=component;jettyWidth=8;jettyHeight=4;" parent="MMCRosqPIG5ZqvOcN54v-11" vertex="1">
+          <mxGeometry x="1" width="20" height="20" relative="1" as="geometry">
+            <mxPoint x="-24" y="4" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="yImyR9YwTti_EocatCj1-1" value="&lt;b&gt;Admin&lt;/b&gt;" style="shape=umlActor;verticalLabelPosition=top;verticalAlign=top;html=1;" vertex="1" parent="1">
+          <mxGeometry x="399" y="-415" width="30" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="yImyR9YwTti_EocatCj1-6" value="&lt;b&gt;Is allowed to use&lt;/b&gt;" style="endArrow=open;endSize=12;dashed=1;html=1;rounded=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;exitX=0;exitY=0.3333333333333333;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1" source="yImyR9YwTti_EocatCj1-1" target="MMCRosqPIG5ZqvOcN54v-11">
+          <mxGeometry x="-0.0839" y="-10" width="160" relative="1" as="geometry">
+            <mxPoint x="379" y="-370" as="sourcePoint" />
+            <mxPoint x="120" y="-260" as="targetPoint" />
+            <mxPoint as="offset" />
+          </mxGeometry>
         </mxCell>
       </root>
     </mxGraphModel>
