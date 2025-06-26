@@ -1,0 +1,37 @@
+.two-factor-container {
+  max-width: 400px;
+  margin: 50px auto;
+  padding: 20px;
+  text-align: center;
+}
+
+.code-input {
+  font-size: 24px;
+  text-align: center;
+  letter-spacing: 8px;
+  width: 200px;
+  padding: 10px;
+  margin: 20px 0;
+  border: 2px solid #ddd;
+  border-radius: 5px;
+}
+
+.error-message {
+  color: red;
+  margin: 10px 0;
+}
+
+button {
+  padding: 10px 30px;
+  font-size: 16px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}

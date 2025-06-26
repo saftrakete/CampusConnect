@@ -21,6 +21,14 @@ export class UserService {
         return this.httpClient.post<LoginResponseDto>(baseApiRoute + 'user/login', loginDto);
     }
 
+    public verifyTwoFactor(loginName: string, code: string, tempToken: string): Observable<LoginResponseDto> {
+        return this.httpClient.post<LoginResponseDto>(baseApiRoute + 'user/2fa/login', {
+            loginName,
+            code,
+            tempToken
+        });
+    }
+
     public checkIfLoginNameExists(loginName: string): Observable<boolean> {
         return this.httpClient.get<boolean>(baseApiRoute + "user/exists/" + loginName);
     }

@@ -27,6 +27,8 @@ import { EditUsernameFormComponent } from './edit-username-form/edit-username-fo
 import { JwtInterceptor } from './interceptors/JwtInterceptor';
 import { AdminPanelComponent } from './admin-panel/admin-panel.component';
 import { AuthGuardTestComponent } from './auth-guard-test/auth-guard-test.component';
+import { TwoFactorComponent } from './two-factor/two-factor.component';
+import { TwoFactorSetupComponent } from './two-factor/two-factor-setup.component';
 
 
 @NgModule({
@@ -43,7 +45,9 @@ import { AuthGuardTestComponent } from './auth-guard-test/auth-guard-test.compon
     EmailSettingsComponent,
     EditUsernameFormComponent,
     AdminPanelComponent,
-    AuthGuardTestComponent
+    AuthGuardTestComponent,
+    TwoFactorComponent,
+    TwoFactorSetupComponent
   ],
   imports: [
     BrowserModule, HttpClientModule,

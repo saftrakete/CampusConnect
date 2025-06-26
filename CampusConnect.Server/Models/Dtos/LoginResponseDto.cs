@@ -5,5 +5,7 @@
         public string Token { get; set; }
         public string Username { get; set; }
         public UserRole Role { get; set; }
+        public bool RequiresTwoFactor { get; set; } = false;
+        public string? TempToken { get; set; }
     }
 }

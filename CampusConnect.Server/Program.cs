@@ -26,7 +26,8 @@ builder.Services.AddTransient<InitModuleTable>();
 builder.Services.AddTransient<InitFacultyTable>();
 builder.Services.AddTransient<InitDegreeTable>();
 builder.Services.AddTransient<InitUserRolesService>();
-builder.Services.AddTransient<IAuthorizationService, AuthorizationService>();
+builder.Services.AddTransient<CampusConnect.Server.Interfaces.IAuthorizationService, AuthorizationService>();
+builder.Services.AddTransient<TwoFactorService>();
 
 builder.Services.AddDbContext<CampusConnectContext>(options =>
 {

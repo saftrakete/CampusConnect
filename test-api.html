@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Test 2FA API</title>
+</head>
+<body>
+    <h1>Test 2FA Setup</h1>
+    <input type="text" id="loginName" placeholder="Enter email" />
+    <button onclick="test2FA()">Test 2FA Setup</button>
+    <div id="result"></div>
+
+    <script>
+        async function test2FA() {
+            const loginName = document.getElementById('loginName').value;
+            if (!loginName) {
+                alert('Please enter an email');
+                return;
+            }
+
+            try {
+                const response = await fetch('https://localhost:7109/user/2fa/setup', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ loginName: loginName })
+                });
+
+                if (response.ok) {
+                    const data = await response.json();
+                    document.getElementById('result').innerHTML = 
+                        `<h3>Success!</h3>
+                         <p>Secret: ${data.manualEntryKey}</p>
+                         <img src="${data.qrCodeUri}" alt="QR Code" />`;
+                } else {
+                    const error = await response.text();
+                    document.getElementById('result').innerHTML = `<p style="color:red">Error: ${error}</p>`;
+                }
+            } catch (error) {
+                document.getElementById('result').innerHTML = `<p style="color:red">Connection Error: ${error.message}</p>`;
+            }
+        }
+    </script>
+</body>
+</html>

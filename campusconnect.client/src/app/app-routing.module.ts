@@ -9,6 +9,8 @@ import { AdminPanelComponent } from './admin-panel/admin-panel.component';
 import { AdminGuard } from './routeguards/AdminGuard';
 import { AuthGuardTestComponent } from './auth-guard-test/auth-guard-test.component';
 import { AuthGuard } from './routeguards/AuthGuard';
+import { TwoFactorComponent } from './two-factor/two-factor.component';
+import { TwoFactorSetupComponent } from './two-factor/two-factor-setup.component';
 
 export const baseApiRoute = 'https://localhost:7109/';
 
@@ -43,6 +45,14 @@ const routes: Routes = [
         path: "authguardtest",
         component: AuthGuardTestComponent,
         canActivate: [AuthGuard]
+    },
+    {
+        path: 'two-factor',
+        component: TwoFactorComponent
+    },
+    {
+        path: 'two-factor-setup',
+        component: TwoFactorSetupComponent
     }
 ];
 
