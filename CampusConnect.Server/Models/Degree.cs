@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 namespace CampusConnect.Server.Models
 {
@@ -7,16 +6,14 @@ namespace CampusConnect.Server.Models
     {
         public Degree() { }
 
-        public Degree(string name, Faculty faculty)
+        public Degree(string name, List<Module> mandatoryModules)
         {
             Name = name;
-            Faculty = faculty;
-            MandatoryModules = new List<Module>();
+            MandatoryModules = mandatoryModules ?? new List<Module>();
         }
 
         public int DegreeId { get; set; }
         public string Name { get; set; }
-        public virtual Faculty Faculty { get; set; }
         public virtual ICollection<Module> MandatoryModules { get; set; }
     }
 }

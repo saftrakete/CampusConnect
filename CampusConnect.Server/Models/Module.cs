@@ -1,5 +1,5 @@
 ﻿using CampusConnect.Server.Enums;
-using Microsoft.Identity.Client;
+using System.Collections.Generic;
 
 namespace CampusConnect.Server.Models
 {
@@ -7,16 +7,16 @@ namespace CampusConnect.Server.Models
     {
         public Module() { }
 
-        public Module(string name, Faculty faculty, DifficultyEnum difficulty)
+        public Module(string name, string description, DifficultyEnum difficulty)
         {
             Name = name;
-            Faculty = faculty;
             Difficulty = difficulty;
+            Description = description;
         }
 
         public int ModuleId { get; set; }
         public string Name { get; set; }
-        public Faculty Faculty { get; set; }
+        public string Description { get; set; }
         public DifficultyEnum Difficulty { get; set; }
     }
 }
