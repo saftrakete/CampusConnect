@@ -44,10 +44,10 @@ builder.Services.AddCors(options =>
                 "https://localhost:4200",
                 "http://127.0.0.1:4200",
                 "http://localhost:4200"
-            )
-            .AllowCredentials()
-            .AllowAnyHeader()
-            .AllowAnyMethod();
+            );
+            policy.AllowCredentials();
+            policy.AllowAnyHeader();
+            policy.AllowAnyMethod();
         });
 });
 
@@ -66,18 +66,30 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
         };
     });
 
+builder.Services.AddControllers();
+builder.Services.AddSwaggerGen();
+
 builder.Services.AddAuthorization();
 
 var app = builder.Build();
 
-app.UseCors("allowOrigin");
+//app.UseDefaultFiles();
+//app.MapStaticAssets();
 
-app.UseDefaultFiles();
-app.MapStaticAssets();
+//app.UseSpa(spa =>
+//{
+//    spa.Options.SourcePath = "./campusconnect.client";
+
+//    if (app.Environment.IsDevelopment())
+//    {
+//        spa.UseProxyToSpaDevelopmentServer("https://localhost:4200");
+//    }
+//});
 
 if (app.Environment.IsDevelopment())
 {
-    app.MapOpenApi();
+    app.UseSwagger();
+    app.UseSwaggerUI();
 }
 
 app.UseHttpsRedirection();
@@ -88,6 +100,19 @@ app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();
+
+app.MapWhen(context => !context.Request.Path.StartsWithSegments("/api"), spaApp =>
+{
+    spaApp.UseSpa(spa =>
+    {
+        spa.Options.SourcePath = ".\\campusconnect.client";
+
+        if (app.Environment.IsDevelopment())
+        {
+            spa.UseProxyToSpaDevelopmentServer("https://localhost:4200");
+        }
+    });
+});
 
 app.MapFallbackToFile("/index.html");
 
