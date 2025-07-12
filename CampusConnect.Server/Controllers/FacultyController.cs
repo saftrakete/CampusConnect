@@ -11,31 +11,37 @@ using System.Threading.Tasks;
 namespace CampusConnect.Server.Controllers
 {
     [ApiController]
-    //[Route("[controller]")]
+    [Route("api/faculties")]
     public class FacultyController : ControllerBase
     {
         private readonly CampusConnectContext _context;
-        private readonly ILogger<ModuleController> _logger;
+        private readonly ILogger<FacultyController> _logger;
 
-        public FacultyController(CampusConnectContext context, ILogger<ModuleController> logger)
+        public FacultyController(CampusConnectContext context, ILogger<FacultyController> logger)
         {
             _context = context;
             _logger = logger;
         }
 
-        [HttpGet("faculties/get/all")]
+        [HttpGet("get/all")]
         public async Task<ActionResult<IEnumerable<Faculty>>> GetFaculties()
         {
-            var result = await _context.Faculties.ToListAsync();
+            var result = await _context.Faculties
+                .Include(faculty => faculty.Degrees)
+                .Include(faculty => faculty.Modules)
+                .ToListAsync();
+
             _logger.LogInformation($"Got Faculties: result is null? {result is null}");
 
             return result is not null ? Ok(result) : NotFound();
         }
 
-        [HttpGet("faculties/get/{facultyId}")]
-        public async Task<ActionResult<Faculty>> GetFacultyById(int facultyId)
+        [HttpGet("get/{facultyId}", Name = "GetFacultyById")]
+        public async Task<ActionResult<Faculty>> GetFacultyById([FromRoute] int facultyId)
         {
             var faculty = await _context.Faculties
+                .Include(faculty => faculty.Degrees)
+                .Include(faculty => faculty.Modules)
                 .Where(faculty => faculty.FacultyId == facultyId)
                 .FirstOrDefaultAsync();
 
@@ -44,9 +50,8 @@ namespace CampusConnect.Server.Controllers
             return faculty is not null ? Ok(faculty) : NotFound();
         }
 
-        [HttpPost("faculties/postFaculty")]
-        //[Route("faculties/postFaculty")]
-        public async Task<ActionResult<Faculty>> PostNewFaculty(FacultyDto facultyDto)
+        [HttpPost("postFaculty")]
+        public async Task<ActionResult<Faculty>> PostFaculty([FromBody] FacultyDto facultyDto)
         {
             if (facultyDto is null)
             {
@@ -62,7 +67,7 @@ namespace CampusConnect.Server.Controllers
             {
                 await _context.SaveChangesAsync();
                 _logger.LogInformation("Successfully saved changes");
-                return CreatedAtAction("GetFacultyById", new { facultyId = faculty.FacultyId });
+                return CreatedAtRoute("GetFacultyById", new { facultyId = faculty.FacultyId });
             }
             catch
             {
@@ -71,11 +76,20 @@ namespace CampusConnect.Server.Controllers
             }
         }
 
-        [HttpPut("faculties/edit/{facultyId}")]
-        public async Task<ActionResult<Faculty>> UpdateFaculty(int facultyId, Faculty faculty)
+        [HttpPut("edit/{facultyId}")]
+        public async Task<ActionResult<Faculty>> UpdateFaculty([FromRoute] int facultyId, [FromBody] FacultyDto facultyDto)
         {
+            var faculty = ConvertFacultyDto(facultyDto);
+
+            if (faculty is null)
+            {
+                _logger.LogError("Updating Faculty failed: facultyDto was null");
+                return BadRequest();
+            }
+
             if (facultyId != faculty.FacultyId)
             {
+                _logger.LogError("Updating Faculty failed: Ids did not match");
                 return BadRequest();
             }
 
@@ -83,36 +97,42 @@ namespace CampusConnect.Server.Controllers
 
             try
             {
+                _logger.LogInformation("Trying to save changes...");
                 await _context.SaveChangesAsync();
             }
             catch (DbUpdateConcurrencyException)
             {
                 if (!FacultyExists(facultyId))
                 {
+                    _logger.LogError("Updating Faculty failed: Faculty does not exist");
                     return BadRequest();
                 }
                 else
                 {
+                    _logger.LogError("Updating Faculty failed: Concurrency exception occurred");
                     throw;
                 }
             }
 
+            _logger.LogInformation("Successfully saved changes");
             return Ok(faculty);
         }
 
-        [HttpDelete("faculties/delete/{facultyId}")]
-        public async Task<IActionResult> DeleteFaculty(int facultyId)
+        [HttpDelete("delete/{facultyId}")]
+        public async Task<IActionResult> DeleteFaculty([FromRoute] int facultyId)
         {
             var faculty = await _context.Faculties.FirstOrDefaultAsync(faculty => faculty.FacultyId == facultyId);
 
             if (faculty is null)
             {
+                _logger.LogError("Deleting Faculty failed: faculty was null");
                 return BadRequest();
             }
 
             _context.Faculties.Remove(faculty);
             await _context.SaveChangesAsync();
 
+            _logger.LogInformation("Successfully deleted Faculty");
             return NoContent();
         }
 
@@ -123,7 +143,15 @@ namespace CampusConnect.Server.Controllers
 
         private Faculty ConvertFacultyDto(FacultyDto facultyDto)
         {
-            return new Faculty(facultyDto.Name);
+            var degrees = _context.Degrees
+                .Where(degree => facultyDto.DegreeIds.Contains(degree.DegreeId))
+                .ToList();
+
+            var modules = _context.Modules
+                .Where(module => facultyDto.ModuleIds.Contains(module.ModuleId))
+                .ToList();
+
+            return new Faculty(facultyDto.Name, facultyDto.FacultyCode, degrees, modules);
         }
     }
 }

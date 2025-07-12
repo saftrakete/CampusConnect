@@ -1,9 +1,11 @@
 using CampusConnect.Server.Data;
+using CampusConnect.Server.Enums;
 using CampusConnect.Server.Models;
 using CampusConnect.Server.Models.Dtos;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -11,7 +13,7 @@ using System.Threading.Tasks;
 namespace CampusConnect.Server.Controllers
 {
     [ApiController]
-    //[Route("[controller]")]
+    [Route("api/modules")]
     public class ModuleController : ControllerBase
     {
         private readonly CampusConnectContext _context;
@@ -23,26 +25,28 @@ namespace CampusConnect.Server.Controllers
             _logger = logger;
         }
 
-        [HttpGet("modules/get/all")]
+        [HttpGet("get/all")]
         public async Task<ActionResult<IEnumerable<Module>>> GetAllModules()
         {
             var result = await _context.Modules.ToListAsync();
+
             _logger.LogInformation($"Got all Modules: result is null? {result is null}");
 
             return result is not null ? Ok(result) : BadRequest();
         }
 
-        [HttpGet("modules/get/{moduleId}")]
-        public async Task<ActionResult<Module>> GetModuleById(int moduleId)
+        [HttpGet("get/{moduleId}")]
+        public async Task<ActionResult<Module>> GetModuleById([FromRoute] int moduleId)
         {
             var module = await _context.Modules.FirstOrDefaultAsync(module => module.ModuleId == moduleId);
+
             _logger.LogInformation($"Got Module by Id: result is null? {module is null}");
 
             return module is not null ? Ok(module) : BadRequest();
         }
 
-        [HttpPost("modules/postModule")]
-        public async Task<ActionResult<Module>> PostModule(ModuleDto moduleDto)
+        [HttpPost("postModule")]
+        public async Task<ActionResult<Module>> PostModule([FromBody] ModuleDto moduleDto)
         {
             if (moduleDto is null)
             {
@@ -52,6 +56,17 @@ namespace CampusConnect.Server.Controllers
 
             var module = ConvertModuleDto(moduleDto);
 
+            var faculty = await _context.Faculties.FindAsync(moduleDto.FacultyId);
+
+            if (faculty is null)
+            {
+                _logger.LogError("Posting module failed: Invalid facultyId");
+                return BadRequest();
+            }
+
+            faculty.Modules.Add(module);
+            _context.Faculties.Entry(faculty).State = EntityState.Modified;
+
             _context.Modules.Add(module);
             _logger.LogInformation("Trying to save changes...");
 
@@ -59,7 +74,7 @@ namespace CampusConnect.Server.Controllers
             {
                 await _context.SaveChangesAsync();
                 _logger.LogInformation("Successfully saved changes");
-                return CreatedAtAction("GetModuleById", new { moduleId = module.ModuleId });
+                return Created($"api/modules/get/{module.ModuleId}", module);
             }
             catch
             {
@@ -68,9 +83,17 @@ namespace CampusConnect.Server.Controllers
             }
         }
 
-        [HttpPut("modules/edit/{moduleId}")]
-        public async Task<ActionResult<Module>> UpdateModule(int moduleId, Module module)
+        [HttpPut("edit/{moduleId}")]
+        public async Task<ActionResult<Module>> UpdateModule([FromRoute] int moduleId, [FromBody] ModuleDto moduleDto)
         {
+            var module = ConvertModuleDto(moduleDto);
+
+            if (module is null)
+            {
+                _logger.LogError("Updating module failed: ModuleDto was null");
+                return BadRequest();
+            }
+
             if (module.ModuleId != moduleId)
             {
                 _logger.LogError("Updating module failed: Ids did not match");
@@ -92,17 +115,19 @@ namespace CampusConnect.Server.Controllers
 
                 if (!ModuleExists(moduleId))
                 {
+                    _logger.LogError($"Module with Id {moduleId} does not exist");
                     return BadRequest();
                 }
                 else
                 {
+                    _logger.LogError("Concurrency exception occurred while updating module");
                     throw;
                 }
             }
         }
 
-        [HttpDelete("modules/delete/{moduleId}")]
-        public async Task<ActionResult> DeleteModule(int moduleId)
+        [HttpDelete("delete/{moduleId}")]
+        public async Task<ActionResult> DeleteModule([FromRoute] int moduleId)
         {
             var module = await _context.Modules.FindAsync(moduleId);
 
@@ -124,9 +149,25 @@ namespace CampusConnect.Server.Controllers
 
         private Module ConvertModuleDto(ModuleDto moduleDto)
         {
-            var faculty = _context.Faculties.Find(moduleDto.FacultyId);
+            var difficulty = ConvertStringToDifficultyEnum(moduleDto.Difficulty);
 
-            return new Module(moduleDto.Name, faculty, moduleDto.Difficulty);
+            return new Module(moduleDto.Name, moduleDto.Description, difficulty);
+        }
+
+        private DifficultyEnum ConvertStringToDifficultyEnum(string difficultyString)
+        {
+            switch (difficultyString.ToLower())
+            {
+                case "easy":
+                    return DifficultyEnum.Easy;
+                case "medium":
+                    return DifficultyEnum.Medium;
+                case "hard":
+                    return DifficultyEnum.Hard;
+                default:
+                    _logger.LogError($"Invalid difficulty string: {difficultyString}");
+                    throw new ArgumentException("Invalid difficulty string");
+            }
         }
     }
 }

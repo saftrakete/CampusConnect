@@ -5,15 +5,14 @@ using CampusConnect.Server.Models.Dtos;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
 
 namespace CampusConnect.Server.Controllers
 {
     [ApiController]
-    //[Route("[controller]")]
+    [Route("api/users")]
     public class UserController : ControllerBase
     {
         private readonly CampusConnectContext _context;
@@ -29,18 +28,24 @@ namespace CampusConnect.Server.Controllers
             _logger = logger;
         }
 
-        [HttpGet("users/get/{userId}")]
+        [HttpGet("get/{userId}")]
         public async Task<ActionResult<UserModel>> GetUserById(int userId)
         {
             var user = await _context.Users.FirstOrDefaultAsync(u => u.UserId == userId);
+
+            _logger.LogInformation($"Got User by Id: result is null? {user is null}");
+
             return user is not null ? Ok(user) : NotFound();
         }
 
-        [HttpGet("users/exists/{loginName}")]
+        [HttpGet("exists/{loginName}")]
         public async Task<ActionResult<bool>> LoginNameAlreadyExists(string loginName)
         {
             var user = await _context.Users.FirstOrDefaultAsync(u => u.LoginName == loginName);
-            return user is not null;
+
+            _logger.LogInformation($"Checking if login name exists: {loginName} - result is null? {user is null}");
+
+            return Ok(user is not null);
         }
 
         [HttpPost("login")]
@@ -71,7 +76,7 @@ namespace CampusConnect.Server.Controllers
         }
 
 
-        [HttpDelete("users/delete/{userId}")]
+        [HttpDelete("delete/{userId}")]
         public async Task<IActionResult> DeleteUser(int userId)
         {
             var user = await _context.Users.FirstOrDefaultAsync(u => u.UserId == userId);
