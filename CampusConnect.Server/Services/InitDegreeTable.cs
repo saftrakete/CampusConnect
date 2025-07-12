@@ -25,8 +25,8 @@ namespace CampusConnect.Server.Services
         public void CreateDegreeEntities()
         {
             this.degrees = [
-                    new Degree {Name = "Informatik", Faculty = _context.Faculties.First(), MandatoryModules = GetModulesById(infModuleIds)},
-                    new Degree {Name = "Ingenieurinformatk", Faculty = _context.Faculties.First(), MandatoryModules = GetModulesById(ingInfModuleIds)}
+                    new Degree {Name = "Informatik", /*Faculty = _context.Faculties.First(),*/ MandatoryModules = GetModulesById(infModuleIds)},
+                    new Degree {Name = "Ingenieurinformatk", /*Faculty = _context.Faculties.First(),*/ MandatoryModules = GetModulesById(ingInfModuleIds)}
                 ];
         }
 

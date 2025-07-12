@@ -25,18 +25,18 @@ namespace CampusConnect.Server.Services
         public void CreateModuleEntities()
         {
             this.modules = [
-                    new Module { Name = "Mathe1", Faculty = _context.Faculties.First()},
-                    new Module { Name = "Mathe2", Faculty = _context.Faculties.First()},
-                    new Module { Name = "Mathe3", Faculty = _context.Faculties.First()},
-                    new Module { Name = "Einführung Informatik", Faculty = _context.Faculties.First()},
-                    new Module { Name = "Technische Informatik 1", Faculty = _context.Faculties.First()},
-                    new Module { Name = "Technische Informatik 2", Faculty = _context.Faculties.First()},
-                    new Module { Name = "Datenbanken 1", Faculty = _context.Faculties.First()},
-                    new Module { Name = "Theoretische Informatik 1", Faculty = _context.Faculties.First()},
-                    new Module { Name = "Theoretische Informatik 2", Faculty = _context.Faculties.First()},
-                    new Module { Name = "Spezifikationstechnik", Faculty = _context.Faculties.First()},
-                    new Module { Name = "Introduction to Simulation", Faculty = _context.Faculties.First()},
-                    new Module { Name = "Programmierparadigmen", Faculty = _context.Faculties.First()}
+                    new Module { Name = "Mathe1", /*Faculty*= _context.Faculties.First()*/},
+                    new Module { Name = "Mathe2", /*Faculty = _context.Faculties.First()*/},
+                    new Module { Name = "Mathe3", /*Faculty = _context.Faculties.First()*/},
+                    new Module { Name = "Einführung Informatik", /*Faculty = _context.Faculties.First()*/},
+                    new Module { Name = "Technische Informatik 1", /*Faculty = _context.Faculties.First()*/},
+                    new Module { Name = "Technische Informatik 2", /*Faculty = _context.Faculties.First()*/},
+                    new Module { Name = "Datenbanken 1", /*Faculty = _context.Faculties.First()*/},
+                    new Module { Name = "Theoretische Informatik 1", /*Faculty = _context.Faculties.First()*/},
+                    new Module { Name = "Theoretische Informatik 2", /*Faculty = _context.Faculties.First()*/},
+                    new Module { Name = "Spezifikationstechnik", /*Faculty = _context.Faculties.First()*/},
+                    new Module { Name = "Introduction to Simulation", /*Faculty = _context.Faculties.First()*/},
+                    new Module { Name = "Programmierparadigmen", /*Faculty = _context.Faculties.First()*/}
                 ];
             var mod = this.modules[0];
         }
