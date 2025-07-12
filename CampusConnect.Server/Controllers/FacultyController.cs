@@ -67,7 +67,7 @@ namespace CampusConnect.Server.Controllers
             {
                 await _context.SaveChangesAsync();
                 _logger.LogInformation("Successfully saved changes");
-                return CreatedAtRoute("GetFacultyById", new { facultyId = faculty.FacultyId });
+                return Created($"api/faculties/get/{faculty.FacultyId}", faculty);
             }
             catch
             {
