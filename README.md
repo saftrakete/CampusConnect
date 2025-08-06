@@ -2,6 +2,8 @@
 
 Dies ist das Repository für das Softwareprojekt.
 
+## Develop Branch hat umgesetzte Features, in Main wurde noch nicht viel umgesetzt.
+
 ### Installations-Anleitung:
 
 - fork installieren 
