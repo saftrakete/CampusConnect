@@ -26,4 +26,7 @@ export class ChatService {
         return this.httpClient.get<MessageEntity>(`${baseApiRoute}chat/get?messageId=${messageId}`);
     }
 
+    public getAllMessages(): Observable<MessageEntity[]> {
+        return this.httpClient.get<MessageEntity[]>(`${baseApiRoute}chat/getAll`);
+    }
 }

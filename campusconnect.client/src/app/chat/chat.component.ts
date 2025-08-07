@@ -34,11 +34,11 @@ export class ChatComponent implements OnInit {
       );
 
 
-      /*
-      this.fetchMessages(); // initial fetch
+      
+      this.fetchAllMessages(); // initial fetch
       this.refreshIntervalId = setInterval(() => {
-          this.fetchMessages();
-      }, 5000);*/
+          this.fetchAllMessages();
+      }, 5000);
     }
 
     public ngOnDestroy(): void {
@@ -82,34 +82,20 @@ export class ChatComponent implements OnInit {
       this.chatForm.reset();
   }
 
-    public fetchMessages(): void {
-        let index = 1;
-        this.fetchedMessages = []; // reset list before new fetch
-
-        const fetchNext = () => {
-            this.chatService.getMessageById(index).subscribe({
-                next: (response) => {
-                    this.fetchedMessages.push(response);
-                    index++;
-                    fetchNext();
-                },
-                error: (error) => {
-                    if (error.status === 404) {
-                        console.log('No more messages found.');
-                    } else {
-                        console.error('Error fetching message:', error);
-                    }
-                }
-            });
-        };
-
-        fetchNext();
+    public fetchAllMessages(): void {
+        this.chatService.getAllMessages().subscribe({
+            next: (messages) => {
+                this.fetchedMessages = messages; // Alle Nachrichten direkt �bernehmen
+                console.log('Alle Nachrichten geladen:', messages.length);
+            },
+            error: (error) => {
+                console.error('Fehler beim Laden der Nachrichten:', error);
+            }
+        });
     }
 
-
-
     public clickFetchMessages(): void {
-        this.fetchMessages();
+        this.fetchAllMessages();
     }
 
 }

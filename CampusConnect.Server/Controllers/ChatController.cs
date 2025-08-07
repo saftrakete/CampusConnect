@@ -31,6 +31,16 @@ namespace CampusConnect.Server.Controllers
             return message is not null ? Ok(message) : NotFound();
         }
 
+
+        [HttpGet("getAll")]
+        public async Task<ActionResult<List<MessageModel>>> GetAllMessages()
+        {
+            var messages = await _context.Messages.ToListAsync();
+            return Ok(messages);
+        }
+
+
+
         [HttpPost("post")]
         public async Task<IActionResult> PostNewMessage([FromBody] MessageModel model)
         {
