@@ -11,8 +11,9 @@
     </mat-form-field>
     <button mat-raised-button class="resetBttn" (click)="resetFiltering()">Reset</button>
   </div>
-  <div class="backButton">
-    <button mat-raised-button (click)="os.cleanUp()" [routerLink]="['/onboarding']">Zurück</button>
+  <div class="rightsideButtons">
+    <button mat-raised-button *ngIf="os.addedModules.length != 0" class="confirm" (click)="confirmActions()">Bestätigen</button>
+    <button mat-raised-button class="goBack" (click)="os.cleanUp()" [routerLink]="['/onboarding']">Zurück</button>
   </div>
 </div>
 

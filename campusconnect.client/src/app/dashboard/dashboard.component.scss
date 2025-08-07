@@ -57,11 +57,20 @@
   align-items: center;
 }
 
-.backButton {
+.rightsideButtons {
   width: 50%;
   display: flex;
   align-items: flex-end;
   justify-content: flex-end;
+  gap: 0.5rem;
+
+  .confirm {
+    background-color: green;
+  }
+
+  .goBack {
+    background-color: darkred;
+  }
 }
 
 .courseContainer {
