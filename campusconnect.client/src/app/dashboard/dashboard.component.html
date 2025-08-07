@@ -5,13 +5,14 @@
     <mat-form-field appearance="fill" class="formField">
       <mat-label>Filtern</mat-label>
       <input matInput placeholder="Gib hier etwas ein..." [(ngModel)]="filterQuery">
-      <button mat-icon-button matSuffix (click)="filter()">
+      <button mat-icon-button matSuffix (click)="userFilter()">
         <mat-icon>search</mat-icon>
       </button>
     </mat-form-field>
+    <button mat-raised-button class="resetBttn" (click)="resetFiltering()">Reset</button>
   </div>
   <div class="backButton">
-    <button mat-raised-button (click)='os.cleanUp()'[routerLink]="['/onboarding']">Zurück</button>
+    <button mat-raised-button (click)="os.cleanUp()" [routerLink]="['/onboarding']">Zurück</button>
   </div>
 </div>
 

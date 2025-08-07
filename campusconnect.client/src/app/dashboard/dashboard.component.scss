@@ -43,6 +43,14 @@
   width: 50%;
   display: flex;
   justify-content: flex-start;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.resetBttn {
+  height: 72%;
+  font-size: medium;
+  background-color: darkred;
 }
 
 .formField {

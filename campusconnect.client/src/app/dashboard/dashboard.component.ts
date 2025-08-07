@@ -18,8 +18,13 @@ export class DashboardComponent implements OnInit {
     this.os.StartOnboardingFiltering();
   }
 
-  public filter() {
-    console.log(this.filterQuery);
+  public userFilter() {
+    this.os.filteredModules = this.os.filteredModules.filter(mod => mod.name.toLowerCase().includes(this.filterQuery.toLowerCase()));
+  }
+
+  public resetFiltering() {
+    this.filterQuery = '';
+    this.os.StartOnboardingFiltering();
   }
 
 }
