@@ -1,12 +1,16 @@
-using CampusConnect.Server.Controllers;
 using CampusConnect.Server.Data;
+using CampusConnect.Server.Interfaces;
 using CampusConnect.Server.Services;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -21,6 +25,8 @@ builder.Logging.SetMinimumLevel(LogLevel.Information);
 builder.Services.AddTransient<InitModuleTable>();
 builder.Services.AddTransient<InitFacultyTable>();
 builder.Services.AddTransient<InitDegreeTable>();
+builder.Services.AddTransient<InitUserRolesService>();
+builder.Services.AddTransient<IAuthorizationService, AuthorizationService>();
 
 builder.Services.AddDbContext<CampusConnectContext>(options =>
 {
@@ -45,10 +51,26 @@ builder.Services.AddCors(options =>
         });
 });
 
+builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+    .AddJwtBearer(jwtOptions =>
+    {
+        jwtOptions.TokenValidationParameters = new TokenValidationParameters
+        {
+            ValidateIssuer = true,
+            ValidateAudience = true,
+            ValidateLifetime = true,
+            ValidateIssuerSigningKey = true,
+            ValidIssuer = builder.Configuration["Jwt:Issuer"],
+            ValidAudience = builder.Configuration["Jwt:Audience"],
+            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"]))
+        };
+    });
+
+builder.Services.AddAuthorization();
+
 var app = builder.Build();
 
-
-    app.UseCors("allowOrigin");
+app.UseCors("allowOrigin");
 
 app.UseDefaultFiles();
 app.MapStaticAssets();
@@ -60,6 +82,9 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
+app.UseCors("allowOrigin");
+
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();
@@ -72,11 +97,14 @@ var context = scope.ServiceProvider.GetRequiredService<CampusConnectContext>();
 var moduleIntitializer = scope.ServiceProvider.GetRequiredService<InitModuleTable>();
 var facultyInitializer = scope.ServiceProvider.GetRequiredService<InitFacultyTable>();
 var degreeInitializer = scope.ServiceProvider.GetRequiredService<InitDegreeTable>();
+var userRolesInitializer = scope.ServiceProvider.GetRequiredService<InitUserRolesService>();
 
 context.Database.Migrate();
 
 await facultyInitializer.FillInFaculties();
 await moduleIntitializer.FillInModules();
 await degreeInitializer.FillInDegrees();
+
+userRolesInitializer.InitUserRolesTable(context);
 
 app.Run();

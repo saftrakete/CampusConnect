@@ -4,6 +4,7 @@ import { UserEntity } from '../entities/userEntity';
 import { baseApiRoute } from '../app-routing.module';
 import { Observable } from 'rxjs';
 import { LoginDto } from '../entities/loginDto';
+import { LoginResponseDto } from '../entities/loginResponseDto';
 
 @Injectable({
   providedIn: 'root'
@@ -16,8 +17,8 @@ export class UserService {
         return this.httpClient.post<UserEntity>(baseApiRoute + "user/register", user);
     }
 
-    public sendLoginRequest(loginDto: LoginDto): Observable<UserEntity> {
-        return this.httpClient.post<UserEntity>(baseApiRoute + 'user/login', loginDto);
+    public sendLoginRequest(loginDto: LoginDto): Observable<LoginResponseDto> {
+        return this.httpClient.post<LoginResponseDto>(baseApiRoute + 'user/login', loginDto);
     }
 
     public checkIfLoginNameExists(loginName: string): Observable<boolean> {
