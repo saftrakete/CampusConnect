@@ -53,7 +53,7 @@ import { AddedModuleComponent } from './added-module/added-module.component';
     OnboardingComponent,
     DashboardComponent,
     ModuleCardComponent,
-    AddedModuleComponent
+    AddedModuleComponent,
     AdminPanelComponent,
     AuthGuardTestComponent,
     ForbiddenComponent,
