@@ -26,6 +26,11 @@ export class OnboardingService {
     }
   }
 
+  public cleanUp() {
+    this.addedModules = [];
+    this.cleanOnboardingDataFromLocalStorage();
+  }
+
   public AddModule(mod: Module) {
     this.addedModules.push(mod);
   }
@@ -37,5 +42,27 @@ export class OnboardingService {
 
   public IsModuleAdded(mod: Module) {
     return this.addedModules.includes(mod);
+  }
+
+  public saveOnboardingDataToLocalStorage() {
+    localStorage.setItem('semester', this.selectedSemester.toString());
+    localStorage.setItem('study', this.selectedStudy || '');
+  }
+
+  public loadOnboardingDataFromLocalStorage() {
+    const storedSemester = localStorage.getItem('semester');
+    const storedStudy = localStorage.getItem('study');
+
+    if (storedSemester) {
+      this.selectedSemester = Number(storedSemester);
+    }
+    if (storedStudy) {
+      this.selectedStudy = storedStudy || null;
+    }
+  }
+
+  public cleanOnboardingDataFromLocalStorage() {
+    localStorage.removeItem('semester');
+    localStorage.removeItem('study');
   }
 }

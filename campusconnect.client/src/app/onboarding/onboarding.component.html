@@ -32,6 +32,6 @@
 
     </div>
 
-    <button mat-raised-button (click)="os.StartOnboardingFiltering()" [routerLink]="['/dashboard']">Hier klicken</button>
+    <button mat-raised-button [routerLink]="['/dashboard']" [disabled]="os.selectedStudy == null">Hier klicken</button>
     
 </div>
