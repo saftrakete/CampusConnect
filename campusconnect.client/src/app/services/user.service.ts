@@ -29,6 +29,10 @@ export class UserService {
         return this.httpClient.delete<void>(baseApiRoute + "user/" + userID);
     }
 
+    public getUserIdByLoginName(loginName: string): Observable<Number> {
+        return this.httpClient.get<Number>(baseApiRoute + "user/getId/" + loginName);
+    }
+
     public createUserEntity(
         nickname: string,
         loginName: string,
