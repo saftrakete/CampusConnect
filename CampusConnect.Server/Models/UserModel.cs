@@ -9,5 +9,6 @@ namespace CampusConnect.Server.Models
         public string Nickname { get; set; }
         public string LoginName { get; set; }
         public string PasswordHash { get; set; }
+        public UserRole Role { get; set; }
     }
 }

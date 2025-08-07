@@ -1,4 +1,4 @@
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -26,6 +26,11 @@ import { AccountSettingsComponent } from './account-settings/account-settings.co
 import { SettingsSidebarComponent } from './settings-sidebar/settings-sidebar.component';
 import { EmailSettingsComponent } from './email-settings/email-settings.component';
 import { EditUsernameFormComponent } from './edit-username-form/edit-username-form.component';
+import { JwtInterceptor } from './interceptors/JwtInterceptor';
+import { AdminPanelComponent } from './admin-panel/admin-panel.component';
+import { AuthGuardTestComponent } from './auth-guard-test/auth-guard-test.component';
+import { ForbiddenComponent } from './forbidden/forbidden.component';
+import { NotFoundComponent } from './not-found/not-found.component';
 import { OnboardingComponent } from './onboarding/onboarding.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ModuleCardComponent } from './module-card/module-card.component';
@@ -49,6 +54,10 @@ import { AddedModuleComponent } from './added-module/added-module.component';
     DashboardComponent,
     ModuleCardComponent,
     AddedModuleComponent
+    AdminPanelComponent,
+    AuthGuardTestComponent,
+    ForbiddenComponent,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule, HttpClientModule,
@@ -66,7 +75,8 @@ import { AddedModuleComponent } from './added-module/added-module.component';
     FormsModule
   ],
   providers: [
-    provideAnimationsAsync()
+    provideAnimationsAsync(),
+    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true }
   ],
   bootstrap: [AppComponent]
 })

@@ -1,4 +1,4 @@
-﻿namespace CampusConnect.Server.Models
+﻿namespace CampusConnect.Server.Models.Dtos
 {
     public class LoginDto
     {
