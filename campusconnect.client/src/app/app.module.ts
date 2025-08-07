@@ -9,7 +9,9 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatTooltipModule} from '@angular/material/tooltip';
-import {MatDividerModule} from '@angular/material/divider';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatCardModule } from '@angular/material/card';
+import { MatListModule } from '@angular/material/list';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -24,11 +26,13 @@ import { AccountSettingsComponent } from './account-settings/account-settings.co
 import { SettingsSidebarComponent } from './settings-sidebar/settings-sidebar.component';
 import { EmailSettingsComponent } from './email-settings/email-settings.component';
 import { EditUsernameFormComponent } from './edit-username-form/edit-username-form.component';
+import { ChatComponent } from './chat/chat.component';
 import { JwtInterceptor } from './interceptors/JwtInterceptor';
 import { AdminPanelComponent } from './admin-panel/admin-panel.component';
 import { AuthGuardTestComponent } from './auth-guard-test/auth-guard-test.component';
 import { ForbiddenComponent } from './forbidden/forbidden.component';
 import { NotFoundComponent } from './not-found/not-found.component';
+
 
 
 @NgModule({
@@ -44,10 +48,12 @@ import { NotFoundComponent } from './not-found/not-found.component';
     SettingsSidebarComponent,
     EmailSettingsComponent,
     EditUsernameFormComponent,
+    ChatComponent,
     AdminPanelComponent,
     AuthGuardTestComponent,
     ForbiddenComponent,
     NotFoundComponent
+
   ],
   imports: [
     BrowserModule, HttpClientModule,
@@ -60,7 +66,9 @@ import { NotFoundComponent } from './not-found/not-found.component';
     MatMenuModule,
     MatDialogModule,
     MatTooltipModule,
-    MatDividerModule
+    MatDividerModule,
+    MatCardModule,
+    MatListModule
   ],
   providers: [
     provideAnimationsAsync(),
