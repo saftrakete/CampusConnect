@@ -1,14 +1,20 @@
 <h1 class="title">Hier kannst du deine Module auswählen.</h1>
 
-<div class="filterField">
-  <mat-form-field appearance="fill">
-    <mat-label>Filtern</mat-label>
-    <input matInput placeholder="Gib hier etwas ein..." [(ngModel)]="filterQuery">
-    <button mat-icon-button matSuffix (click)="filter()">
-      <mat-icon>search</mat-icon>
-    </button>
-  </mat-form-field>
+<div class="filterContainer">
+  <div class="filterField">
+    <mat-form-field appearance="fill" class="formField">
+      <mat-label>Filtern</mat-label>
+      <input matInput placeholder="Gib hier etwas ein..." [(ngModel)]="filterQuery">
+      <button mat-icon-button matSuffix (click)="filter()">
+        <mat-icon>search</mat-icon>
+      </button>
+    </mat-form-field>
+  </div>
+  <div class="backButton">
+    <button mat-raised-button (click)='os.cleanUp()'[routerLink]="['/onboarding']">Zurück</button>
+  </div>
 </div>
+
 
 <div class="courseContainer">
   <!-- Module einlesen hier-->
@@ -21,7 +27,7 @@
     <h1>Meine Module:</h1>
   </div>
 
-  <div class="moduleList" >
+  <div class="moduleList">
     
     <div class="module" *ngFor="let mod of os.addedModules">
       <app-added-module class="mod" [module]="{name: mod.name, semester: mod.semester, moduleId: mod.moduleId}"></app-added-module>

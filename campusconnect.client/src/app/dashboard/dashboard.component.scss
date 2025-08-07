@@ -34,10 +34,26 @@
   height: 3%;
 }
 
-.filterField {
+.filterContainer {
   width: 90%;
   display: flex;
+}
+
+.filterField {
+  width: 50%;
+  display: flex;
   justify-content: flex-start;
+}
+
+.formField {
+  align-items: center;
+}
+
+.backButton {
+  width: 50%;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
 }
 
 .courseContainer {
