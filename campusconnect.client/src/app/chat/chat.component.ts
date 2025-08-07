@@ -4,6 +4,7 @@ import { AbstractControl, FormBuilder, FormGroup, ValidatorFn, Validators } from
 import { MessageEntity } from '../entities/message-entity';
 import { MatCardModule } from '@angular/material/card';
 import { UserService } from '../services/user.service';
+import { AuthorizationService } from '../services/authorization.service';
 
 @Component({
   selector: 'app-chat',
@@ -13,21 +14,39 @@ import { UserService } from '../services/user.service';
 export class ChatComponent implements OnInit {
   constructor(private chatService: ChatService,
       private formBuilder: FormBuilder,
-      private userService: UserService
+      private userService: UserService,
+      private authorizationService: AuthorizationService
   ) {}
 
   public chatForm!: FormGroup;
 
-  private readonly emptyString: string = '';
+    private readonly emptyString: string = '';
+
+    private refreshIntervalId: any;
+
 
     public fetchedMessages: MessageEntity[] = [];
 
   public ngOnInit(): void {
       this.chatForm = this.formBuilder.group({
          chatMessage: [this.emptyString, Validators.required]
-      }
-    );
-  }
+        }
+      );
+
+
+      /*
+      this.fetchMessages(); // initial fetch
+      this.refreshIntervalId = setInterval(() => {
+          this.fetchMessages();
+      }, 5000);*/
+    }
+
+    public ngOnDestroy(): void {
+        // Clear the interval to avoid memory leaks
+        if (this.refreshIntervalId) {
+            clearInterval(this.refreshIntervalId);
+        }
+    }
 
   public chatClick(): void {
       if (!this.chatForm.valid.valueOf()) {
@@ -36,14 +55,15 @@ export class ChatComponent implements OnInit {
       }
 
       // TODO: use getUSerID function here
+      /*
+      const decodedToken = this.authorizationService.getDecodedToken();
+      if (decodedToken) {
+          console.log("User ID:", decodedToken);
+      } else {
+          console.log("No valid token found");
+      }*/
       
-      
-      var userId =Number( localStorage.getItem("token")) ;
-      if (!userId) {
-          console.error('User ID not found in local storage.');
-          userId =-1;
-          return;
-      }
+      const userId = 9;
       //das sollte id bekommen vom eintrag im local stroage mit key "token"
       let chatEntity = this.chatService.createMessageEntity(
           this.chatForm.get('chatMessage')?.value,
