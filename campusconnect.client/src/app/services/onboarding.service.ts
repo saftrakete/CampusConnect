@@ -41,7 +41,7 @@ export class OnboardingService {
   }
 
   public IsModuleAdded(mod: Module) {
-    return this.addedModules.includes(mod);
+    return this.addedModules.some(m => m.name == mod.name);
   }
 
   public saveOnboardingDataToLocalStorage() {
