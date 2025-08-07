@@ -3,6 +3,7 @@ import { ChatService } from '../services/chat.service';
 import { AbstractControl, FormBuilder, FormGroup, ValidatorFn, Validators } from '@angular/forms';
 import { MessageEntity } from '../entities/message-entity';
 import { MatCardModule } from '@angular/material/card';
+import { UserService } from '../services/user.service';
 
 @Component({
   selector: 'app-chat',
@@ -11,7 +12,8 @@ import { MatCardModule } from '@angular/material/card';
 })
 export class ChatComponent implements OnInit {
   constructor(private chatService: ChatService,
-    private formBuilder: FormBuilder
+      private formBuilder: FormBuilder,
+      private userService: UserService
   ) {}
 
   public chatForm!: FormGroup;
@@ -34,8 +36,15 @@ export class ChatComponent implements OnInit {
       }
 
       // TODO: use getUSerID function here
-      const userId = 69;
-
+      
+      
+      var userId =Number( localStorage.getItem("token")) ;
+      if (!userId) {
+          console.error('User ID not found in local storage.');
+          userId =-1;
+          return;
+      }
+      //das sollte id bekommen vom eintrag im local stroage mit key "token"
       let chatEntity = this.chatService.createMessageEntity(
           this.chatForm.get('chatMessage')?.value,
           userId
