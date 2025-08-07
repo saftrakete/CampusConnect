@@ -26,8 +26,8 @@ export class TwoFactorSetupComponent implements OnInit {
   }
 
   public setupTwoFactor(): void {
-    const loginName = prompt('Enter your login name:');
-    if (!loginName) return;
+    // Get current user from token/auth service instead of prompt
+    const loginName = 'your-username'; // TODO: Get from auth service
     
     this.twoFactorService.setupTwoFactor(loginName).subscribe({
       next: (data) => {
@@ -42,9 +42,7 @@ export class TwoFactorSetupComponent implements OnInit {
   public verifySetup(): void {
     if (!this.setupForm.valid) return;
 
-    const loginName = prompt('Enter your login name:');
-    if (!loginName) return;
-    
+    const loginName = 'your-username'; // TODO: Get from auth service
     const code = this.setupForm.get('code')?.value;
     this.twoFactorService.verifyTwoFactorSetup(loginName, code).subscribe({
       next: () => {

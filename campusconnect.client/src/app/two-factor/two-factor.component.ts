@@ -49,7 +49,7 @@ export class TwoFactorComponent implements OnInit {
     this.userService.verifyTwoFactor(this.loginName, code, this.tempToken).subscribe({
       next: (response) => {
         this.authService.setToken(response.token);
-        this.router.navigate(['/home']);
+        this.router.navigate(['/']);
       },
       error: (error) => {
         this.errorMessage = 'Invalid verification code';

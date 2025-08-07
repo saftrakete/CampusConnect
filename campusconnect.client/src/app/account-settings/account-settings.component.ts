@@ -2,6 +2,7 @@ import { Component, inject } from '@angular/core';
 import { DeleteAccountComponent } from '../delete-account/delete-account.component';
 import { MatDialog } from '@angular/material/dialog';
 import { EditUsernameFormComponent } from '../edit-username-form/edit-username-form.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-account-settings',
@@ -23,5 +24,12 @@ export class AccountSettingsComponent {
   {
     const dialogRef = this.dialog.open(EditUsernameFormComponent);
   }
+
+  openTwoFactorSetup()
+  {
+    this.router.navigate(['/two-factor-setup']);
+  }
+
+  constructor(private router: Router) {}
 
 }

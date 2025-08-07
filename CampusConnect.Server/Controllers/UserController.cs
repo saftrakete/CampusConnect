@@ -5,6 +5,7 @@ using CampusConnect.Server.Services;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Logging;
@@ -50,39 +51,59 @@ namespace CampusConnect.Server.Controllers
         [HttpPost("login")]
         public async Task<ActionResult<UserModel>> UserLoginRequest(LoginDto loginDto)
         {
-            var user = await _context.Users
-                .Include(u => u.Role)
-                .FirstOrDefaultAsync(u => u.LoginName == loginDto.LoginName);
-
-            if (user is null)
+            _logger.LogInformation("Login attempt for user: {LoginName}", loginDto?.LoginName ?? "null");
+            
+            if (loginDto == null || string.IsNullOrEmpty(loginDto.LoginName) || string.IsNullOrEmpty(loginDto.Password))
             {
-                return NotFound("User not found.");
+                _logger.LogWarning("Login failed: Missing credentials");
+                return BadRequest("LoginName and Password are required");
             }
 
-            if (_authService.Authorize(user, loginDto))
+            try
             {
-                if (user.TwoFactorEnabled)
+                var user = await _context.Users
+                    .Include(u => u.Role)
+                    .FirstOrDefaultAsync(u => u.LoginName == loginDto.LoginName);
+
+                if (user is null)
                 {
-                    var tempToken = _authService.GenerateTempToken(user);
+                    _logger.LogWarning("Login failed: User not found for {LoginName}", loginDto.LoginName);
+                    return NotFound("User not found.");
+                }
+
+                if (_authService.Authorize(user, loginDto))
+                {
+                    if (user.TwoFactorEnabled)
+                    {
+                        var tempToken = _authService.GenerateTempToken(user);
+                        _logger.LogInformation("2FA required for user: {LoginName}", loginDto.LoginName);
+                        return Ok(new LoginResponseDto
+                        {
+                            RequiresTwoFactor = true,
+                            TempToken = tempToken,
+                            Username = user.LoginName,
+                            Role = user.Role
+                        });
+                    }
+
+                    var jwtToken = _authService.GenerateJwtToken(user);
+                    _logger.LogInformation("Login successful for user: {LoginName}", loginDto.LoginName);
                     return Ok(new LoginResponseDto
                     {
-                        RequiresTwoFactor = true,
-                        TempToken = tempToken,
+                        Token = jwtToken,
                         Username = user.LoginName,
                         Role = user.Role
                     });
                 }
 
-                var jwtToken = _authService.GenerateJwtToken(user);
-                return Ok(new LoginResponseDto
-                {
-                    Token = jwtToken,
-                    Username = user.LoginName,
-                    Role = user.Role
-                });
+                _logger.LogWarning("Login failed: Invalid credentials for {LoginName}", loginDto.LoginName);
+                return BadRequest("Invalid credentials.");
             }
-
-            return BadRequest("Invalid credentials.");
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Login error for user: {LoginName}", loginDto.LoginName);
+                return StatusCode(500, "Internal server error");
+            }
         }
 
 
@@ -149,39 +170,60 @@ namespace CampusConnect.Server.Controllers
         [HttpPost("2fa/verify")]
         public async Task<IActionResult> VerifyTwoFactor([FromBody] TwoFactorVerifyDto dto)
         {
+            _logger.LogInformation("2FA verification attempt for user: {LoginName}", dto.LoginName);
+            
             if (string.IsNullOrEmpty(dto.LoginName) || string.IsNullOrEmpty(dto.Code))
                 return BadRequest("LoginName and Code are required");
 
             var user = await _context.Users.FirstOrDefaultAsync(u => u.LoginName == dto.LoginName);
             
-            if (user?.TwoFactorSecret == null) return BadRequest("User not found or 2FA not set up");
+            if (user?.TwoFactorSecret == null) 
+            {
+                _logger.LogWarning("2FA verification failed: User not found or 2FA not set up for {LoginName}", dto.LoginName);
+                return BadRequest("User not found or 2FA not set up");
+            }
 
+            _logger.LogInformation("Validating TOTP code for user: {LoginName}, Code: {Code}", dto.LoginName, dto.Code);
+            
             if (_twoFactorService.ValidateCode(user.TwoFactorSecret, dto.Code))
             {
                 user.TwoFactorEnabled = true;
                 await _context.SaveChangesAsync();
+                _logger.LogInformation("2FA enabled successfully for user: {LoginName}", dto.LoginName);
                 return Ok("2FA enabled successfully");
             }
 
+            _logger.LogWarning("2FA verification failed: Invalid code for user: {LoginName}", dto.LoginName);
             return BadRequest("Invalid code");
         }
 
         [HttpPost("2fa/login")]
         public async Task<ActionResult<LoginResponseDto>> VerifyTwoFactorLogin([FromBody] TwoFactorVerifyDto dto)
         {
+            _logger.LogInformation("2FA login attempt with temp token");
+            
             if (!_authService.ValidateTempToken(dto.TempToken, out var loginName))
+            {
+                _logger.LogWarning("2FA login failed: Invalid temp token");
                 return BadRequest("Invalid temp token");
+            }
 
             var user = await _context.Users
                 .Include(u => u.Role)
                 .FirstOrDefaultAsync(u => u.LoginName == loginName);
 
             if (user?.TwoFactorSecret == null || !user.TwoFactorEnabled)
+            {
+                _logger.LogWarning("2FA login failed: User not found or 2FA not enabled for {LoginName}", loginName);
                 return BadRequest();
+            }
 
+            _logger.LogInformation("Validating 2FA login code for user: {LoginName}", loginName);
+            
             if (_twoFactorService.ValidateCode(user.TwoFactorSecret, dto.Code))
             {
                 var jwtToken = _authService.GenerateJwtToken(user);
+                _logger.LogInformation("2FA login successful for user: {LoginName}", loginName);
                 return Ok(new LoginResponseDto
                 {
                     Token = jwtToken,
@@ -190,6 +232,7 @@ namespace CampusConnect.Server.Controllers
                 });
             }
 
+            _logger.LogWarning("2FA login failed: Invalid code for user: {LoginName}", loginName);
             return BadRequest("Invalid code");
         }
 

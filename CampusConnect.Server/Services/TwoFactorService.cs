@@ -29,9 +29,19 @@ namespace CampusConnect.Server.Services
 
         public bool ValidateCode(string secret, string code)
         {
-            var secretBytes = Base32Encoding.ToBytes(secret);
-            var totp = new Totp(secretBytes);
-            return totp.VerifyTotp(code, out _);
+            try
+            {
+                var secretBytes = Base32Encoding.ToBytes(secret);
+                var totp = new Totp(secretBytes, step: 30);
+                
+                // Allow 1 step (30 seconds) tolerance in both directions
+                var window = new VerificationWindow(previous: 1, future: 1);
+                return totp.VerifyTotp(code, out _, window);
+            }
+            catch (Exception)
+            {
+                return false;
+            }
         }
     }
 }
