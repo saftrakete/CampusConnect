@@ -27,11 +27,13 @@ const routes: Routes = [
     },
     {
         path: 'onboarding',
-        component: OnboardingComponent
+        component: OnboardingComponent,
+        canActivate: [AuthGuard]
     },
     {
         path: 'dashboard',
-        component: DashboardComponent
+        component: DashboardComponent,
+        canActivate: [AuthGuard]
     },
     {
         path: '',
