@@ -11,6 +11,7 @@
     height: 100%;
     flex-flow: column;
     align-items: center;
+    gap: 4rem;
 }
 
 .imageContainer {
@@ -26,5 +27,53 @@
         // overflow: hidden;
         width: 100vw;
         height: 100vh;
+    }
+}
+
+.onboardingContainer {
+    background-color: red;
+    height: 25%;
+    width: 20%;
+    display: flex;
+    border-bottom: 0.15rem (var(--primary)) solid;
+    border-left: 0.15rem (var(--primary)) solid;
+    border-right: 0.15rem (var(--primary)) solid;
+    border-top: 0.15rem (var(--primary)) solid;
+    border-radius: 0.5rem;
+    box-shadow: 2px 2px 2px darkgray;
+}
+
+.mat-card {
+    width: 100%;
+
+    .cardHeader {
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    justify-content: center;
+    height: 50%;
+    width: 100%;
+
+        .title {
+            color: white;
+            font-size: x-large;
+            padding-bottom: 0.5rem;
+        }
+    }
+
+    .startButton {
+        display: flex;
+        flex-flow: column;
+        align-items: center;
+        justify-content: center;
+        height: 50%;
+        width: 100%;
+
+        button {
+            background-color: green;
+            width: 50%;
+            height: 50%;
+            font-size: large;
+        }
     }
 }
