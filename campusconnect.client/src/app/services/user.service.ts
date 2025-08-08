@@ -5,6 +5,7 @@ import { baseApiRoute } from '../app-routing.module';
 import { Observable } from 'rxjs';
 import { LoginDto } from '../entities/loginDto';
 import { LoginResponseDto } from '../entities/loginResponseDto';
+import { Module } from '../entities/module';
 
 @Injectable({
   providedIn: 'root'
@@ -31,6 +32,10 @@ export class UserService {
 
     public getUserIdByLoginName(loginName: string): Observable<Number> {
         return this.httpClient.get<Number>(baseApiRoute + "user/getId/" + loginName);
+    }
+
+    public postUserModules(modules: Module[], id: Number): Observable<void> {
+        return this.httpClient.post<void>(baseApiRoute + "user/saveModules/" + id, modules);
     }
 
     public createUserEntity(

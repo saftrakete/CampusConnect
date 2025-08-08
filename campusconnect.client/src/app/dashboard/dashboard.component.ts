@@ -36,9 +36,7 @@ export class DashboardComponent implements OnInit {
       this.us.getUserIdByLoginName(loginName).subscribe(
         (userId) => {
           console.log(userId);
-          // Id nutzen um addedModules als Liste in der User Tabelle für den individuellen Nutzer abzuspeichern
-          //
-          // TODO: UserModel anpassen, dass Listen gespeichert werden können. Anfrage ans Backend senden und Liste hinterlegen.
+          this.us.postUserModules(this.os.addedModules, userId).subscribe();
         }
       )
     }

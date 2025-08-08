@@ -93,6 +93,29 @@ namespace CampusConnect.Server.Controllers
             return NoContent();
         }
 
+        [HttpPost("saveModules/{id}")]
+        public async Task<IActionResult> SaveUserModules(Module[] modules, int id)
+        {
+            var user = await _context.Users.Include(u => u.UserModules).FirstOrDefaultAsync(u => u.UserId == id);
+
+            if (user == null)
+            {
+                return BadRequest(new { message = "User not found"});
+            }
+
+            foreach (var mod in modules)
+            {
+                var currentModule = await _context.Modules.FindAsync(mod.ModuleId);
+
+                if (currentModule != null)
+                {
+                    user.UserModules.Add(currentModule);
+                }
+            }
+            await _context.SaveChangesAsync();
+            return Ok(new { message = "Modules added successfully" });
+        }
+
         [HttpPost("register")]
         public async Task<IActionResult> Register([FromBody] RegisterModel model)
         {
