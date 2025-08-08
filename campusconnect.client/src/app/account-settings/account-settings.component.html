@@ -38,7 +38,7 @@
         mat-raised-button 
         class="twoFactorButton"
         (click)="openTwoFactorSetup()">
-        2FA verwalten
+        {{ twoFactorEnabled ? '2FA deaktivieren' : '2FA aktivieren' }}
       </button>
 
       <h2 class="fontColor">Konto löschen</h2>

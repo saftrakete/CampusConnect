@@ -1,10 +1,18 @@
 <header class="header">
         <a href="#" class="logo">Campus Connect</a>
         <button
+            *ngIf="!authService.isLoggedIn()"
             mat-raised-button
             routerLink="../login"
             class="navpanel-button">
                 Anmelden
-        </button>  
+        </button>
+        <button
+            *ngIf="authService.isLoggedIn()"
+            mat-raised-button
+            (click)="authService.logOut()"
+            class="navpanel-button">
+                Abmelden
+        </button>
         <app-user-settings></app-user-settings>           
 </header>

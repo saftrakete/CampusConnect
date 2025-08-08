@@ -255,6 +255,16 @@ namespace CampusConnect.Server.Controllers
 
             return BadRequest("Invalid code");
         }
+
+        [HttpGet("2fa/status")]
+        [Authorize]
+        public async Task<ActionResult<bool>> GetTwoFactorStatus()
+        {
+            var userId = _authService.GetUserIdFromToken(HttpContext);
+            var user = await _context.Users.FindAsync(userId);
+            
+            return user?.TwoFactorEnabled ?? false;
+        }
     }
 }
 

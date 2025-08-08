@@ -24,7 +24,21 @@
             placeholder="Passwort..."
             required>
     </mat-form-field>
+
+    <mat-form-field *ngIf="showCaptcha" class="captcha-field">
+        <mat-label>{{ captchaQuestion }}</mat-label>
+        <input
+            matInput
+            type="number"
+            formControlName="captcha"
+            placeholder="Antwort eingeben"
+            required>
+    </mat-form-field>
 </form>
+
+<div *ngIf="errorMessage" class="error-message" style="color: red; margin: 10px 0; text-align: center;">
+  {{ errorMessage }}
+</div>
 
 <div class="actionContainer">
     <a 

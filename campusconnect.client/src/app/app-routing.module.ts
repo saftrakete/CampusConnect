@@ -12,7 +12,7 @@ import { AuthGuard } from './routeguards/AuthGuard';
 import { TwoFactorComponent } from './two-factor/two-factor.component';
 import { TwoFactorSetupComponent } from './two-factor/two-factor-setup.component';
 
-export const baseApiRoute = 'http://localhost:5098/';
+export const baseApiRoute = 'https://localhost:7109/';
 
 const routes: Routes = [
     {

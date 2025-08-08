@@ -16,7 +16,11 @@ export class AuthorizationService {
   }
 
   public setToken(token: string): void {
-    localStorage.setItem("jwt", token); //Anfällig für XSS-Angriffe
+    localStorage.setItem("jwt", token);
+  }
+
+  public getToken(): string | null {
+    return localStorage.getItem("jwt");
   }
 
   public logOut(): void {
@@ -26,7 +30,7 @@ export class AuthorizationService {
 
   public isLoggedIn(): boolean {
     const token = this.getDecodedToken();
-    return !token;
+    return token !== null && token.exp > Date.now() / 1000;
   }
 
   public getUserRole(): string | null {

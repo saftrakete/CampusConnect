@@ -29,6 +29,10 @@ export class UserService {
         });
     }
 
+    public getTwoFactorStatus(): Observable<boolean> {
+        return this.httpClient.get<boolean>(baseApiRoute + 'user/2fa/status');
+    }
+
     public checkIfLoginNameExists(loginName: string): Observable<boolean> {
         return this.httpClient.get<boolean>(baseApiRoute + "user/exists/" + loginName);
     }
