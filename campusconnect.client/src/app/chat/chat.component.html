@@ -1,0 +1,43 @@
+<p>chat works!</p>
+<mat-label class="chatLabel">
+    Chatten
+</mat-label>
+
+<form [formGroup]="chatForm">
+    <mat-form-field>
+        <mat-label>Nachricht</mat-label>
+        <input matInput
+               type="text"
+               formControlName="chatMessage"
+               placeholder=""
+               required>
+    </mat-form-field>
+</form>
+
+<div class="actionContainer">
+    <button mat-raised-button
+            color="primary"
+            disabled="{{!chatForm.valid.valueOf()}}"
+            (click)="chatClick()">
+        Senden
+    </button>
+    <button mat-raised-button
+            color="primary"
+            (click)="clickFetchMessages()">
+        Empfangen
+    </button>
+
+    <!-- Displayed Messages -->
+    <mat-card class="messages-container">
+        <mat-card-title>Empfangene Nachrichten</mat-card-title>
+        <mat-card-content>
+            <mat-list>
+                <mat-list-item *ngFor="let message of fetchedMessages">
+                    {{ 'user' + message.userId + ': ' + message.content + '' }}
+                </mat-list-item>
+            </mat-list>
+        </mat-card-content>
+    </mat-card>
+
+</div>
+
