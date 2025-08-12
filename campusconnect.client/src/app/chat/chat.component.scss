@@ -15,35 +15,42 @@
     text-align: left;
     width: 28rem;
     margin-left: 0.5rem;
+    
 }
 
 form {
     display: flex;
     flex-flow: column;
     width: 28rem;
+
+}
+
+.actionContainer {
+    position: fixed;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-100%);
+    display: flex;
+    flex-flow: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+    width: 30rem;
     max-height: 28rem;
     padding-top: 1.25rem;
     padding-right: 1rem;
     padding-left: 1rem;
     margin-bottom: 0.5rem;
-    border: 0.15rem (var(--primary)) solid;
+    border: 0.25rem (var(--primary)) solid;
     border-radius: 0.5rem;
     box-shadow: 3px 3px 2px darkgray;
     background-color: gray;
-}
-
-.actionContainer {
-    display: flex;
-    flex-flow: column;
-    align-items: center;
-    justify-content: space-between;
-    gap: 0.75rem;
 
     .loginLink {
         font-size: 16px;
     }
 
-    a {
+    b {
         color: var(--primary);
         transition: color 0.2s ease-out;
 
@@ -56,9 +63,10 @@ form {
         background-color: var(--primary);
         color: var(--darkmode-background);
         transition: background-color 0.2s ease-out;
+        
 
         &:disabled {
-            background-color: gray;
+            background-color: dimgray;
         }
 
         &:hover {
@@ -69,7 +77,9 @@ form {
 
 
 .messages-container mat-card-content {
+   
     max-height: 300px; /* fixed height */
     overflow-y: auto; /* vertical scrollbar when content overflows */
+    text-align: left;
 }
 
