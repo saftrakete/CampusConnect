@@ -113,7 +113,7 @@ namespace CampusConnect.Server.Controllers
                 }
             }
             await _context.SaveChangesAsync();
-            return Ok(new { message = "Modules added successfully" });
+            return Ok(user.UserModules.Select(m => m.Name));
         }
 
         [HttpPost("register")]

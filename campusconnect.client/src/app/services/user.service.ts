@@ -34,8 +34,8 @@ export class UserService {
         return this.httpClient.get<Number>(baseApiRoute + "user/getId/" + loginName);
     }
 
-    public postUserModules(modules: Module[], id: Number): Observable<void> {
-        return this.httpClient.post<void>(baseApiRoute + "user/saveModules/" + id, modules);
+    public postUserModules(modules: Module[], id: Number): Observable<string[]> {
+        return this.httpClient.post<string[]>(baseApiRoute + "user/saveModules/" + id, modules);
     }
 
     public createUserEntity(

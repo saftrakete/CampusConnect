@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { OnboardingService } from '../services/onboarding.service';
 import { AuthorizationService } from '../services/authorization.service';
 import { UserService } from '../services/user.service';
+import { lastValueFrom } from 'rxjs';
 
 @Component({
   selector: 'app-dashboard',
@@ -15,8 +16,9 @@ export class DashboardComponent implements OnInit {
   constructor(public os: OnboardingService, public auth: AuthorizationService, public us: UserService) {}
 
     ngOnInit(): void {
-    this.os.loadOnboardingDataFromLocalStorage();
-    this.os.saveOnboardingDataToLocalStorage();
+    this.os.addedModules = [];
+    this.os.LoadOnboardingDataFromLocalStorage();
+    this.os.SaveOnboardingDataToLocalStorage();
     this.os.StartOnboardingFiltering();
   }
 
@@ -29,16 +31,24 @@ export class DashboardComponent implements OnInit {
     this.os.StartOnboardingFiltering();
   }
 
-  public confirmActions() {
+  // LastValueFrom wird genutzt damit CleanUp erst dann ausgeführt wird, wenn die Module fertig gespeichert wurden.
+  // ==> Durch LastValueFrom lässt sich Await verwenden.
+  public async confirmActions() {
     const loginName = this.auth.getLoginName();
+
     if (loginName != null) {
-      this.us.getUserIdByLoginName(loginName).subscribe(
-        (userId) => {
-          this.us.postUserModules(this.os.addedModules, userId).subscribe();
-        }
-      )
+      try {
+        const userId = await lastValueFrom(this.us.getUserIdByLoginName(loginName));
+        const savedModules = await lastValueFrom(this.us.postUserModules(this.os.addedModules, userId));
+
+        console.log('Saved modules:', savedModules);
+        this.os.onboardingCompleted = true;
+
+        this.os.CleanUp();
+      } catch (err) {
+        console.error('Error during onboarding:', err);
+      }
     }
-    this.os.CleanUp();
   }
 
 }
