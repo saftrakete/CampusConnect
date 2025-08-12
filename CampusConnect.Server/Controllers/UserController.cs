@@ -50,6 +50,13 @@ namespace CampusConnect.Server.Controllers
             return user.UserId;
         }
 
+        [HttpGet("check-onboarding-status/{loginName}")]
+        public async Task<ActionResult<bool>> CheckOnboardingStatus(string loginName)
+        {
+            var user = await _context.Users.Include(u => u.UserModules).FirstOrDefaultAsync(u => u.LoginName == loginName);
+            return user.UserModules.Count != 0;
+        }
+
         [HttpPost("login")]
         public async Task<ActionResult<UserModel>> UserLoginRequest(LoginDto loginDto)
         {

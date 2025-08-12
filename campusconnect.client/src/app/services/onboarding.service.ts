@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { baseApiRoute } from '../app-routing.module';
 import { Module } from '../entities/module';
+import { lastValueFrom } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -12,6 +13,8 @@ export class OnboardingService {
 
   filteredModules: Module[] = []
   addedModules: Module[] = [];
+
+  onboardingCompleted: boolean = false;    
 
   constructor(private httpClient: HttpClient) { }
 
@@ -26,9 +29,22 @@ export class OnboardingService {
     }
   }
 
-  public cleanUp() {
+  // Checkt ob Onboarding bereits abgeschlossen wurde
+  public async CheckOnboardingStatus(loginName: string) {
+    const status = await lastValueFrom(
+      this.httpClient.get<boolean>(baseApiRoute + "user/check-onboarding-status/" + loginName)
+    );
+    this.onboardingCompleted = status;
+    console.log(this.onboardingCompleted);
+  }
+
+  public GetOnboardingStatus() {
+    return this.onboardingCompleted;
+  }
+
+  public CleanUp() {
     this.addedModules = [];
-    this.cleanOnboardingDataFromLocalStorage();
+    this.CleanOnboardingDataFromLocalStorage();
   }
 
   public AddModule(mod: Module) {
