@@ -44,12 +44,12 @@ export class OnboardingService {
     return this.addedModules.some(m => m.name == mod.name);
   }
 
-  public saveOnboardingDataToLocalStorage() {
+  public SaveOnboardingDataToLocalStorage() {
     localStorage.setItem('semester', this.selectedSemester.toString());
     localStorage.setItem('study', this.selectedStudy || '');
   }
 
-  public loadOnboardingDataFromLocalStorage() {
+  public LoadOnboardingDataFromLocalStorage() {
     const storedSemester = localStorage.getItem('semester');
     const storedStudy = localStorage.getItem('study');
 
@@ -61,7 +61,7 @@ export class OnboardingService {
     }
   }
 
-  public cleanOnboardingDataFromLocalStorage() {
+  public CleanOnboardingDataFromLocalStorage() {
     localStorage.removeItem('semester');
     localStorage.removeItem('study');
   }

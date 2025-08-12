@@ -30,17 +30,15 @@ export class DashboardComponent implements OnInit {
   }
 
   public confirmActions() {
-    const token = localStorage.getItem("jwt");
     const loginName = this.auth.getLoginName();
     if (loginName != null) {
       this.us.getUserIdByLoginName(loginName).subscribe(
         (userId) => {
-          console.log(userId);
           this.us.postUserModules(this.os.addedModules, userId).subscribe();
         }
       )
     }
-
+    this.os.CleanUp();
   }
 
 }
