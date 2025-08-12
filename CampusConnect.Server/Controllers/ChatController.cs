@@ -24,15 +24,22 @@ namespace CampusConnect.Server.Controllers
             _logger = logger;
         }
 
-        [HttpGet("get")]
+        [HttpGet("getMessage")]
         public async Task<ActionResult<MessageModel>> GetMessageById(int messageId)
         {
             var message = await _context.Messages.FirstOrDefaultAsync(m => m.MessageId == messageId);
             return message is not null ? Ok(message) : NotFound();
         }
 
+        [HttpGet("getMessages")]
+        public async Task<ActionResult<MessageModel>> GetMessageByChatId(int chatId)
+        {
+            var message = await _context.Messages.FirstOrDefaultAsync(m => m.ChatId == chatId);
+            return message is not null ? Ok(message) : NotFound();
+        }
 
-        [HttpGet("getAll")]
+
+        [HttpGet("getAllMessages")]
         public async Task<ActionResult<List<MessageModel>>> GetAllMessages()
         {
             var messages = await _context.Messages.ToListAsync();

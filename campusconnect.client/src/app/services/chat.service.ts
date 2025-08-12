@@ -22,11 +22,15 @@ export class ChatService {
         return new MessageEntity(content, userId);
     }
 
-    public getMessageById(messageId: number): Observable<MessageEntity> {
-        return this.httpClient.get<MessageEntity>(`${baseApiRoute}chat/get?messageId=${messageId}`);
+    public getMessageByMessageId(messageId: number): Observable<MessageEntity> {
+        return this.httpClient.get<MessageEntity>(`${baseApiRoute}chat/getMessage?messageId=${messageId}`);
+    }
+
+    public getMessageByChatId(chatId: number): Observable<MessageEntity> {
+        return this.httpClient.get<MessageEntity>(`${baseApiRoute}chat/getMessages?chatId=${chatId}`);
     }
 
     public getAllMessages(): Observable<MessageEntity[]> {
-        return this.httpClient.get<MessageEntity[]>(`${baseApiRoute}chat/getAll`);
+        return this.httpClient.get<MessageEntity[]>(`${baseApiRoute}chat/getAllMessages`);
     }
 }
