@@ -1,0 +1,40 @@
+<h1 class="title">Hier kannst du deine Module auswählen.</h1>
+
+<div class="filterContainer">
+  <div class="filterField">
+    <mat-form-field appearance="fill" class="formField">
+      <mat-label>Filtern</mat-label>
+      <input matInput placeholder="Gib hier etwas ein..." [(ngModel)]="filterQuery">
+      <button mat-icon-button matSuffix (click)="userFilter()">
+        <mat-icon>search</mat-icon>
+      </button>
+    </mat-form-field>
+    <button mat-raised-button class="resetBttn" (click)="resetFiltering()">Reset</button>
+  </div>
+  <div class="rightsideButtons">
+    <button mat-raised-button *ngIf="os.addedModules.length != 0" class="confirm" (click)="confirmActions()" [routerLink]="['/']">Bestätigen</button>
+    <button mat-raised-button class="goBack" (click)="os.CleanUp()" [routerLink]="['/onboarding']">Zurück</button>
+  </div>
+</div>
+
+
+<div class="courseContainer">
+  <!-- Module einlesen hier-->
+   <app-module-card  *ngFor="let mod of os.filteredModules" [module]="{name: mod.name, semester: mod.semester, moduleId: mod.moduleId}"></app-module-card>
+</div>
+
+<div class="userCourses">
+
+  <div class="headline">
+    <h1>Meine Module:</h1>
+  </div>
+
+  <div class="moduleList">
+    
+    <div class="module" *ngFor="let mod of os.addedModules">
+      <app-added-module class="mod" [module]="{name: mod.name, semester: mod.semester, moduleId: mod.moduleId}"></app-added-module>
+    </div>
+    
+  </div>
+  
+</div>
