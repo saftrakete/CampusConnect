@@ -27,7 +27,6 @@ import { AccountSettingsComponent } from './account-settings/account-settings.co
 import { SettingsSidebarComponent } from './settings-sidebar/settings-sidebar.component';
 import { EmailSettingsComponent } from './email-settings/email-settings.component';
 import { EditUsernameFormComponent } from './edit-username-form/edit-username-form.component';
-import { ChatComponent } from './chat/chat.component';
 import { JwtInterceptor } from './interceptors/JwtInterceptor';
 import { AdminPanelComponent } from './admin-panel/admin-panel.component';
 import { AuthGuardTestComponent } from './auth-guard-test/auth-guard-test.component';
@@ -37,7 +36,6 @@ import { OnboardingComponent } from './onboarding/onboarding.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ModuleCardComponent } from './module-card/module-card.component';
 import { AddedModuleComponent } from './added-module/added-module.component';
-
 
 
 @NgModule({
@@ -57,12 +55,10 @@ import { AddedModuleComponent } from './added-module/added-module.component';
     DashboardComponent,
     ModuleCardComponent,
     AddedModuleComponent,
-    ChatComponent,
     AdminPanelComponent,
     AuthGuardTestComponent,
     ForbiddenComponent,
     NotFoundComponent
-
   ],
   imports: [
     BrowserModule, HttpClientModule,
@@ -79,8 +75,6 @@ import { AddedModuleComponent } from './added-module/added-module.component';
     MatSelectModule,
     FormsModule,
     MatCardModule
-    MatCardModule,
-    MatListModule
   ],
   providers: [
     provideAnimationsAsync(),

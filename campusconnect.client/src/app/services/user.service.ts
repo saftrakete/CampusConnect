@@ -36,8 +36,6 @@ export class UserService {
 
     public postUserModules(modules: Module[], id: Number): Observable<string[]> {
         return this.httpClient.post<string[]>(baseApiRoute + "user/saveModules/" + id, modules);
-    public getUserById(userId: number): Observable<UserEntity> {
-        return this.httpClient.get<UserEntity>(`${baseApiRoute}user/${userId}`);
     }
 
     public createUserEntity(

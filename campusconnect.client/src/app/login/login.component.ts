@@ -36,6 +36,7 @@ export class LoginComponent implements OnInit {
     this.userService.sendLoginRequest(loginDto).subscribe(
       response => {
         console.log(response);
+        
         const token = response.token;
         this.authService.setToken(token);
       },

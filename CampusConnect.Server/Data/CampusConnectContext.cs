@@ -21,7 +21,6 @@ namespace CampusConnect.Server.Data
         public virtual DbSet<LearnGroup> LearnGroups { get; set; }
         public virtual DbSet<Module> Modules { get; set; }
         public virtual DbSet<Page> Pages { get; set; }
-        public virtual DbSet<MessageModel> Messages { get; set; }
         public virtual DbSet<UserRole> UserRoles { get; set; }
     }
 }
