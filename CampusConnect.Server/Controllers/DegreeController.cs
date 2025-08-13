@@ -1,12 +1,6 @@
-﻿using CampusConnect.Server.Data;
-using CampusConnect.Server.Models;
-using CampusConnect.Server.Services;
+﻿using CampusConnect.Server.Services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace CampusConnect.Server.Controllers
@@ -15,36 +9,9 @@ namespace CampusConnect.Server.Controllers
     [ApiController]
     public class DegreeController : ControllerBase
     {
-        private readonly CampusConnectContext _context;
-        public DegreeController(CampusConnectContext context)
+        public DegreeController(InitDegreeTable init)
         {
-            this._context = context;
-        }
-
-        [HttpGet("onboarding/{degreeName}")]
-        public async Task<ActionResult<ICollection<ModuleDto>>> GetModulesForDegree(string degreeName)
-        {
-            var degree = await _context.Degrees.Include(deg => deg.MandatoryModules).FirstOrDefaultAsync(deg => deg.Name == degreeName);
-
-            if (degree == null)
-            {
-                return NotFound("Degree not found.");
-            }
-
-            foreach (var mod in degree.MandatoryModules)
-            {
-                Console.WriteLine(mod.Name);
-            }
-
-            // Nur die nötigen Daten für das Frontend bereitstellen
-            var result = degree.MandatoryModules.Select(mod => new ModuleDto
-            {   
-                ModuleId = mod.ModuleId,
-                Name = mod.Name,
-                Semester = mod.Semester
-            }).ToList();
-
-            return result;
+            
         }
     }
 }
