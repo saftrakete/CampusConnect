@@ -46,7 +46,7 @@ namespace CampusConnect.Server.Services
         {
             CreateDegreeEntities();
 
-            //DeleteTableContent();
+            DeleteTableContent();
 
             if (CheckIfEmpty())
             {
