@@ -12,7 +12,7 @@ namespace CampusConnect.Server.Services
 {
     public class InitDegreeTable
     {
-        private Degree[] degrees;
+        private Degree[] degrees = [];
         private readonly int[] infModuleIds = Enumerable.Range(1, 9).ToArray();
         private readonly int[] ingInfModuleIds = Enumerable.Range(1, 8).Append(10).ToArray();
         private readonly CampusConnectContext _context;
@@ -25,9 +25,9 @@ namespace CampusConnect.Server.Services
         public void CreateDegreeEntities()
         {
             this.degrees = [
-                    new Degree { Name = "Informatik", Faculty = _context.Faculties.First(), MandatoryModules = GetModulesById(infModuleIds) },
-                    new Degree { Name = "Ingenieurinformatik", Faculty = _context.Faculties.First(), MandatoryModules = GetModulesById(ingInfModuleIds) }
-                ];  
+                    new Degree {Name = "Informatik", Faculty = _context.Faculties.First(), MandatoryModules = GetModulesById(infModuleIds)},
+                    new Degree {Name = "Ingenieurinformatk", Faculty = _context.Faculties.First(), MandatoryModules = GetModulesById(ingInfModuleIds)}
+                ];
         }
 
         // Kann wahrscheinlich raus sobald wir ein Admin-Dashboard zum Bearbeiten von DB-Tabellen haben
@@ -45,8 +45,6 @@ namespace CampusConnect.Server.Services
         public async Task FillInDegrees()
         {
             CreateDegreeEntities();
-
-            //DeleteTableContent();
 
             if (CheckIfEmpty())
             {

@@ -1,5 +1,4 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using System.Collections.Generic;
 
 namespace CampusConnect.Server.Models
 {
@@ -11,6 +10,5 @@ namespace CampusConnect.Server.Models
         public string LoginName { get; set; }
         public string PasswordHash { get; set; }
         public UserRole Role { get; set; }
-        public virtual ICollection<Module> UserModules { get; set; }
     }
 }
