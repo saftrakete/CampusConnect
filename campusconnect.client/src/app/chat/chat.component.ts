@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { ChatService } from '../services/chat.service';
 import { AbstractControl, FormBuilder, FormGroup, ValidatorFn, Validators } from '@angular/forms';
 import { MessageEntity } from '../entities/message-entity';
@@ -39,6 +39,7 @@ export class ChatComponent implements OnInit {
       this.refreshIntervalId = setInterval(() => {
           this.fetchAllMessages();
       }, 5000);
+      
     }
 
     public ngOnDestroy(): void {
