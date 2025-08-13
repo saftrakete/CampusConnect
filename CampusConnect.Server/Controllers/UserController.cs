@@ -43,6 +43,13 @@ namespace CampusConnect.Server.Controllers
             return user is not null;
         }
 
+        [HttpGet("getusername/{loginName}")]
+        public async Task<ActionResult<string>> GetUsername(string loginName) 
+        {
+            var user = await _context.Users.FirstOrDefaultAsync(u => u.LoginName == loginName);
+            return user.Nickname;
+        }
+
         [HttpPost("login")]
         public async Task<ActionResult<UserModel>> UserLoginRequest(LoginDto loginDto)
         {
