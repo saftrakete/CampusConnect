@@ -24,10 +24,6 @@ const routes: Routes = [
         component: RegisterComponent
     },
     {
-        path: 'chat',
-        component: ChatComponent
-    },
-    {
         path: '',
         component: HomeComponent,
         pathMatch: 'full'
