@@ -11,6 +11,8 @@ import { AuthGuardTestComponent } from './auth-guard-test/auth-guard-test.compon
 import { AuthGuard } from './routeguards/AuthGuard';
 import { ForbiddenComponent } from './forbidden/forbidden.component';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { OnboardingComponent } from './onboarding/onboarding.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 export const baseApiRoute = 'https://localhost:7109/';
 
@@ -22,6 +24,16 @@ const routes: Routes = [
     {
         path: 'register',
         component: RegisterComponent
+    },
+    {
+        path: 'onboarding',
+        component: OnboardingComponent,
+        canActivate: [AuthGuard]
+    },
+    {
+        path: 'dashboard',
+        component: DashboardComponent,
+        canActivate: [AuthGuard]
     },
     {
         path: '',

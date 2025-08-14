@@ -10,8 +10,9 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatDividerModule } from '@angular/material/divider';
+import { MatSelectModule } from '@angular/material/select';
+import { FormsModule } from '@angular/forms';
 import { MatCardModule } from '@angular/material/card';
-import { MatListModule } from '@angular/material/list';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -31,6 +32,10 @@ import { AdminPanelComponent } from './admin-panel/admin-panel.component';
 import { AuthGuardTestComponent } from './auth-guard-test/auth-guard-test.component';
 import { ForbiddenComponent } from './forbidden/forbidden.component';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { OnboardingComponent } from './onboarding/onboarding.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { ModuleCardComponent } from './module-card/module-card.component';
+import { AddedModuleComponent } from './added-module/added-module.component';
 
 
 @NgModule({
@@ -46,7 +51,10 @@ import { NotFoundComponent } from './not-found/not-found.component';
     SettingsSidebarComponent,
     EmailSettingsComponent,
     EditUsernameFormComponent,
-    SettingsSidebarComponent,
+    OnboardingComponent,
+    DashboardComponent,
+    ModuleCardComponent,
+    AddedModuleComponent,
     AdminPanelComponent,
     AuthGuardTestComponent,
     ForbiddenComponent,
@@ -64,8 +72,9 @@ import { NotFoundComponent } from './not-found/not-found.component';
     MatDialogModule,
     MatTooltipModule,
     MatDividerModule,
-    MatCardModule,
-    MatListModule
+    MatSelectModule,
+    FormsModule,
+    MatCardModule
   ],
   providers: [
     provideAnimationsAsync(),

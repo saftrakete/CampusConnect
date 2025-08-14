@@ -43,6 +43,20 @@ namespace CampusConnect.Server.Controllers
             return user is not null;
         }
 
+        [HttpGet("getId/{loginName}")]
+        public async Task<ActionResult<int>> GetUserIdByLoginName(string loginName)
+        {
+            var user = await _context.Users.FirstOrDefaultAsync(u => u.LoginName == loginName);
+            return user.UserId;
+        }
+
+        [HttpGet("check-onboarding-status/{loginName}")]
+        public async Task<ActionResult<bool>> CheckOnboardingStatus(string loginName)
+        {
+            var user = await _context.Users.Include(u => u.UserModules).FirstOrDefaultAsync(u => u.LoginName == loginName);
+            return user.UserModules.Count != 0;
+        }
+
         [HttpPost("login")]
         public async Task<ActionResult<UserModel>> UserLoginRequest(LoginDto loginDto)
         {
@@ -84,6 +98,29 @@ namespace CampusConnect.Server.Controllers
             _context.Remove(user);
             await _context.SaveChangesAsync();
             return NoContent();
+        }
+
+        [HttpPost("saveModules/{id}")]
+        public async Task<IActionResult> SaveUserModules(Module[] modules, int id)
+        {
+            var user = await _context.Users.Include(u => u.UserModules).FirstOrDefaultAsync(u => u.UserId == id);
+
+            if (user == null)
+            {
+                return BadRequest(new { message = "User not found"});
+            }
+
+            foreach (var mod in modules)
+            {
+                var currentModule = await _context.Modules.FindAsync(mod.ModuleId);
+
+                if (currentModule != null)
+                {
+                    user.UserModules.Add(currentModule);
+                }
+            }
+            await _context.SaveChangesAsync();
+            return Ok(user.UserModules.Select(m => m.Name));
         }
 
         [HttpPost("register")]
