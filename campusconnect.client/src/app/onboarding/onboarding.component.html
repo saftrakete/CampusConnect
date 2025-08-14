@@ -1,0 +1,37 @@
+<div class="formField">
+
+    <div class="studentSemester">
+
+        <mat-label>Fachsemester:</mat-label>
+
+        <div class="displayContainer">
+            <div class="display">
+                <mat-select class="dropdown" [(ngModel)]="os.selectedSemester">
+                    @for (sem of semesters; track sem) {
+                      <mat-option [value]="sem">{{sem}}</mat-option>
+                    }
+                  </mat-select>
+            </div>  
+        </div>
+
+    </div>
+
+    <div class="studentSemester">
+
+        <mat-label>Studiengang:</mat-label>
+
+        <div class="displayContainer">
+            <div class="display">
+                <mat-select class="dropdown" [(ngModel)]="os.selectedStudy">
+                    @for (course of studyPrograms; track course) {
+                      <mat-option [value]="course">{{course}}</mat-option>
+                    }
+                  </mat-select>
+            </div>  
+        </div>
+
+    </div>
+
+    <button mat-raised-button [routerLink]="['/dashboard']" [disabled]="os.selectedStudy == null">Hier klicken</button>
+    
+</div>
