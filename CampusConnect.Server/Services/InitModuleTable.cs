@@ -52,7 +52,7 @@ namespace CampusConnect.Server.Services
         {
             CreateModuleEntities();
 
-            DeleteTableContent();
+            //DeleteTableContent();
 
             if (CheckIfEmpty()) 
             {
