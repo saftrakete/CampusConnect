@@ -5,7 +5,6 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { AccountSettingsComponent } from './account-settings/account-settings.component';
 import { EmailSettingsComponent } from './email-settings/email-settings.component';
-import { ChatComponent } from './chat/chat.component';
 import { AdminPanelComponent } from './admin-panel/admin-panel.component';
 import { AdminGuard } from './routeguards/AdminGuard';
 import { AuthGuardTestComponent } from './auth-guard-test/auth-guard-test.component';
@@ -14,7 +13,6 @@ import { ForbiddenComponent } from './forbidden/forbidden.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { TwoFactorComponent } from './two-factor/two-factor.component';
 import { TwoFactorSetupComponent } from './two-factor/two-factor-setup.component';
-
 
 export const baseApiRoute = 'https://localhost:7109/';
 
@@ -26,10 +24,6 @@ const routes: Routes = [
     {
         path: 'register',
         component: RegisterComponent
-    },
-    {
-        path: 'chat',
-        component: ChatComponent
     },
     {
         path: '',
