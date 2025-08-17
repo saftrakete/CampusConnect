@@ -2,19 +2,9 @@
 
 Dies ist das Repository für das Softwareprojekt.
 
-## Develop Branch hat umgesetzte Features, in Main wurde noch nicht viel umgesetzt.
+## Installations-Anleitung:
 
-### Installations-Anleitung:
-
-- fork installieren 
 - node js installieren
-
-in die .sln Datei in Visual Studio Code öffnen
-im terminal: <br/>
-	- npm install -g @angular/cli  <br/>
-ein test Befehl, ob korrekt installiert: <br/>
-	- ng g c  \n <br/>
-
 
 ### Hinweis zum Erstellen der Datenbank:
  1. Projekt in Visual Studio öffnen
