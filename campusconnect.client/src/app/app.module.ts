@@ -5,10 +5,10 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
-import {MatIconModule} from '@angular/material/icon';
-import {MatMenuModule} from '@angular/material/menu';
-import {MatDialogModule} from '@angular/material/dialog';
-import {MatTooltipModule} from '@angular/material/tooltip';
+import { MatIconModule } from '@angular/material/icon';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatCardModule } from '@angular/material/card';
 import { MatListModule } from '@angular/material/list';
@@ -26,8 +26,6 @@ import { AccountSettingsComponent } from './account-settings/account-settings.co
 import { SettingsSidebarComponent } from './settings-sidebar/settings-sidebar.component';
 import { EmailSettingsComponent } from './email-settings/email-settings.component';
 import { EditUsernameFormComponent } from './edit-username-form/edit-username-form.component';
-import { AuthInterceptor } from './interceptors/auth.interceptor';
-import { ChatComponent } from './chat/chat.component';
 import { JwtInterceptor } from './interceptors/JwtInterceptor';
 import { AdminPanelComponent } from './admin-panel/admin-panel.component';
 import { AuthGuardTestComponent } from './auth-guard-test/auth-guard-test.component';
@@ -35,7 +33,8 @@ import { ForbiddenComponent } from './forbidden/forbidden.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { TwoFactorComponent } from './two-factor/two-factor.component';
 import { TwoFactorSetupComponent } from './two-factor/two-factor-setup.component';
-
+import { AuthInterceptor } from './interceptors/auth.interceptor';
+import { ChatComponent } from './chat/chat.component';
 
 
 @NgModule({
@@ -51,14 +50,13 @@ import { TwoFactorSetupComponent } from './two-factor/two-factor-setup.component
     SettingsSidebarComponent,
     EmailSettingsComponent,
     EditUsernameFormComponent,
-    ChatComponent,
+    SettingsSidebarComponent,
     AdminPanelComponent,
     AuthGuardTestComponent,
     ForbiddenComponent,
     NotFoundComponent,
     TwoFactorComponent,
     TwoFactorSetupComponent
-
   ],
   imports: [
     BrowserModule, HttpClientModule,

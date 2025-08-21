@@ -63,6 +63,7 @@ export class LoginComponent implements OnInit {
     let loginDto = this.userService.createLoginDto(this.loginForm.get('loginName')?.value, this.loginForm.get('password')?.value);
     this.userService.sendLoginRequest(loginDto).subscribe(
       response => {
+
         // Reset on successful login
         this.failedAttempts = 0;
         this.showCaptcha = false;
@@ -78,6 +79,7 @@ export class LoginComponent implements OnInit {
           this.authService.setToken(response.token);
           this.router.navigate(['/']);
         }
+
       },
       error => {
         this.failedAttempts++;
