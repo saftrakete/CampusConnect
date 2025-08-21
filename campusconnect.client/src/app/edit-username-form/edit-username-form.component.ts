@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { UserService } from '../services/user.service';
 import { AuthorizationService } from '../services/authorization.service';
+import { MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-edit-username-form',
@@ -9,7 +10,7 @@ import { AuthorizationService } from '../services/authorization.service';
 })
 export class EditUsernameFormComponent {
 
-  constructor(public us: UserService, public auth: AuthorizationService) {}
+  constructor(public us: UserService, public auth: AuthorizationService, private dialogRef: MatDialogRef<EditUsernameFormComponent>) {}
 
   public confirmUsernameUpdate() {
     const loginName = this.auth.getLoginName();
@@ -17,5 +18,6 @@ export class EditUsernameFormComponent {
       // Erstellt neues Dto und sendet mittels UserService Anfrage ans Backend
       this.us.updateUsername(this.us.createChangeUsernameDto(loginName, this.us.newUsername)).subscribe();
     }
+    this.dialogRef.close()
   }
 }

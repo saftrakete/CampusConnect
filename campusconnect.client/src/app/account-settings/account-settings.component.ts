@@ -38,6 +38,11 @@ export class AccountSettingsComponent implements OnInit {
   openEditDialog()
   {
     const dialogRef = this.dialog.open(EditUsernameFormComponent);
+    dialogRef.afterClosed().subscribe(
+      res => {
+        this.ngOnInit();
+      }
+    )
   }
 
 }
