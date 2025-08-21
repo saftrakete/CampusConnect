@@ -5,11 +5,14 @@ import { baseApiRoute } from '../app-routing.module';
 import { Observable } from 'rxjs';
 import { LoginDto } from '../entities/loginDto';
 import { LoginResponseDto } from '../entities/loginResponseDto';
+import { ChangeUsernameDto } from '../entities/changeUsernameDto';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
+
+    newUsername: string = "";
 
     constructor(private httpClient: HttpClient) { }
 
@@ -37,6 +40,11 @@ export class UserService {
         return this.httpClient.get<{ username: string }>(baseApiRoute + "user/getusername/" + loginName);
     }
 
+    public updateUsername(changeUsernameDto: ChangeUsernameDto): Observable<void> {
+        console.log(changeUsernameDto.loginName + " | " + changeUsernameDto.newNickname);
+        return this.httpClient.post<void>(baseApiRoute + "user/updateNickname", changeUsernameDto);
+    }
+
     public createUserEntity(
         nickname: string,
         loginName: string,
@@ -51,6 +59,10 @@ export class UserService {
         password: string
     ): LoginDto {
         return new LoginDto(loginName, password);
+    }
+
+    public createChangeUsernameDto(loginName: string, newNickname: string) {
+        return new ChangeUsernameDto(loginName, newNickname);
     }
 
 }

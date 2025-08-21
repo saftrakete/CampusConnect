@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using CampusConnect.Server.Services;
+using System;
 
 namespace CampusConnect.Server.Controllers
 {
@@ -53,6 +54,26 @@ namespace CampusConnect.Server.Controllers
                 return NotFound("User not found.");
             }
             return Ok(new{ username = user.Nickname });
+        }
+
+        [HttpPost("updateNickname")]
+        public async Task<ActionResult> UpdateUsername(ChangeUsernameDto changeUsernameDto)
+        {
+            _logger.LogInformation(changeUsernameDto.LoginName + "\n");
+            _logger.LogInformation(changeUsernameDto.NewNickname + "\n");
+            Console.WriteLine(changeUsernameDto.LoginName);
+            var loginName = changeUsernameDto.LoginName;
+            var user = await _context.Users.FirstOrDefaultAsync(u => u.LoginName == loginName);
+
+            if (user is null) 
+            {
+                return NotFound("User not found.");
+            }
+
+            user.Nickname = changeUsernameDto.NewNickname;
+            await _context.SaveChangesAsync();
+
+            return Ok();
         }
 
         [HttpPost("login")]
