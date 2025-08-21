@@ -41,7 +41,6 @@ export class UserService {
     }
 
     public updateUsername(changeUsernameDto: ChangeUsernameDto): Observable<void> {
-        console.log(changeUsernameDto.loginName + " | " + changeUsernameDto.newNickname);
         return this.httpClient.post<void>(baseApiRoute + "user/updateNickname", changeUsernameDto);
     }
 

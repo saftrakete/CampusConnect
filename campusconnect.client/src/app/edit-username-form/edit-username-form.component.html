@@ -7,5 +7,5 @@
         required
         [(ngModel)]="us.newUsername">
   </mat-form-field>
-  <button mat-raised-button class="confirmButton" (click)="confirmUsernameUpdate()" [routerLink]="['/accountsettings']">Bestätigen</button>
+  <button mat-raised-button class="confirmButton" (click)="confirmUsernameUpdate()" [routerLink]="['/accountsettings']" [disabled]="us.newUsername.length == 0">Bestätigen</button>
 </div>
