@@ -4,6 +4,8 @@
     <mat-label>Neuer Nutzername</mat-label>
     <input 
         matInput
-        required>
-</mat-form-field>
+        required
+        [(ngModel)]="us.newUsername">
+  </mat-form-field>
+  <button mat-raised-button class="confirmButton" (click)="test()" [routerLink]="['/accountsettings']">Bestätigen</button>
 </div>

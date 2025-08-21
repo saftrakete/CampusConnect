@@ -2,9 +2,12 @@
   display: flex;
   flex-flow: column;
   align-items: center;
-  padding-top: 5%;
-  height: 500px;
-  width: 500px
+  justify-content: center;
+  height: 16rem;
+  width: 20rem;
+  border: 0.15rem (var(--primary)) solid;
+  border-radius: 0.25rem;
+  box-shadow: 3px 3px 2px darkgray;
 }
 
 .fontColor {
@@ -13,4 +16,8 @@
 
 .opacity {
   opacity: 0.7;
+}
+
+.confirmButton {
+  background-color: var(--edit-and-confirm-buttons);
 }
