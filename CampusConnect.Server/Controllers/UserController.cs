@@ -184,17 +184,21 @@ namespace CampusConnect.Server.Controllers
             }
 
             _logger.LogInformation("Validating TOTP code for user: {LoginName}, Code: {Code}", dto.LoginName, dto.Code);
-            
-            if (_twoFactorService.ValidateCode(user.TwoFactorSecret, dto.Code))
-            {
-                user.TwoFactorEnabled = true;
-                await _context.SaveChangesAsync();
-                _logger.LogInformation("2FA enabled successfully for user: {LoginName}", dto.LoginName);
-                return Ok("2FA enabled successfully");
-            }
 
-            _logger.LogWarning("2FA verification failed: Invalid code for user: {LoginName}", dto.LoginName);
-            return BadRequest("Invalid code");
+            if (!_twoFactorService.ValidateCode(user.TwoFactorSecret, dto.Code))
+            {
+                _logger.LogWarning("2FA verification failed: Invalid code for user: {LoginName}", dto.LoginName);
+                return BadRequest("Invalid code");
+            }
+        
+                    user.TwoFactorEnabled = true;
+                    await _context.SaveChangesAsync();
+                    _logger.LogInformation("2FA enabled successfully for user: {LoginName}", dto.LoginName);
+                    return Ok("2FA enabled successfully");
+                
+
+            // _logger.LogWarning("2FA verification failed: Invalid code for user: {LoginName}", dto.LoginName);
+            // return BadRequest("Invalid code");
         }
 
         [HttpPost("2fa/login")]
@@ -220,9 +224,13 @@ namespace CampusConnect.Server.Controllers
 
             _logger.LogInformation("Validating 2FA login code for user: {LoginName}", loginName);
             
-            if (_twoFactorService.ValidateCode(user.TwoFactorSecret, dto.Code))
+            if (!_twoFactorService.ValidateCode(user.TwoFactorSecret, dto.Code))
             {
-                var jwtToken = _authService.GenerateJwtToken(user);
+                  _logger.LogWarning("2FA login failed: Invalid code for user: {LoginName}", loginName);
+            return BadRequest("Invalid code");
+            }
+
+            var jwtToken = _authService.GenerateJwtToken(user);
                 _logger.LogInformation("2FA login successful for user: {LoginName}", loginName);
                 return Ok(new LoginResponseDto
                 {
@@ -230,10 +238,7 @@ namespace CampusConnect.Server.Controllers
                     Username = user.LoginName,
                     Role = user.Role
                 });
-            }
-
-            _logger.LogWarning("2FA login failed: Invalid code for user: {LoginName}", loginName);
-            return BadRequest("Invalid code");
+          
         }
 
         [HttpPost("2fa/disable")]
@@ -245,15 +250,16 @@ namespace CampusConnect.Server.Controllers
             
             if (user?.TwoFactorSecret == null) return BadRequest();
 
-            if (_twoFactorService.ValidateCode(user.TwoFactorSecret, dto.Code))
+            if (!_twoFactorService.ValidateCode(user.TwoFactorSecret, dto.Code))
             {
-                user.TwoFactorEnabled = false;
+                 return BadRequest("Invalid code");
+            }
+            
+            user.TwoFactorEnabled = false;
                 user.TwoFactorSecret = null;
                 await _context.SaveChangesAsync();
                 return Ok();
-            }
-
-            return BadRequest("Invalid code");
+           
         }
 
         [HttpGet("2fa/status")]

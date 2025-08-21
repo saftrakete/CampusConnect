@@ -17,18 +17,24 @@ export class AccountSettingsComponent implements OnInit {
   username: string = 'Saftrakete';
   public twoFactorEnabled = false;
 
+  constructor(private router: Router, private twoFactorService: TwoFactorService, private userService: UserService) {}
+
+  ngOnInit(): void {
+    this.checkTwoFactorStatus();
+  }
+
   /* Öffnet ein Fenster um den Löschvorgang zu bestätigen oder abzubrechen */
-  openDeletionDialog() 
+  public openDeletionDialog(): void 
   {
     const dialogRef = this.dialog.open(DeleteAccountComponent);
   }
 
-  openEditDialog()
+  public openEditDialog(): void
   {
     const dialogRef = this.dialog.open(EditUsernameFormComponent);
   }
 
-  openTwoFactorSetup()
+  public openTwoFactorSetup(): void
   {
     if (this.twoFactorEnabled) {
       // Show disable option first
@@ -52,12 +58,6 @@ export class AccountSettingsComponent implements OnInit {
         }
       });
     }
-  }
-
-  constructor(private router: Router, private twoFactorService: TwoFactorService, private userService: UserService) {}
-
-  ngOnInit(): void {
-    this.checkTwoFactorStatus();
   }
 
   private checkTwoFactorStatus(): void {
