@@ -19,11 +19,14 @@ export class AccountSettingsComponent implements OnInit {
 
   ngOnInit(): void 
   {
-    this.us.getUsername(this.auth.).subscribe(
-      (response) => {
-        this.username = response;
-      }
-    )
+    const loginName = this.auth.getLoginName();
+    if (loginName) {
+      this.us.getUsername(loginName).subscribe(
+        (response) => {
+          this.username = response.username;
+        }
+      )
+    }
   }
 
   /* Öffnet ein Fenster um den Löschvorgang zu bestätigen oder abzubrechen */

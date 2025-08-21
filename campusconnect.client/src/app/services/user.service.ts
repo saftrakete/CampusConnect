@@ -33,8 +33,8 @@ export class UserService {
         return this.httpClient.get<UserEntity>(`${baseApiRoute}user/${userId}`);
     }
 
-    public getUsername(loginName: string): Observable<string> {
-        return this.httpClient.get<string>(baseApiRoute + "user/getusername/" + loginName);
+    public getUsername(loginName: string): Observable<{ username: string }> {
+        return this.httpClient.get<{ username: string }>(baseApiRoute + "user/getusername/" + loginName);
     }
 
     public createUserEntity(

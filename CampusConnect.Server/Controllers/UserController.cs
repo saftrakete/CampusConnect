@@ -9,6 +9,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using CampusConnect.Server.Services;
 
 namespace CampusConnect.Server.Controllers
 {
@@ -47,7 +48,11 @@ namespace CampusConnect.Server.Controllers
         public async Task<ActionResult<string>> GetUsername(string loginName) 
         {
             var user = await _context.Users.FirstOrDefaultAsync(u => u.LoginName == loginName);
-            return user.Nickname;
+            if (user is null)
+            {
+                return NotFound("User not found.");
+            }
+            return Ok(new{ username = user.Nickname });
         }
 
         [HttpPost("login")]
