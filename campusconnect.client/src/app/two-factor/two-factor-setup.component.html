@@ -1,0 +1,34 @@
+<div class="setup-container">
+  <h2>Two-Factor Authentication Setup</h2>
+  
+  <div *ngIf="!setupData && !isEnabled">
+    <p>Secure your account with two-factor authentication</p>
+    <button (click)="setupTwoFactor()">Enable 2FA</button>
+  </div>
+
+  <div *ngIf="setupData" class="setup-steps">
+    <h3>Step 1: Scan QR Code</h3>
+    <div class="qr-code">
+      <img [src]="setupData.qrCodeUri" alt="QR Code">
+    </div>
+    
+    <h3>Step 2: Enter Manual Key (if needed)</h3>
+    <p class="manual-key">{{ setupData.manualEntryKey }}</p>
+    
+    <h3>Step 3: Verify Setup</h3>
+    <form [formGroup]="setupForm" (ngSubmit)="verifySetup()">
+      <input type="text" formControlName="code" placeholder="Enter 6-digit code" maxlength="6">
+      <button type="submit" [disabled]="!setupForm.valid">Verify & Enable</button>
+    </form>
+  </div>
+
+  <div *ngIf="isEnabled" class="enabled-section">
+    <p>✅ Two-Factor Authentication is enabled</p>
+    <form [formGroup]="setupForm" (ngSubmit)="disableTwoFactor()">
+      <input type="text" formControlName="code" placeholder="Enter code to disable" maxlength="6">
+      <button type="submit" [disabled]="!setupForm.valid" class="danger">Disable 2FA</button>
+    </form>
+  </div>
+
+  <div *ngIf="message" class="message">{{ message }}</div>
+</div>

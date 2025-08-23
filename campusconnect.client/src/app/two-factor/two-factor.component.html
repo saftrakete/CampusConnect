@@ -1,0 +1,23 @@
+<div class="two-factor-container">
+  <h2>Two-Factor Authentication</h2>
+  <p>Enter the 6-digit code from your authenticator app</p>
+  
+  <form [formGroup]="twoFactorForm" (ngSubmit)="verifyCode()">
+    <div class="form-group">
+      <input 
+        type="text" 
+        formControlName="code" 
+        placeholder="000000"
+        maxlength="6"
+        class="code-input">
+    </div>
+    
+    <div class="error-message" *ngIf="errorMessage">
+      {{ errorMessage }}
+    </div>
+    
+    <button type="submit" [disabled]="!twoFactorForm.valid">
+      Verify
+    </button>
+  </form>
+</div>

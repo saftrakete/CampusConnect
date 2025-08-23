@@ -11,6 +11,8 @@ import { AuthGuardTestComponent } from './auth-guard-test/auth-guard-test.compon
 import { AuthGuard } from './routeguards/AuthGuard';
 import { ForbiddenComponent } from './forbidden/forbidden.component';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { TwoFactorComponent } from './two-factor/two-factor.component';
+import { TwoFactorSetupComponent } from './two-factor/two-factor-setup.component';
 
 export const baseApiRoute = 'https://localhost:7109/';
 
@@ -49,6 +51,14 @@ const routes: Routes = [
     {
         path: "forbidden",
         component: ForbiddenComponent
+    },
+    {
+        path: 'two-factor',
+        component: TwoFactorComponent
+    },
+    {
+        path: 'two-factor-setup',
+        component: TwoFactorSetupComponent
     },
     {
         path: "**",
