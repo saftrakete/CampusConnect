@@ -27,7 +27,7 @@ builder.Services.AddTransient<InitFacultyTable>();
 builder.Services.AddTransient<InitDegreeTable>();
 builder.Services.AddTransient<InitUserRolesService>();
 builder.Services.AddTransient<IAuthorizationService, AuthorizationService>();
-builder.Services.AddTransient<TwoFactorService>();
+builder.Services.AddTransient<ITwoFactorService, TwoFactorService>();
 
 builder.Services.AddDbContext<CampusConnectContext>(options =>
 {
@@ -92,20 +92,25 @@ app.MapControllers();
 
 app.MapFallbackToFile("/index.html");
 
-var scope = app.Services.CreateScope();
+if (!app.Environment.IsEnvironment("Testing"))
+{
+    var scope = app.Services.CreateScope();
 
-var context = scope.ServiceProvider.GetRequiredService<CampusConnectContext>();
-var moduleIntitializer = scope.ServiceProvider.GetRequiredService<InitModuleTable>();
-var facultyInitializer = scope.ServiceProvider.GetRequiredService<InitFacultyTable>();
-var degreeInitializer = scope.ServiceProvider.GetRequiredService<InitDegreeTable>();
-var userRolesInitializer = scope.ServiceProvider.GetRequiredService<InitUserRolesService>();
+    var context = scope.ServiceProvider.GetRequiredService<CampusConnectContext>();
+    var moduleIntitializer = scope.ServiceProvider.GetRequiredService<InitModuleTable>();
+    var facultyInitializer = scope.ServiceProvider.GetRequiredService<InitFacultyTable>();
+    var degreeInitializer = scope.ServiceProvider.GetRequiredService<InitDegreeTable>();
+    var userRolesInitializer = scope.ServiceProvider.GetRequiredService<InitUserRolesService>();
 
-context.Database.Migrate();
+    context.Database.Migrate();
 
-await facultyInitializer.FillInFaculties();
-await moduleIntitializer.FillInModules();
-await degreeInitializer.FillInDegrees();
+    await facultyInitializer.FillInFaculties();
+    await moduleIntitializer.FillInModules();
+    await degreeInitializer.FillInDegrees();
 
-userRolesInitializer.InitUserRolesTable(context);
+    userRolesInitializer.InitUserRolesTable(context);
+}
 
 app.Run();
+
+public partial class Program { }
