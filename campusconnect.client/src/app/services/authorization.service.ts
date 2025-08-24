@@ -38,6 +38,11 @@ export class AuthorizationService {
     return token?.['http://schemas.microsoft.com/ws/2008/06/identity/claims/role'] || null;
   }
 
+  public getUserName(): string | null {
+    let token = this.getDecodedToken();
+    return token?.['http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name'] || null;
+  }
+
   private getDecodedToken(): DecodedToken | null {
     let token = localStorage.getItem("jwt");
     if (!token) return null;

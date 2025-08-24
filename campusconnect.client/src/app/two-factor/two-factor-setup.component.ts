@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { TwoFactorService } from '../services/two-factor.service';
 import { TwoFactorSetupDto } from '../entities/twoFactorDto';
+import { AuthorizationService } from '../services/authorization.service';
 
 @Component({
   selector: 'app-two-factor-setup',
@@ -16,7 +17,8 @@ export class TwoFactorSetupComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private twoFactorService: TwoFactorService
+    private twoFactorService: TwoFactorService,
+    private authService: AuthorizationService
   ) {}
 
   public ngOnInit(): void {
@@ -26,8 +28,11 @@ export class TwoFactorSetupComponent implements OnInit {
   }
 
   public setupTwoFactor(): void {
-    // Get current user from token/auth service instead of prompt
-    const loginName = 'your-username'; // TODO: Get from auth service
+    const loginName = this.authService.getUserName();
+    if (!loginName) {
+      this.message = 'User not logged in';
+      return;
+    }
     
     this.twoFactorService.setupTwoFactor(loginName).subscribe({
       next: (data) => {
@@ -42,7 +47,12 @@ export class TwoFactorSetupComponent implements OnInit {
   public verifySetup(): void {
     if (!this.setupForm.valid) return;
 
-    const loginName = 'your-username'; // TODO: Get from auth service
+    const loginName = this.authService.getUserName();
+    if (!loginName) {
+      this.message = 'User not logged in';
+      return;
+    }
+    
     const code = this.setupForm.get('code')?.value;
     this.twoFactorService.verifyTwoFactorSetup(loginName, code).subscribe({
       next: () => {
