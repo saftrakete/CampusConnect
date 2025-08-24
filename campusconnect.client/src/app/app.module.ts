@@ -35,8 +35,7 @@ import { ForbiddenComponent } from './forbidden/forbidden.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { TwoFactorComponent } from './two-factor/two-factor.component';
 import { TwoFactorSetupComponent } from './two-factor/two-factor-setup.component';
-import { AuthInterceptor } from './interceptors/auth.interceptor';
-import { ChatComponent } from './chat/chat.component';
+
 
 
 @NgModule({

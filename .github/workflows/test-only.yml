@@ -23,4 +23,4 @@ jobs:
         dotnet test CampusConnect.Server.Tests/CampusConnect.Server.Tests.csproj --verbosity normal --filter "FullyQualifiedName!~Integration"
     
     - name: Test Summary
-      run: echo "✅ Unit tests completed successfully"
+      run: echo "Unit tests completed successfully"

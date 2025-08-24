@@ -21,8 +21,6 @@ jobs:
       uses: actions/setup-node@v4
       with:
         node-version: '18'
-        cache: 'npm'
-        cache-dependency-path: campusconnect.client/package-lock.json
     
     - name: Run Tests
       run: |
@@ -36,9 +34,9 @@ jobs:
     
     - name: Build Frontend
       run: |
-        npm ci
+        npm install
         npm run build --prod
       working-directory: campusconnect.client
     
     - name: Deploy Status
-      run: echo "🚀 Ready for deployment"
+      run: echo "Ready for deployment"

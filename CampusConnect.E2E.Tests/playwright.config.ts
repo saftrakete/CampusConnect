@@ -21,6 +21,6 @@ export default defineConfig({
     command: 'npm start',
     cwd: '../campusconnect.client',
     port: 4200,
-    reuseExistingServer: !process.env.CI,
+    reuseExistingServer: true,
   },
 });
