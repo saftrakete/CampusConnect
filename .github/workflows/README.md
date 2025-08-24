@@ -3,7 +3,7 @@
 ## Available Workflows
 
 ### 1. CI/CD Pipeline (`ci.yml`)
-**Triggers**: Push to main/develop, Pull Requests to main
+**Triggers**: Push to main/develop, Pull Requests to main/develop
 - ✅ Backend unit tests
 - ✅ Frontend tests  
 - ✅ E2E tests
@@ -21,7 +21,7 @@
 - ⚡ Fast feedback for PRs
 
 ### 4. Deploy (`deploy.yml`)
-**Triggers**: Push to main, Manual dispatch
+**Triggers**: Push to main/develop, Manual dispatch
 - ✅ Test validation
 - 🏗️ Production builds
 - 🚀 Deployment ready
