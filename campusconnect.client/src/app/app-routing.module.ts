@@ -13,6 +13,8 @@ import { ForbiddenComponent } from './forbidden/forbidden.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { TwoFactorComponent } from './two-factor/two-factor.component';
 import { TwoFactorSetupComponent } from './two-factor/two-factor-setup.component';
+import { OnboardingComponent } from './onboarding/onboarding.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 export const baseApiRoute = 'https://localhost:7109/';
 
@@ -24,6 +26,16 @@ const routes: Routes = [
     {
         path: 'register',
         component: RegisterComponent
+    },
+    {
+        path: 'onboarding',
+        component: OnboardingComponent,
+        canActivate: [AuthGuard]
+    },
+    {
+        path: 'dashboard',
+        component: DashboardComponent,
+        canActivate: [AuthGuard]
     },
     {
         path: '',

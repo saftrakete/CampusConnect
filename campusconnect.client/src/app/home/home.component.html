@@ -3,3 +3,14 @@
     <img
         src="../../assets/images/bannerImage.png">
  </div>
+ <div *ngIf="auth.isLoggedIn() && !os.GetOnboardingStatus()" class="onboardingContainer">
+    <mat-card appearance="outlined" class="mat-card">
+        <mat-card-header class="cardHeader">
+            <mat-card-title class="title">Starte jetzt dein Onboarding</mat-card-title>
+            <mat-card-subtitle>Wähle deine Module aus</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-actions class="startButton">
+            <button mat-raised-button [routerLink]="['/onboarding']">Beginnen</button>
+        </mat-card-actions>
+    </mat-card>
+ </div>

@@ -10,8 +10,9 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatDividerModule } from '@angular/material/divider';
+import { MatSelectModule } from '@angular/material/select';
+import { FormsModule } from '@angular/forms';
 import { MatCardModule } from '@angular/material/card';
-import { MatListModule } from '@angular/material/list';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -37,6 +38,10 @@ import { TwoFactorComponent } from './two-factor/two-factor.component';
 import { TwoFactorSetupComponent } from './two-factor/two-factor-setup.component';
 import { AuthInterceptor } from './interceptors/auth.interceptor';
 import { ChatComponent } from './chat/chat.component';
+import { OnboardingComponent } from './onboarding/onboarding.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { ModuleCardComponent } from './module-card/module-card.component';
+import { AddedModuleComponent } from './added-module/added-module.component';
 
 
 @NgModule({
@@ -52,7 +57,10 @@ import { ChatComponent } from './chat/chat.component';
     SettingsSidebarComponent,
     EmailSettingsComponent,
     EditUsernameFormComponent,
-    SettingsSidebarComponent,
+    OnboardingComponent,
+    DashboardComponent,
+    ModuleCardComponent,
+    AddedModuleComponent,
     AdminPanelComponent,
     AuthGuardTestComponent,
     ForbiddenComponent,
@@ -73,8 +81,9 @@ import { ChatComponent } from './chat/chat.component';
     MatDialogModule,
     MatTooltipModule,
     MatDividerModule,
-    MatCardModule,
-    MatListModule
+    MatSelectModule,
+    FormsModule,
+    MatCardModule
   ],
   providers: [
     provideAnimationsAsync(),
