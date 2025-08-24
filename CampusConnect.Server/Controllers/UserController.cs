@@ -150,7 +150,11 @@ namespace CampusConnect.Server.Controllers
             {
                 var currentModule = await _context.Modules.FindAsync(mod.ModuleId);
 
-                if (currentModule != null)
+                if (currentModule == null)
+                {
+                    return BadRequest(new { message = "Module not found" });
+                }
+                else
                 {
                     user.UserModules.Add(currentModule);
                 }
