@@ -1,0 +1,41 @@
+name: PR Checks
+
+on:
+  pull_request:
+    branches: [ main, develop ]
+
+jobs:
+  quick-tests:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: '9.0.x'
+    
+    - name: Build Backend
+      run: |
+        dotnet restore CampusConnect.Server/CampusConnect.Server.csproj
+        dotnet build CampusConnect.Server/CampusConnect.Server.csproj --no-restore
+    
+    - name: Run Unit Tests
+      run: |
+        dotnet restore CampusConnect.Server.Tests/CampusConnect.Server.Tests.csproj
+        dotnet test CampusConnect.Server.Tests/CampusConnect.Server.Tests.csproj --verbosity normal --filter "FullyQualifiedName!~Integration"
+    
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18'
+    
+    - name: Build Frontend
+      run: |
+        npm install
+        npm run build
+      working-directory: campusconnect.client
+    
+    - name: PR Status
+      run: echo "PR checks passed - ready for review"

@@ -2,6 +2,7 @@ using CampusConnect.Server.Data;
 using CampusConnect.Server.Models;
 using CampusConnect.Server.Models.Dtos;
 using CampusConnect.Server.Services;
+using CampusConnect.Server.Interfaces;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -21,12 +22,12 @@ namespace CampusConnect.Server.Controllers
         private readonly CampusConnectContext _context;
         private readonly IAuthService _authService;
         private readonly ILogger<ControllerBase> _logger;
-        private readonly TwoFactorService _twoFactorService;
+        private readonly ITwoFactorService _twoFactorService;
 
         public UserController(CampusConnectContext context,
             IAuthService authService,
             ILogger<ControllerBase> logger,
-            TwoFactorService twoFactorService)
+            ITwoFactorService twoFactorService)
         {
             _context = context;
             _authService = authService;

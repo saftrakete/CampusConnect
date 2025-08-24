@@ -1,11 +1,12 @@
 using OtpNet;
 using QRCoder;
 using CampusConnect.Server.Models;
+using CampusConnect.Server.Interfaces;
 using System;
 
 namespace CampusConnect.Server.Services
 {
-    public class TwoFactorService
+    public class TwoFactorService : ITwoFactorService
     {
         public string GenerateSecret()
         {
