@@ -20,3 +20,5 @@ Brief description of changes made.
 - [ ] Tests added/updated as needed
 - [ ] Documentation updated if required
 - [ ] Branch is up to date with develop
+
+Closes: #[issue-number]
