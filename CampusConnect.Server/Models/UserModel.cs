@@ -12,5 +12,7 @@ namespace CampusConnect.Server.Models
         public string PasswordHash { get; set; }
         public UserRole Role { get; set; }
         public virtual ICollection<Module> UserModules { get; set; }
+        public bool TwoFactorEnabled { get; set; } = false;
+        public string? TwoFactorSecret { get; set; }
     }
 }

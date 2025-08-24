@@ -30,6 +30,17 @@
 
       </div>
 
+      <h2 class="fontColor">Zwei-Faktor-Authentifizierung</h2>
+
+      <p>Erhöhe die Sicherheit deines Kontos mit 2FA.</p>
+
+      <button 
+        mat-raised-button 
+        class="twoFactorButton"
+        (click)="openTwoFactorSetup()">
+        {{ twoFactorEnabled ? '2FA deaktivieren' : '2FA aktivieren' }}
+      </button>
+
       <h2 class="fontColor">Konto löschen</h2>
 
       <p>Mit dem Löschen deines Kontos werden alle persönlichen Daten entfernt.</p>

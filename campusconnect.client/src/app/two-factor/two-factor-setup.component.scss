@@ -1,0 +1,75 @@
+.setup-container {
+  max-width: 500px;
+  margin: 20px auto;
+  padding: 20px;
+}
+
+.qr-code {
+  text-align: center;
+  margin: 20px 0;
+}
+
+.qr-code img {
+  max-width: 200px;
+  border: 1px solid #ddd;
+}
+
+.manual-key {
+  background: #f5f5f5;
+  padding: 10px;
+  font-family: monospace;
+  word-break: break-all;
+  border-radius: 4px;
+}
+
+.setup-steps h3 {
+  margin-top: 30px;
+  color: #333;
+}
+
+input {
+  padding: 10px;
+  margin: 10px 5px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 16px;
+}
+
+button {
+  padding: 10px 20px;
+  margin: 10px 5px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+button:not(.danger) {
+  background-color: #007bff;
+  color: white;
+}
+
+button.danger {
+  background-color: #dc3545;
+  color: white;
+}
+
+button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.message {
+  margin: 20px 0;
+  padding: 10px;
+  border-radius: 4px;
+  background-color: #d4edda;
+  color: #155724;
+}
+
+.enabled-section {
+  text-align: center;
+  padding: 20px;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+}
