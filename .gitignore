@@ -407,3 +407,11 @@ FodyWeavers.xsd
 **/.angular/cache
 **/coverage/*
 campusconnect.client/package-lock.json
+
+# SSL Certificates ---------
+*.pem
+*.key
+*.crt
+*.p12
+*.pfx
+ssl/
