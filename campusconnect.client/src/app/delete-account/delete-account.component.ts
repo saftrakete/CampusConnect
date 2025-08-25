@@ -3,6 +3,7 @@ import { MatDialogRef } from '@angular/material/dialog';
 import { UserService } from '../services/user.service';
 import { Router } from '@angular/router';
 import { baseApiRoute } from '../app-routing.module';
+import { AuthorizationService } from '../services/authorization.service';
 
 @Component({
   selector: 'app-delete-account',
@@ -12,18 +13,17 @@ import { baseApiRoute } from '../app-routing.module';
 export class DeleteAccountComponent {
 
   dialog: MatDialogRef<DeleteAccountComponent>;   // speichert das geöffnete Dialogfenster
-  userService: UserService;                       // UserService Instanz
   router: Router;                                 // Router-Instanz zum Navigieren zur Homepage nach Löschvorgang
 
   /* bekommt das geöffnete Dialogfenster übergeben */
   constructor(
     private dialogRef: MatDialogRef<DeleteAccountComponent>, 
     private us: UserService,
-    private r: Router
+    private r: Router,
+    private auth: AuthorizationService
   ) 
   {
     this.dialog = dialogRef;
-    this.userService = us;
     this.router = r;
   }
   /* Schließt das Dialogfenster */
@@ -32,18 +32,24 @@ export class DeleteAccountComponent {
     this.dialog.close();
   }
 
-  confirmDeletion(userID: number) 
+  confirmDeletion() 
   {
-    this.userService.deleteUser(userID).subscribe(
-      response => { 
-        console.log("Eintrag gelöscht!"); 
-        this.router.navigate(['/'])
-      },
-      error => { 
-        console.error("Fehler beim Löschen"); 
-      }
-    );
+    const loginName = this.auth.getUserName();
+
+    if (loginName) {
+      this.us.deleteUser(loginName).subscribe(
+        (response) => 
+        {
+          console.log("User deleted.");
+          this.r.navigate(['/']);
+        },
+        (error) => 
+        {
+          console.log("Deletion failed.")
+        })
+    }
     this.closeDialog();
+    localStorage.removeItem("jwt");
   }
 
 }

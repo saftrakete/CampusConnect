@@ -37,8 +37,8 @@ export class UserService {
         return this.httpClient.get<boolean>(baseApiRoute + "user/exists/" + loginName);
     }
 
-    public deleteUser(userID: number): Observable<void> {
-        return this.httpClient.delete<void>(baseApiRoute + "user/" + userID);
+    public deleteUser(loginName: string): Observable<void> {
+        return this.httpClient.delete<void>(baseApiRoute + "user/" + loginName);
     }
 
     public getUserById(userId: number): Observable<UserEntity> {

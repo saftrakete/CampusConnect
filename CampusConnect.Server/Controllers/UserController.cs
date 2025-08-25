@@ -107,10 +107,10 @@ namespace CampusConnect.Server.Controllers
         }
 
 
-        [HttpDelete("{userId}")]
-        public async Task<IActionResult> DeleteUser(int userId)
+        [HttpDelete("{loginName}")]
+        public async Task<IActionResult> DeleteUser(string loginName)
         {
-            var user = await _context.Users.FirstOrDefaultAsync(u => u.UserId == userId);
+            var user = await _context.Users.FirstOrDefaultAsync(u => u.LoginName == loginName);
 
             if (user is null)
             {

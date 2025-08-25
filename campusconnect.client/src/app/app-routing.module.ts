@@ -32,11 +32,13 @@ const routes: Routes = [
     },
     {
         path: 'accountsettings',
-        component: AccountSettingsComponent
+        component: AccountSettingsComponent,
+        canActivate: [AuthGuard]
     },
     {
         path: 'emailsettings',
-        component: EmailSettingsComponent
+        component: EmailSettingsComponent,
+        canActivate: [AuthGuard]
     },
     {
         path: "adminpanel",
